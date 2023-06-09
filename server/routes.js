@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const itemController = require('./controllers/item.controller');
+const bountyController = require('./controllers/bounty.controller');
 
 // Connect controller methods to corresponding routes
-router.get('/item', itemController.getAll);
+router.get('/bounties', bountyController.getAll);
 
 module.exports = router;
