@@ -1,4 +1,4 @@
-const bountyModel = require('../models/bounty.model');
+const offerModel = require('../models/offer.model');
 
 module.exports.getBountyOffers = (req, res) => {};
 module.exports.createOffer = (req, res) => {};

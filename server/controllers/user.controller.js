@@ -1,4 +1,4 @@
-const bountyModel = require('../models/bounty.model');
+const userModel = require('../models/user.model');
 
 module.exports.createUser = (req, res) => {};
 module.exports.getUser = (req, res) => {};
