@@ -4,8 +4,9 @@ DROP TABLE IF EXISTS offer;
 DROP TABLE IF EXISTS transaction;
 
 CREATE TYPE condition AS ENUM ('new', 'like new', 'good', 'fair', 'poor');
-CREATE TYPE category AS ENUM ('clothing', 'furniture');
+CREATE TYPE category AS ENUM ('clothing', 'furniture', 'gadget');
 CREATE TYPE payment AS ENUM ('paypal', 'zell', 'venmo', 'visa', 'cash');
+CREATE TYPE rating AS ENUM ('good', 'bad');
 
 CREATE TABLE bounty_user (
   id SERIAL PRIMARY KEY,
@@ -25,7 +26,8 @@ CREATE TABLE bounty (
   description TEXT,
   condition condition,
   category category,
-  location TEXT,
+  city VARCHAR(20),
+  state VARCHAR(20),
   completed BOOLEAN,
   price NUMERIC(12,2),
   deadline TIMESTAMP,
@@ -57,8 +59,10 @@ CREATE TABLE transaction (
   buyer_id INT NOT NULL,
   sale_amount NUMERIC(12, 2),
   transaction_date TIMESTAMP,
-  buyer_rated BOOLEAN,
-  seller_rated BOOLEAN,
+  buyer_rating rating,
+  seller_rating rating,
+  buyer_feedbacak TEXT,
+  seller_feedback TEXT,
   FOREIGN KEY (offer_id) REFERENCES offer(id),
   FOREIGN KEY (bounty_id) REFERENCES bounty(id),
   FOREIGN KEY (seller_id) REFERENCES bounty_user(id),
