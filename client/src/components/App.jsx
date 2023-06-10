@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlobalContextProvider } from './GlobalContext.jsx';
+import { GlobalContextProvider } from './GlobalContext';
 
 function App() {
   return (
