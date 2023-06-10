@@ -1,9 +1,13 @@
-DROP TABLE IF EXISTS user CASCADE;
+DROP TABLE IF EXISTS bounty_user CASCADE;
 DROP TABLE IF EXISTS bounty CASCADE;
 DROP TABLE IF EXISTS offer;
 DROP TABLE IF EXISTS transaction;
 
-CREATE TABLE user (
+CREATE TYPE condition AS ENUM ('new', 'like new', 'good', 'fair', 'poor');
+CREATE TYPE category AS ENUM ('clothing', 'furniture');
+CREATE TYPE payment AS ENUM ('paypal', 'zell', 'venmo', 'visa', 'cash');
+
+CREATE TABLE bounty_user (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
   first_name VARCHAR(50) NOT NULL,
@@ -19,16 +23,16 @@ CREATE TABLE bounty (
   buyer_id INT NOT NULL,
   name VARCHAR(50) NOT NULL,
   description TEXT,
-  condition ENUM,
-  category ENUM,
+  condition condition,
+  category category,
   location TEXT,
   completed BOOLEAN,
   price NUMERIC(12,2),
   deadline TIMESTAMP,
-  preferred_payment ENUM,
+  preferred_payment payment,
   image TEXT,
   created_at TIMESTAMP,
-  FOREIGN KEY(buyer_id) REFERENCES user(id)
+  FOREIGN KEY(buyer_id) REFERENCES bounty_user(id)
 );
 CREATE INDEX ON bounty (buyer_id);
 
@@ -39,7 +43,7 @@ CREATE TABLE offer (
   offer_amount NUMERIC(12, 2),
   completed BOOLEAN,
   FOREIGN KEY (bounty_id) REFERENCES bounty(id),
-  FOREIGN KEY (seller_id) REFERENCES user(id)
+  FOREIGN KEY (seller_id) REFERENCES bounty_user(id)
 );
 CREATE INDEX ON offer (bounty_id);
 CREATE INDEX ON offer (seller_id);
@@ -57,8 +61,8 @@ CREATE TABLE transaction (
   seller_rated BOOLEAN,
   FOREIGN KEY (offer_id) REFERENCES offer(id),
   FOREIGN KEY (bounty_id) REFERENCES bounty(id),
-  FOREIGN KEY (seller_id) REFERENCES user(id),
-  FOREIGN KEY (buyer_id) REFERENCES user(id)
+  FOREIGN KEY (seller_id) REFERENCES bounty_user(id),
+  FOREIGN KEY (buyer_id) REFERENCES bounty_user(id)
 );
 
 CREATE INDEX ON transaction (offer_id);
