@@ -14,6 +14,7 @@ router.post('/bounties', bountyController.createBounty);
 router.get('/offers/:bounty_id', offerController.getBountyOffers);
 router.post('/offers', offerController.createOffer);
 router.patch('/offers/:offer_id', offerController.completeOffer);
+router.get('/offers/:user_id', offerController.getUserOffers);
 router.get('/transaction/:user_id', transactionController.getUserTransactions);
 
 module.exports = router;
