@@ -1,4 +1,5 @@
 import React from 'react';
+import BountyCardBack from './BountyCardBack.jsx';
 import {
   BountyCard,
   Image,

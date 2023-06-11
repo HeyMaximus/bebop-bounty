@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const BountyBoardWrapper = styled.div`
+  /* Styles for the bounty board wrapper */
+`;
+
+export const Dropdown = styled.div`
+  /* Styles for the dropdown */
+`;
+
 export const BountyCard = styled.div`
   /* Styles for the bounty card */
   border: solid;
