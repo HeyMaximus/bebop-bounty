@@ -4,6 +4,8 @@ export const BountyCard = styled.div`
   /* Styles for the bounty card */
   border: solid;
 `;
+
+//Front of card
 export const Image = styled.img`
   border: solid;
 `;
@@ -24,18 +26,10 @@ export const BuyerName = styled.div`
   border: solid;
 `;
 
-export const MakeOfferButton = styled.button`
-  border: solid;
-`;
-
-export const CurrentOffers = styled.div`
-  border: solid;
-`;
-
 export const Deadline = styled.div`
   border: solid;
 `;
-
+//back side of card
 export const Category = styled.div`
   border: solid;
 `;

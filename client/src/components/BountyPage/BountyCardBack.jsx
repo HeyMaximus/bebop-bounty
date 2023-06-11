@@ -9,9 +9,11 @@ import {
   RatingBox,
   MakeOfferButton,
   CurrentOffers,
-} from './StyledComponents';
+} from './StyledBountyBoard';
 
-export default function BountyCardBack({ context }) {
+export default function BountyCardBack({ Context }) {
+  console.log(Context);
+
   return (
     <BountyCard>
       BountyCard

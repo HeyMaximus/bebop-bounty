@@ -9,10 +9,10 @@ import {
   MakeOfferButton,
   CurrentOffers,
   Deadline,
-} from './StyledComponents';
+} from './StyledBountyBoard';
 
-export default function BountyCardFront({ context }) {
-  console.log(context);
+export default function BountyCardFront({ Context }) {
+  console.log(Context);
   return (
     <BountyCard>
       BountyCard
