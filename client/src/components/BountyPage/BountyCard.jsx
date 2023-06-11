@@ -1,30 +1,35 @@
 import React from 'react';
 import BountyCardBack from './BountyCardBack.jsx';
 import {
-  BountyCard,
-  Image,
-  Price,
-  Title,
-  Wanted,
-  BuyerName,
-  MakeOfferButton,
-  CurrentOffers,
-  Deadline,
+  StyledBountyCard,
+  StyledImage,
+  StyledPrice,
+  StyledTitle,
+  StyledWanted,
+  StyledBuyerName,
+  StyledMakeOfferButton,
+  StyledCurrentOffers,
+  StyledDeadline,
 } from './StyledBountyBoard';
 
 export default function BountyCardFront({ Context }) {
   console.log(Context);
+
+  const OpenOfferModal = () => {
+    console.log('Open Offer Modal');
+  };
+
   return (
-    <BountyCard>
+    <StyledBountyCard>
       BountyCard
-      <Image src="" />
-      <Price>$10,000</Price>
-      <Title>Title</Title>
-      <Wanted>WANTED</Wanted>
-      <BuyerName>BuyerName</BuyerName>
-      <MakeOfferButton>Make an Offer</MakeOfferButton>
-      <CurrentOffers>Current Offers</CurrentOffers>
-      <Deadline>Deadline</Deadline>
-    </BountyCard>
+      <StyledImage src="" />
+      <StyledPrice>$10,000</StyledPrice>
+      <StyledTitle>Title</StyledTitle>
+      <StyledWanted>WANTED</StyledWanted>
+      <StyledBuyerName>BuyerName</StyledBuyerName>
+      <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
+      <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
+      <StyledDeadline>Deadline</StyledDeadline>
+    </StyledBountyCard>
   );
 }
