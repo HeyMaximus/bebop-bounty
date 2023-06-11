@@ -1,18 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+import {
+  BountyCard,
+  Title,
+  Category,
+  Deadline,
+  Description,
+  PreferredPayment,
+  RatingBox,
+  MakeOfferButton,
+  CurrentOffers,
+} from './StyledComponents';
 
-export default function BountyCardBack({ Context }) {
+export default function BountyCardBack({ context }) {
   return (
-    <div className="bounty-card">
+    <BountyCard>
       BountyCard
-      <div className="title">Title</div>
-      <div className="category">category</div>
-      <div className="deadlin">deadline</div>
-      <div className="description">Description</div>
-      <div className="preferrec-payment">PreferredPayment</div>
-      <div className="ratingbox">RatingBox</div>
-      <button className="make-offer">Make an Offer</button>
-      <div className="current-offers">Current Offers</div>
-    </div>
+      <Title>Title</Title>
+      <Category>Category</Category>
+      <Deadline>Deadline</Deadline>
+      <Description>Description</Description>
+      <PreferredPayment>Preferred Payment</PreferredPayment>
+      <RatingBox>Rating Box</RatingBox>
+      <MakeOfferButton>Make an Offer</MakeOfferButton>
+      <CurrentOffers>Current Offers</CurrentOffers>
+    </BountyCard>
   );
 }

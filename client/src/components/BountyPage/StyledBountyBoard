@@ -1,0 +1,61 @@
+import styled from 'styled-components';
+
+export const BountyCard = styled.div`
+  /* Styles for the bounty card */
+  border: solid;
+`;
+export const Image = styled.img`
+  border: solid;
+`;
+
+export const Title = styled.div`
+  border: solid;
+`;
+
+export const Price = styled.div`
+  border: solid;
+`;
+
+export const Wanted = styled.div`
+  border: solid;
+`;
+
+export const BuyerName = styled.div`
+  border: solid;
+`;
+
+export const MakeOfferButton = styled.button`
+  border: solid;
+`;
+
+export const CurrentOffers = styled.div`
+  border: solid;
+`;
+
+export const Deadline = styled.div`
+  border: solid;
+`;
+
+export const Category = styled.div`
+  border: solid;
+`;
+
+export const Description = styled.div`
+  border: solid;
+`;
+
+export const PreferredPayment = styled.div`
+  border: solid;
+`;
+
+export const RatingBox = styled.div`
+  /* Styles for the rating box */
+`;
+
+export const MakeOfferButton = styled.button`
+  /* Styles for the "Make an Offer" button */
+`;
+
+export const CurrentOffers = styled.div`
+  /* Styles for the current offers */
+`;
