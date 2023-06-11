@@ -15,6 +15,7 @@ CREATE TABLE bounty_user (
   last_name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
   profile_image TEXT,
+  last_edited TIMESTAMP,
   rating_thumbs_up INT,
   rating_thumbs_down INT
 );
@@ -42,6 +43,7 @@ CREATE TABLE offer (
   id SERIAL PRIMARY KEY,
   bounty_id INT NOT NULL,
   seller_id INT NOT NULL,
+  condition condition,
   offer_amount NUMERIC(12, 2),
   completed BOOLEAN,
   FOREIGN KEY (bounty_id) REFERENCES bounty(id),
