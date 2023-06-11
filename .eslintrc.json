@@ -2,11 +2,13 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "env": {
+    "browser": true,
     "jest": true
   },
   "rules": {
     "prettier/prettier": ["error"],
     "no-console": "off",
-        "no-restricted-syntax": ["error"]
+    "no-restricted-syntax": ["error"],
+    "import/extensions": ["error", "never", { "jsx": "always" }]
   }
 }
