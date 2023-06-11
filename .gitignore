@@ -22,3 +22,6 @@ npm-debug.log*
 # ignore env file
 .env
 
+# auth
+firebase.js
+

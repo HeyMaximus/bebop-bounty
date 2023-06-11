@@ -1,10 +1,14 @@
 import React from 'react';
-import { GlobalContextProvider } from './GlobalContext';
+import SignUp from './signup/SignUp.jsx';
+import { GlobalContextProvider } from './GlobalContext.jsx';
 
 function App() {
   return (
     <GlobalContextProvider>
-      <div>Bebop Bounty</div>
+      <div>
+        Bebop Bounty
+        <SignUp />
+      </div>
     </GlobalContextProvider>
   );
 }

@@ -3,17 +3,16 @@ import React, { useState, createContext, useMemo } from 'react';
 export const GlobalContext = createContext();
 
 export function GlobalContextProvider({ children }) {
-  const [productID, setProductID] = useState(40344);
-  const [product, setProduct] = useState({});
-  const [metadata, setMetadata] = useState({});
+  const [allBounties, setAllBounties] = useState([]);
+  const [userBounties, setUserBounties] = useState([]);
   const globalContextMemo = useMemo(
     () => ({
-      productID,
-      setProductID,
-      product,
-      metadata,
+      allBounties,
+      setAllBounties,
+      userBounties,
+      setUserBounties,
     }),
-    [productID, product, metadata]
+    [allBounties, userBounties]
   );
 
   return <GlobalContext.Provider value={globalContextMemo}>{children}</GlobalContext.Provider>;
