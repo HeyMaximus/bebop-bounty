@@ -1,25 +1,38 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import './SignUp.css';
 
 function SignUp() {
+  const [signUp, setSignUp] = React.useState(false);
   return (
     <div className="sign-up-container">
       <div className="form-container">
         <p className="title">Login</p>
         <form className="form">
-          <div className="input-group">
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="" />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="" />
-            <div className="forgot">
-              <a rel="noopener noreferrer" href="#">
-                Forgot Password ?
-              </a>
+          {signUp && (
+            <div className="input-group">
+              <label>
+                Username
+                <input type="text" name="username" id="username" placeholder="" />
+              </label>
             </div>
+          )}
+          <div className="input-group">
+            <label>
+              Email
+              <input type="email" name="email" id="email" placeholder="" />
+            </label>
           </div>
+          <div className="input-group">
+            <label>
+              Password
+              <input type="password" name="password" id="password" placeholder="" />
+            </label>
+          </div>
+          <br />
           <button className="sign">Sign in</button>
         </form>
         <div className="social-message">
@@ -58,9 +71,7 @@ function SignUp() {
         </div>
         <p className="signup">
           Don't have an account?
-          <a rel="noopener noreferrer" href="#" className="">
-            Sign up
-          </a>
+          <u onClick={() => setSignUp(!signUp)}>{signUp ? 'Sign in' : 'Sign up'}</u>
         </p>
       </div>
     </div>
