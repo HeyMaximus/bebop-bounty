@@ -1,5 +1,6 @@
 import React from 'react';
 import BountyCardBack from './BountyCardBack.jsx';
+import { OpenOfferModal } from './helpers.js';
 import {
   StyledBountyCard,
   StyledImage,
@@ -14,10 +15,6 @@ import {
 
 export default function BountyCardFront({ Context }) {
   console.log(Context);
-
-  const OpenOfferModal = () => {
-    console.log('Open Offer Modal');
-  };
 
   return (
     <StyledBountyCard>

@@ -31,7 +31,7 @@ export const StyledWanted = styled.div`
 
 export const StyledBuyerName = styled.div`
   border: solid;
-`;
+git `;
 
 export const StyledDeadline = styled.div`
   border: solid;
@@ -50,13 +50,17 @@ export const StyledPreferredPayment = styled.div`
 `;
 
 export const StyledRatingBox = styled.div`
-  /* Styles for the rating box */
+  border: solid;
 `;
 
 export const StyledMakeOfferButton = styled.button`
-  /* Styles for the "Make an Offer" button */
+  border: solid;
 `;
 
 export const StyledCurrentOffers = styled.div`
-  /* Styles for the current offers */
+  border: solid;
+`;
+
+export const ModalWrapper = styled.div`
+  border: solid;
 `;
