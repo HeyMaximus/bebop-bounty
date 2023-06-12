@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import CoinRating from '../shared/coin-rating/CoinRating.jsx';
 
 const Host = styled.div`
   width: 100vw;
@@ -11,6 +12,7 @@ function Profile() {
   return (
     <Host>
       <div>Profile</div>
+      <CoinRating rating="75%" />
     </Host>
   );
 }
