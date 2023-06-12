@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styled from 'styled-components';
-import FilledCoinIcon from '../../../assets/filled-coin-icon.svg';
-import EmptyCoinIcon from '../../../assets/empty-coin-icon.png';
+import FilledCoinIcon from '../../../assets/coin-gold.png';
+import EmptyCoinIcon from '../../../assets/coin-grey.png';
 
 const Host = styled.div`
   display: flex;
