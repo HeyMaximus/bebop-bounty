@@ -1,0 +1,65 @@
+import styled from 'styled-components';
+
+export const StyledBountyBoardWrapper = styled.div`
+  border: solid;
+`;
+
+export const StyledDropdown = styled.div`
+  border: solid;
+`;
+
+export const StyledBountyCard = styled.div`
+  border: solid;
+`;
+
+export const StyledImage = styled.img`
+  border: solid;
+`;
+
+export const StyledTitle = styled.div`
+  border: solid;
+`;
+
+export const StyledPrice = styled.div`
+  border: solid;
+`;
+
+export const StyledWanted = styled.div`
+  border: solid;
+`;
+
+export const StyledBuyerName = styled.div`
+  border: solid;
+`;
+
+export const StyledDeadline = styled.div`
+  border: solid;
+`;
+
+export const StyledCategory = styled.div`
+  border: solid;
+`;
+
+export const StyledDescription = styled.div`
+  border: solid;
+`;
+
+export const StyledPreferredPayment = styled.div`
+  border: solid;
+`;
+
+export const StyledRatingBox = styled.div`
+  border: solid;
+`;
+
+export const StyledMakeOfferButton = styled.button`
+  border: solid;
+`;
+
+export const StyledCurrentOffers = styled.div`
+  border: solid;
+`;
+
+export const ModalWrapper = styled.div`
+  border: solid;
+`;
