@@ -1,31 +1,63 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import CoinIcon from '../../../assets/coin-icon.svg';
+import FilledCoinIcon from '../../../assets/filled-coin-icon.svg';
+import EmptyCoinIcon from '../../../assets/empty-coin-icon.png';
 
 const Host = styled.div`
   display: flex;
   width: fit-content;
   margin: 0;
   height: fit-content;
-  background: ${(props) => `linear-gradient(90deg, gold ${props.rating}, grey ${props.rating})`};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  position: relative;
+  color: #ccc;
+  width: 150px;
+  height: 30px;
 `;
 
-const Coin = styled.img`
+const FilledCoinContainer = styled.div`
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  overflow: hidden;
+  width: ${(props) => props.rating};
+`;
+
+const FilledCoin = styled.img`
   height: 30px;
   width: 30px;
 `;
 
-function CoinRating({ rating }) {
+const EmptyCoinContainer = styled.div`
+  position: absolute;
+  z-index: 0;
+  display: flex;
+`;
+
+const EmptyCoin = styled.img`
+  height: 30px;
+  width: 30px;
+`;
+
+function CoinRating({ user }) {
+  const rating = `${Math.round(
+    (user.rating_thumbs_up / (user.rating_thumbs_up + user.rating_thumbs_down)) * 100
+  ).toFixed(2)}%`;
   return (
-    <Host rating={rating}>
-      <Coin src={CoinIcon} />
-      <Coin src={CoinIcon} />
-      <Coin src={CoinIcon} />
-      <Coin src={CoinIcon} />
-      <Coin src={CoinIcon} />
+    <Host>
+      <FilledCoinContainer rating={rating}>
+        <FilledCoin src={FilledCoinIcon} />
+        <FilledCoin src={FilledCoinIcon} />
+        <FilledCoin src={FilledCoinIcon} />
+        <FilledCoin src={FilledCoinIcon} />
+        <FilledCoin src={FilledCoinIcon} />
+      </FilledCoinContainer>
+      <EmptyCoinContainer>
+        <EmptyCoin src={EmptyCoinIcon} />
+        <EmptyCoin src={EmptyCoinIcon} />
+        <EmptyCoin src={EmptyCoinIcon} />
+        <EmptyCoin src={EmptyCoinIcon} />
+        <EmptyCoin src={EmptyCoinIcon} />
+      </EmptyCoinContainer>
     </Host>
   );
 }
