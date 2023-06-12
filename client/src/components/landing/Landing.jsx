@@ -9,9 +9,19 @@ const Host = styled.div`
 `;
 
 function Landing() {
+  const [isSignIn, setIsSignIn] = React.useState(false);
   return (
     <Host>
       <div>Landing</div>
+      {/* <>
+        {!isSignIn && <Link to="/login">Log in</Link>}
+        {isSignIn && (
+          <div>
+            Sign in page
+            <button onClick={() => setIsSignIn(false)}>sign out</button>
+          </div>
+        )}
+      </> */}
       <ul>
         <li>
           <Link to="/signup">Sign up</Link>

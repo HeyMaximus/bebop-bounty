@@ -12,21 +12,11 @@ import BountyBoard from './bounty-board/BountyBoard.jsx';
 import OfferHistory from './profile/offer-history/OfferHistory.jsx';
 
 function App() {
-  const [isSignIn, setIsSignIn] = React.useState(false);
   return (
     <GlobalContextProvider>
       <div>Bebop Bounty</div>
       <BrowserRouter>
         <Routes>
-          <>
-            {!isSignIn && <SignUp setIsSignIn={setIsSignIn} />}
-            {isSignIn && (
-              <div>
-                Sign in page
-                <button onClick={() => setIsSignIn(false)}>sign out</button>
-              </div>
-            )}
-          </>
           <Route index element={<Navigate to="landing" />} />
           <Route path="landing" element={<Landing />} />
           <Route path="signup" element={<SignUp />} />
