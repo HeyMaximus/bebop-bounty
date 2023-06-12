@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import CoinRating from '../shared/coin-rating/CoinRating.jsx';
+import CoinRating from '../common/coin-rating/CoinRating.jsx';
 
 const Host = styled.div`
   width: 100vw;
