@@ -23,5 +23,5 @@ npm-debug.log*
 .env
 
 # auth
-firebase.js
+client/src/firebase.js
 
