@@ -45,18 +45,14 @@ function CoinRating({ user }) {
   return (
     <Host>
       <FilledCoinContainer rating={rating}>
-        <FilledCoin src={FilledCoinIcon} />
-        <FilledCoin src={FilledCoinIcon} />
-        <FilledCoin src={FilledCoinIcon} />
-        <FilledCoin src={FilledCoinIcon} />
-        <FilledCoin src={FilledCoinIcon} />
+        {[...Array(5)].map((i) => (
+          <FilledCoin src={FilledCoinIcon} key={i} />
+        ))}
       </FilledCoinContainer>
       <EmptyCoinContainer>
-        <EmptyCoin src={EmptyCoinIcon} />
-        <EmptyCoin src={EmptyCoinIcon} />
-        <EmptyCoin src={EmptyCoinIcon} />
-        <EmptyCoin src={EmptyCoinIcon} />
-        <EmptyCoin src={EmptyCoinIcon} />
+        {[...Array(5)].map((i) => (
+          <EmptyCoin src={EmptyCoinIcon} key={i} />
+        ))}
       </EmptyCoinContainer>
     </Host>
   );
