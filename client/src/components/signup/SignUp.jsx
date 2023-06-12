@@ -5,35 +5,104 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './SignUp.css';
+import { getAuth, createUserWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
+import { firebaseApp } from '../../firebase';
 
 function SignUp() {
+  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [error, setError] = React.useState(null);
+  const auth = getAuth(firebaseApp);
+
+  const sendUserDataToServer = (user) => {
+    const userData = {
+      uid: user.uid,
+      email: user.email,
+    };
+    console.log('userData', userData);
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    setError(null);
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const { user } = userCredential;
+          console.log('user', user);
+          sendUserDataToServer(user);
+        })
+        .catch((err) => {
+          if (err.code === AuthErrorCodes.WEAK_PASSWORD) {
+            setError('The password is too weak');
+          } else if (err.code === AuthErrorCodes.EMAIL_EXISTS) {
+            setError('The email address is already in use');
+          } else {
+            console.log(err.message);
+          }
+        });
+    }
+  };
   return (
     <div className="sign-up-container">
       <div className="form-container">
         <p className="title">Sign Up</p>
-        <form className="form">
+        <form className="form" onSubmit={handleSignUp}>
           <div className="input-group">
             <label>
               Username
-              <input type="text" name="username" id="username" placeholder="" />
+              <input
+                required
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </label>
           </div>
           <div className="input-group">
             <label>
               Email
-              <input type="email" name="email" id="email" placeholder="" />
+              <input
+                required
+                type="email"
+                htmlFor="email"
+                name="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </label>
           </div>
           <div className="input-group">
             <label>
               Password
-              <input type="password" name="password" id="password" placeholder="" />
+              <input
+                required
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </label>
           </div>
           <div className="input-group">
             <label>
               Confirm Password
-              <input type="password" name="confirm-password" id="confirm-password" placeholder="" />
+              <input
+                required
+                type="password"
+                name="confirm-password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
             </label>
           </div>
           <br />
