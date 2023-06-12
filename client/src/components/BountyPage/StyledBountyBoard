@@ -30,7 +30,7 @@ export const StyledWanted = styled.div`
 
 export const StyledBuyerName = styled.div`
   border: solid;
-git `;
+`;
 
 export const StyledDeadline = styled.div`
   border: solid;
