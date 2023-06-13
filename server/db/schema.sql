@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS transaction;
 
 CREATE TYPE condition AS ENUM ('new', 'like new', 'good', 'fair', 'poor');
 CREATE TYPE category AS ENUM ('clothing', 'furniture', 'gadget');
-CREATE TYPE payment AS ENUM ('paypal', 'zell', 'venmo', 'visa', 'cash');
+CREATE TYPE payment AS ENUM ('paypal', 'zelle', 'venmo', 'visa', 'cash');
 CREATE TYPE rating AS ENUM ('good', 'bad');
 
 CREATE TABLE bounty_user (

@@ -16,12 +16,12 @@ import {
   StyledBottomCardContainer,
 } from './StyledBountyBoard';
 
-export default function BountyCardFront({ Context }) {
+export default function BountyCardFront({ Context, flipCard, isFlipped }) {
   console.log(Context);
 
   return (
     <StyledBountyCard>
-      <StyledImageContainer>
+      <StyledImageContainer onClick={flipCard} isFlipped={isFlipped}>
         <StyledImage src="" />
         <StyledPrice>$10,000</StyledPrice>
         <StyledWanted>WANTED</StyledWanted>
