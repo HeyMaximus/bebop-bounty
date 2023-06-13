@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { ListBountyContainer, ListBountyOverlay, ListBountyBody, ListBountyContentContainer, ListBountyBtn } from './navbar.styled';
+import {
+  ListBountyContainer,
+  ListBountyOverlay,
+  ListBountyBody,
+  ListBountyContentContainer,
+  ListBountyBtn,
+} from './navbar.styled';
 
 export default function ListBounty({ showListBountyModal }) {
   return (

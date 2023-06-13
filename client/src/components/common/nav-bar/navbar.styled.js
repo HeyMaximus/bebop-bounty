@@ -8,30 +8,33 @@ export const StyledNavBar = styled.nav`
   margin-top: 30px;
   display: grid;
   height: 100px;
-  grid-template-columns: repeat(10, 1fr);
-  grid-column-gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
+  /* grid-column-gap: 10px; */
   grid-template-rows: 100px;
 `;
 
 export const StyledNavLogo = styled.div`
   background-image: url(${logo});
-  background-size: cover;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   font-size: 35px;
-  grid-column: span 2;
+  grid-column: span 3;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: pre-wrap;
-  padding-left: 40px;
+  padding-left: 45px;
   padding-bottom: 10px;
 `;
 
 export const StyledListBountyBtn = styled.button`
   font-family: 'Coromorant Garamond', serif;
   color: white;
-  grid-column-start: 9;
+  grid-column-start: 11;
   cursor: pointer;
   font-size: 20px;
+  width: 150px;
   &::after {
     background: white;
   }
@@ -79,6 +82,8 @@ export const StyledProfilePic = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-column-start: 12;
+  margin-right: 30px;
   > img {
     height: 55px;
     width: 55px;
