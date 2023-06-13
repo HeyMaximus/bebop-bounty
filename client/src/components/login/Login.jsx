@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import { Link, redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
 import axios from 'axios';
+import { GlobalContext } from '../GlobalContext.jsx';
 import { firebaseApp } from '../../firebase';
 
 function Login() {
@@ -10,12 +11,16 @@ function Login() {
   const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState(null);
   const auth = getAuth(firebaseApp);
+  const navigate = useNavigate();
+  const { setUserData } = useContext(GlobalContext);
 
   const sendUserDataToServer = (user) => {
     axios
       .get(`/api/users/${user.uid}`)
       .then((response) => {
-        console.log('get user data from db: ', response.data);
+        // console.log('get user data from db: ', response.data);
+        setUserData(response.data[0]);
+        navigate('/bounty-page');
       })
       .catch((err) => console.log('Err in sendUserDataToServer: ', err));
   };

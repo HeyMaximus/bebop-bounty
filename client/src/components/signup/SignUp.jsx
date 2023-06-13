@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import { getAuth, createUserWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
 import axios from 'axios';
@@ -14,6 +14,7 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [error, setError] = React.useState(null);
   const auth = getAuth(firebaseApp);
+  const navigate = useNavigate();
 
   const sendUserDataToServer = (user) => {
     const userData = {
@@ -21,12 +22,12 @@ function SignUp() {
       uid: user.uid,
       email: user.email,
     };
-    console.log('userData', userData);
+    // console.log('userData', userData);
     axios
       .post('/api/users', userData)
       .then((response) => {
         console.log(response);
-        alert('Successfully sign up!');
+        navigate('/login');
       })
       .catch((err) => console.log('Err in sendUserDataToServer: ', err));
   };
