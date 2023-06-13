@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, redirect } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
 import axios from 'axios';
 import { firebaseApp } from '../../firebase';
