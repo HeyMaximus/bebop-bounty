@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './SignUp.css';
 import { getAuth, createUserWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
+import axios from 'axios';
 import { firebaseApp } from '../../firebase';
 
 function SignUp() {
@@ -16,10 +17,18 @@ function SignUp() {
 
   const sendUserDataToServer = (user) => {
     const userData = {
+      username,
       uid: user.uid,
       email: user.email,
     };
     console.log('userData', userData);
+    axios
+      .post('/api/users', userData)
+      .then((response) => {
+        console.log(response);
+        alert('Successfully sign up!');
+      })
+      .catch((err) => console.log('Err in sendUserDataToServer: ', err));
   };
 
   const handleSignUp = (e) => {

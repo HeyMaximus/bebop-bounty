@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, AuthErrorCodes } from 'firebase/auth';
+import axios from 'axios';
 import { firebaseApp } from '../../firebase';
 
 function Login() {
@@ -11,11 +12,12 @@ function Login() {
   const auth = getAuth(firebaseApp);
 
   const sendUserDataToServer = (user) => {
-    const userData = {
-      uid: user.uid,
-      email: user.email,
-    };
-    console.log('userData', userData);
+    axios
+      .get(`/api/users/${user.uid}`)
+      .then((response) => {
+        console.log('get user data from db: ', response.data);
+      })
+      .catch((err) => console.log('Err in sendUserDataToServer: ', err));
   };
 
   const handleSignIn = (e) => {
