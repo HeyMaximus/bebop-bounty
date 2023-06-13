@@ -16,6 +16,7 @@ function Landing() {
         <li>
           <Link to="/signup">Sign up</Link>
           <Link to="/login">Log in</Link>
+          <Link to="/user-profile">User Profile</Link>
         </li>
       </ul>
     </Host>
