@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import GlobalContext from '../GlobalContext.jsx';
-import CardFlip from './CardFlip.jsx';
+// import CardFlip from './CardFlip.jsx';
 import BountyCard from './BountyCard.jsx';
-import { StyledBountyBoardWrapper, StyledDropdown } from './StyledBountyBoard';
+import { StyledBountyBoardWrapper, StyledDropdown, StyledCardFlip } from './StyledBountyBoard';
 
 const fakeContext = [
   {
@@ -88,7 +88,10 @@ export default function BountyBoard() {
         <option name="Furniture">Furniture</option>
         <option name="Gadgets">Gadgets</option>
       </StyledDropdown>
-      <CardFlip Context={'Context'} flipDirection="horizontal" />
+      <StyledCardFlip Context={'Context'} />
+      <StyledCardFlip Context={'Context'} />
+      <StyledCardFlip Context={'Context'} />
+      <StyledCardFlip Context={'Context'} />
       {/* {cards} */}
     </StyledBountyBoardWrapper>
   );
