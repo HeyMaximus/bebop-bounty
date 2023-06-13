@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
@@ -9,6 +11,7 @@ import Login from './login/Login.jsx';
 import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyPage from './bounty-page/BountyPage.jsx';
 import OfferHistory from './profile/offer-history/OfferHistory.jsx';
+import UserProfile from './user-profile/UserProfile.jsx';
 
 const theme = {
 }

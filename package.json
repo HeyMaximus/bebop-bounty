@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./server/app.js",
     "server-dev": "npx nodemon --watch server server/app.js",
     "client-dev": "npx webpack --watch",
     "test": "jest --forceExit --setupFiles dotenv/config",
