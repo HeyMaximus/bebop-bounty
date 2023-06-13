@@ -17,20 +17,27 @@ const Host = styled.div`
 `;
 
 function TransactionHistoryList({ userId }) {
+
   const [userTransactions, setUserTransactions] = useState([]);
 
+  const mockUserTransaction = [
+    {seller_id: 123, sale._amount: 12.12, item: 'Berkin Bag', transaction_date: '01/01/23'},
+    {seller_id: 123, sale._amount: 12.12, item: 'Berkin Shoe', transaction_date: '01/02/23'},
+    {seller_id: 1, sale._amount: 12.12, item: 'Berkin Belt', transaction_date: '01/01/23'},
+
+  ]
 
   const getUserTransactions = (e) => {
-    axios
-      .post()
-      .then()
-      .catch((e) => console.log(e));
+    // axios
+    //   .post('/transactions', {param: {userID: userId}})
+    //   .then((r) => setUserTransactions(r.data))
+    //   .catch((e) => console.log(e));
   };
 
   return (
     <Host>
       <Stack gap={3}>
-      {userTransactions.map((entry) => <TransactionHistoryEntry entry={entry} />)}
+      {mockUserTransaction.map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
       </Stack>
     </Host>
   );

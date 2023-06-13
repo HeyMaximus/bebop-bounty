@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 import GlobalContext from '../../GlobalContext.jsx';
-import BountyCard from '../../BountyPage/BountyCard.jsx';
+import BountyCard from '../../bounty-page/BountyCard.jsx';
 import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
 
@@ -30,13 +30,8 @@ function BountyHistory() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (e) => {
-    setBountyId() //retrieve id from event and update state with it
+    setBountyId(1) //retrieve id from event and update state with it
     setShow(true)
-  };
-
-  const handleShowOffers = (e) => {
-    setBountyId();
-    setShowOffers(true);
   };
 
   return (
@@ -45,17 +40,16 @@ function BountyHistory() {
         <Col>
           <div>Bounty History</div>
           <Stack direction="horizontal" gap={3}>
-            {userBounties.bounties.map((bounty) => (
-              <BountyCard onClick={(e) => handleShow(e)} bounty={bounty} />
+            {[1,2,3,4].map((bounty) => (
+              <BountyCard id={bounty} onClick={(e) => handleShow(e)} bounty={bounty} />
             ))}
           </Stack>
         </Col>
         <Col><div>Transaction History</div>
-              <TransactionHistoryList userId={userBounties.Id} />
+              <TransactionHistoryList userId={userBounties} />
         </Col>
       </Container>
     </Host>
-
     <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
@@ -64,7 +58,6 @@ function BountyHistory() {
           <OfferHistoryList bountyId={bountyId}/>
         </Offcanvas.Body>
     </Offcanvas>
-
   );
 }
 

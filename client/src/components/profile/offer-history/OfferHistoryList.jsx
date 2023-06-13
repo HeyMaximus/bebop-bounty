@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import OfferHistoryEntry from './OfferHistoryEntry.jsx'
+import OfferHistoryEntry from './OfferHistoryEntry.jsx';
+import Stack from 'react-bootstrap/Stack';
 
 const Host = styled.div`
   width: 100vw;
@@ -12,19 +13,27 @@ const Host = styled.div`
 function OfferHistoryList({ bountyId }) {
   const [bountyOffers, setBountyOffers] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get() //get the array of bountyOffers with a specific bountyId
-      .then((r) => setBountyOffers(r.data))
-      .catch((e) => console.log(e));
-  }, [bountyId]);
+  const mockBountyOffers = [
+    {id: 123, seller: 'Person1', condition: 'Good', price: 123.45},
+    {id: 456, seller: 'Person1', condition: 'New', price: 65.17},
+    {id: 789, seller: 'Person1', condition: 'Fair', price: 12.12}
+  ]
+
+  // useEffect(() => {
+  //   axios
+  //     .get('/offers', {param: {bountyID: bountyId, sellerID: ''}})
+  //     .then((r) => setBountyOffers(r.data))
+  //     .catch((e) => console.log(e));
+  // }, [bountyId]);
 
   return (
     <Host>
-      <div>Total Offers: {bountyOffers.length}</div>
-      {bountyOffers.map((offer) => (
-        <OfferHistoryEntry offer={offer} />
+      <div>Total Offers: {mockBountyOffers.length}</div>
+      <Stack gap={3}>
+      {mockNountyOffers.map((offer) => (
+        <OfferHistoryEntry offer={{offer}} />
       ))}
+      </Stack>
     </Host>
   );
 }

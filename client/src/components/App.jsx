@@ -55,15 +55,15 @@ function App() {
         {/* <div>Bebop Bounty</div> */}
         <BrowserRouter>
           <Routes>
-            <Route index element={<Navigate to="landing" />} />
+            {/* <Route index element={<Navigate to="landing" />} />
             <Route path="landing" element={<Landing />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="bounty-page" element={<BountyPage />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<Profile />} /> */}
             <Route path="profile/bounty-history" element={<BountyHistory />} />
-            <Route path="profile/offer-history" element={<OfferHistoryList />} />
-            <Route path="/*" element={<Navigate to="landing" />} />
+            {/* <Route path="profile/offer-history" element={<OfferHistoryList />} />
+            <Route path="/*" element={<Navigate to="landing" />} /> */}
           </Routes>
         </BrowserRouter>
         <Outlet />

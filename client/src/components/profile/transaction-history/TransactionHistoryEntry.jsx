@@ -8,12 +8,11 @@ const Host = styled.div`
   flex-direction: column;
 `;
 
-function TransactionHistoryEntry({ entry }) {
-  
+function TransactionHistoryEntry({ userId, entry }) {
+
   return (
     <Host>
-  <div>[entry.role] {entry.amount} for (entry.item) on {entry.date}</div>
-  <div>Earned {entry.amount} for (entry.item) on {entry.date}</div>
+  <div>{entry.seller_id === userId ? 'Earned' : 'Paid'} {entry.sale_amount} for (entry.item) on {entry.transaction_date}</div>
     </Host>
   );
 }
