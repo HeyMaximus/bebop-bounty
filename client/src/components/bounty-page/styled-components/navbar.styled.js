@@ -66,7 +66,12 @@ export const StyledSearchButton = styled.button`
   border: none;
   background: none;
   border-bottom: solid 1px;
+  position: relative;
+  top: -1.5%;
   cursor: pointer;
+  > svg:hover {
+    transform: scale(1.2) perspective(1px);
+  }
 `;
 
 export const StyledProfilePic = styled.div`
