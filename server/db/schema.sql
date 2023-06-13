@@ -11,6 +11,7 @@ CREATE TYPE rating AS ENUM ('good', 'bad');
 CREATE TABLE bounty_user (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
+  uid VARCHAR(100) NOT NULL UNIQUE,
   email VARCHAR(50) NOT NULL UNIQUE,
   uid VARCHAR(50) NOT NULL UNIQUE,
   profile_image TEXT,
