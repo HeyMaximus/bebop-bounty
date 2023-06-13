@@ -1,11 +1,7 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { withTheme } from 'styled-components';
-import {
-  StyledSearchBar,
-  StyledSearchInput,
-  StyledSearchButton,
-} from '../common/nav-bar/navbar.styled';
+import { StyledSearchBar, StyledSearchInput, StyledSearchButton } from './navbar.styled';
 
 function SearchBar() {
   const [searchEntry, setSearchEntry] = useState('');

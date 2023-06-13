@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     width: 0;
     height: 2px;
-    background: black;
+    background: rgb(62, 67, 52);
     transition: width 0.4s;
   }
   button:hover::after {
