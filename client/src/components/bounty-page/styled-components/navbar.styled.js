@@ -28,7 +28,7 @@ export const StyledListBountyBtn = styled.button`
 
 export const StyledNavBar = styled.nav`
   border: solid 1px;
-  width: 90%;
+  width: 93%;
   margin: auto;
   margin-top: 30px;
   display: grid;
@@ -49,7 +49,7 @@ export const StyledNavLogo = styled.div`
 `;
 
 export const StyledSearchBar = styled.div`
-  grid-column: span 3;
+  grid-column: span 4;
   display: flex;
   align-items: center;
   justify-content: flex-start;
