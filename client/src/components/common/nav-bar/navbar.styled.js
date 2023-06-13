@@ -9,7 +9,6 @@ export const StyledNavBar = styled.nav`
   display: grid;
   height: 100px;
   grid-template-columns: repeat(12, 1fr);
-  /* grid-column-gap: 10px; */
   grid-template-rows: 100px;
 `;
 
@@ -24,7 +23,7 @@ export const StyledNavLogo = styled.div`
   align-items: center;
   justify-content: center;
   white-space: pre-wrap;
-  padding-left: 45px;
+  padding-left: 30px;
   padding-bottom: 10px;
 `;
 
@@ -35,6 +34,8 @@ export const StyledListBountyBtn = styled.button`
   cursor: pointer;
   font-size: 20px;
   width: 150px;
+  padding-left: 20px;
+  padding-right: 20px;
   &::after {
     background: white;
   }
@@ -172,9 +173,9 @@ export const ProfileMenuProperties = styled.div`
 `;
 
 // ========================================================
-// ==================== Profile Pic =======================
+// ==================== List Bounty =======================
 // ========================================================
-export const ListBountyContainer = styled.div`
+export const StyledListBountyContainer = styled.div`
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -183,10 +184,10 @@ export const ListBountyContainer = styled.div`
   bottom: 0;
   position: fixed;
 `;
-export const ListBountyOverlay = styled(ListBountyContainer)`
+export const StyledListBountyOverlay = styled(StyledListBountyContainer)`
   background: rgba(0, 0, 0, 0.5);
 `;
-export const ListBountyBody = styled.div`
+export const StyledListBountyBody = styled.div`
   position: absolute;
   top: 48%;
   left: 50%;
@@ -199,31 +200,49 @@ export const ListBountyBody = styled.div`
   height: 400px;
   overflow-y: auto;
   color: #3e4334;
-  > button {
-    color: rgb(62, 67, 52)
-    font-family: 'Coromorant Garamond', serif;
-    font-size: 15px;
-    cursor: pointer;
-    float: right;
-  }
-  > button:hover {
-    transform: scale(1.3) perspective(1px);
-    transition-duration: 0.4s;
-  }
   > h2 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
   }
 `;
-export const ListBountyContentContainer = styled.div`
+
+export const StyledListBountyContentContainer = styled.div`
   border: solid 1px #3e4334;
   height: 270px;
 `;
-export const ListBountyBtn = styled.button.attrs({
+
+export const StyledListBountyTitle = styled.div`
+  display: flex;
+`;
+export const StyledListBountyTitleInput = styled.input`
+  color: #3e4334;
+  border-bottom: 1px solid #3e4334;
+`;
+
+export const StyledLBDropDowns1 = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const StyledListBountyCloseBtn = styled.button`
+  color: rgb(62, 67, 52);
+  font-family: 'Coromorant Garamond', serif;
+  font-size: 15px;
+  cursor: pointer;
+  float: right;
+  &:hover {
+    transform: scale(1.3) perspective(1px);
+    transition-duration: 0.4s;
+  }
+`;
+export const StyledSubmitListBounty = styled.button.attrs({
   className: 'list-bounty-btn',
 })`
+  font-family: 'Coromorant Garamond', serif;
+  font-size: 15px;
   position: relative;
-  right: 40%;
+  right: -40%;
   margin-top: 13px;
+  cursor: pointer;
 `;

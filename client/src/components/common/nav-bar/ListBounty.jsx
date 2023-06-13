@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
-  ListBountyContainer,
-  ListBountyOverlay,
-  ListBountyBody,
-  ListBountyContentContainer,
-  ListBountyBtn,
+  StyledListBountyContainer,
+  StyledListBountyOverlay,
+  StyledListBountyBody,
+  StyledListBountyContentContainer,
+  StyledSubmitListBounty,
+  StyledListBountyCloseBtn,
+  StyledListBountyTitleInput,
+  StyledListBountyTitle,
 } from './navbar.styled';
 
 export default function ListBounty({ showListBountyModal }) {
   return (
-    <ListBountyContainer>
-      <ListBountyOverlay />
-      <ListBountyBody>
-        <button type="submit" onClick={() => showListBountyModal()}>X</button>
+    <StyledListBountyContainer>
+      <StyledListBountyOverlay />
+      <StyledListBountyBody>
+        <StyledListBountyCloseBtn type="button" onClick={() => showListBountyModal()}>
+          X
+        </StyledListBountyCloseBtn>
         <h2>Bounty</h2>
-        <ListBountyContentContainer />
-        <ListBountyBtn className="list-bounty-btn" type="submit">
+        <StyledListBountyContentContainer>
+          <StyledListBountyTitle>
+            Bounty Title:
+            <StyledListBountyTitleInput />
+          </StyledListBountyTitle>
+        </StyledListBountyContentContainer>
+        <StyledSubmitListBounty className="list-bounty-btn" type="button">
           List Button
-        </ListBountyBtn>
-      </ListBountyBody>
-    </ListBountyContainer>
+        </StyledSubmitListBounty>
+      </StyledListBountyBody>
+    </StyledListBountyContainer>
   );
 }
