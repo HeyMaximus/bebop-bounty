@@ -6,7 +6,8 @@
   "scripts": {
     "server-dev": "npx nodemon --watch server server/app.js",
     "client-dev": "npx webpack --watch",
-    "test": "jest --forceExit --setupFiles dotenv/config"
+    "test": "jest --forceExit --setupFiles dotenv/config",
+    "db-ben": "psql -U benpak -d bebop -a -f server/db/schema.sql"
   },
   "author": "",
   "license": "ISC",
