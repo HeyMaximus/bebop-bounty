@@ -1,7 +1,8 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styled from 'styled-components';
-import FilledCoinIcon from '../../../assets/filled-coin-icon.svg';
-import EmptyCoinIcon from '../../../assets/empty-coin-icon.png';
+import FilledCoinIcon from '../../../assets/coin-gold.png';
+import EmptyCoinIcon from '../../../assets/coin-grey.png';
 
 const Host = styled.div`
   display: flex;
@@ -45,13 +46,13 @@ function CoinRating({ user }) {
   return (
     <Host>
       <FilledCoinContainer rating={rating}>
-        {[...Array(5)].map((i) => (
-          <FilledCoin src={FilledCoinIcon} key={i} />
+        {[...Array(5)].map((e, i) => (
+          <FilledCoin src={FilledCoinIcon} key={`filled-${i}`} />
         ))}
       </FilledCoinContainer>
       <EmptyCoinContainer>
-        {[...Array(5)].map((i) => (
-          <EmptyCoin src={EmptyCoinIcon} key={i} />
+        {[...Array(5)].map((e, i) => (
+          <EmptyCoin src={EmptyCoinIcon} key={`empty-${i}`} />
         ))}
       </EmptyCoinContainer>
     </Host>
