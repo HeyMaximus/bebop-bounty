@@ -17,8 +17,6 @@ import {
 } from './StyledBountyBoard';
 
 export default function BountyCardFront({ Context, flipCard, isFlipped }) {
-  console.log(Context);
-
   return (
     <StyledBountyCard>
       <StyledImageContainer onClick={flipCard} isFlipped={isFlipped}>

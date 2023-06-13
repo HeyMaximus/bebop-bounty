@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { BountyPageBorder, FilterBar, FilterSelector } from './styled-components/bountypage.styled';
 import NavBar from '../common/nav-bar/NavBar.jsx';
+import BountyBoard from './BountyBoard.jsx';
 
 export default function BountyPage() {
   const [filter, setFilter] = useState('Recently Added');
@@ -16,6 +17,7 @@ export default function BountyPage() {
           <option>Location</option>
         </FilterSelector>
       </FilterBar>
+      <BountyBoard />
       <div
         id="placeholder div container"
         style={{ border: 'solid 1px', height: 650, width: '93%', margin: 'auto', marginTop: 30 }}
