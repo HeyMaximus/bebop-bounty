@@ -12,7 +12,7 @@ router.get('/bounties', bountyController.getBounties);
 router.post('/bounties', bountyController.createBounty);
 router.get('/offers', offerController.getOffers);
 router.post('/offers', offerController.createOffer);
-router.get('/transactions', transactionController.getUserTransactions);
+router.get('/transactions', transactionController.getTransactions);
 router.post('/transactions', transactionController.createTransaction);
 router.patch('/transactions/:transaction_id', transactionController.updateTransaction);
 

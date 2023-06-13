@@ -11,9 +11,8 @@ CREATE TYPE rating AS ENUM ('good', 'bad');
 CREATE TABLE bounty_user (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
-  first_name VARCHAR(50) NOT NULL,
-  last_name VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL UNIQUE,
+  uid VARCHAR(50) NOT NULL UNIQUE,
   profile_image TEXT,
   last_edited TIMESTAMP,
   rating_thumbs_up INT,
@@ -46,6 +45,7 @@ CREATE TABLE offer (
   condition condition,
   offer_amount NUMERIC(12, 2),
   completed BOOLEAN,
+  image TEXT,
   FOREIGN KEY (bounty_id) REFERENCES bounty(id),
   FOREIGN KEY (seller_id) REFERENCES bounty_user(id)
 );

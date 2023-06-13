@@ -1,10 +1,10 @@
 const transactionModel = require('../models/transaction.model');
 const offerModel = require('../models/offer.model');
 
-module.exports.getUserTransactions = async (req, res) => {
+module.exports.getTransactions = async (req, res) => {
   const { userID } = req.query;
   try {
-    const data = await transactionModel.getUserTransactions(userID);
+    const data = await transactionModel.getTransactions(userID);
     res.status(200).json(data);
   } catch (err) {
     console.error(err.message);

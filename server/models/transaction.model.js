@@ -1,6 +1,6 @@
 const { pool } = require('../db');
 
-module.exports.getUserTransactions = (userID) => {
+module.exports.getTransactions = (userID) => {
   const queryStr =
     'SELECT * FROM transaction WHERE seller_id=$1 OR buyer_id=$1 ORDER BY transaction_date DESC';
   return pool
