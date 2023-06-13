@@ -10,7 +10,7 @@ import Profile from './profile/Profile.jsx';
 import Login from './login/Login.jsx';
 import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyPage from './bounty-page/BountyPage.jsx';
-import OfferHistory from './profile/offer-history/OfferHistory.jsx';
+import OfferHistoryList from './profile/offer-history/OfferHistoryList.jsx';
 import UserProfile from './user-profile/UserProfile.jsx';
 
 const theme = {
@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 `;
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
             <Route path="bounty-page" element={<BountyPage />} />
             <Route path="profile" element={<Profile />} />
             <Route path="profile/bounty-history" element={<BountyHistory />} />
-            <Route path="profile/offer-history" element={<OfferHistory />} />
+            <Route path="profile/offer-history" element={<OfferHistoryList />} />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
         </BrowserRouter>
