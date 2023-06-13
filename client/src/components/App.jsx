@@ -13,6 +13,11 @@ import OfferHistory from './profile/offer-history/OfferHistory.jsx';
 const theme = {
 }
 const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #4D4E67;
+    color: white;
+    font-family: 'Coromorant Garamond', serif;
+  }
   button {
     border: none;
     background: none;
@@ -27,6 +32,14 @@ const GlobalStyle = createGlobalStyle`
   }
   button:hover::after {
     width: 100%;
+  }
+  input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+  }
+  input:focus {
+    outline: none;
   }
 `;
 

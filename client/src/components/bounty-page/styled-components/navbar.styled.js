@@ -16,9 +16,14 @@ import styled from 'styled-components';
 //   }
 // `;
 export const StyledListBountyBtn = styled.button`
+  font-family: 'Coromorant Garamond', serif;
+  color: white;
   grid-column-start: 9;
   cursor: pointer;
   font-size: 20px;
+  &::after {
+    background: white;
+  }
 `;
 
 export const StyledNavBar = styled.nav`
@@ -34,7 +39,6 @@ export const StyledNavBar = styled.nav`
 `;
 
 export const StyledNavLogo = styled.div`
-  /* border: solid 1px; */
   font-size: 35px;
   grid-column: span 2;
   display: flex;
@@ -45,7 +49,6 @@ export const StyledNavLogo = styled.div`
 `;
 
 export const StyledSearchBar = styled.div`
-  /* border: solid 1px; */
   grid-column: span 3;
   display: flex;
   align-items: center;
@@ -53,24 +56,29 @@ export const StyledSearchBar = styled.div`
 `;
 
 export const StyledSearchInput = styled.input`
-  border: none;
-  border-bottom: 1px solid;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
   margin-left: 30px;
   width: 95%;
   &:focus {
     outline: none;
+  }
+  ::placeholder {
+    color: white;
   }
 `;
 
 export const StyledSearchButton = styled.button`
   border: none;
   background: none;
-  border-bottom: solid 1px;
+  border-bottom: solid 1px white;
   position: relative;
   top: -1.5%;
   cursor: pointer;
   > svg:hover {
-    transform: scale(1.2) perspective(1px);
+    transform: scale(1.3) perspective(1px);
+    transition-duration: 0.3s;
   }
 `;
 
@@ -84,5 +92,9 @@ export const StyledProfilePic = styled.div`
     border-radius: 30px;
     object-fit: cover;
     cursor: pointer;
+  }
+  &:hover {
+    transform: scale(1.1) perspective(1px);
+    transition-duration: 0.4s;
   }
 `;

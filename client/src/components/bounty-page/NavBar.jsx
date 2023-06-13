@@ -3,8 +3,7 @@ import { StyledNavBar, StyledNavLogo, StyledListBountyBtn, StyledProfilePic } fr
 import SearchBar from './SearchBar.jsx';
 
 export default function NavBar() {
-  const imgURL =
-    'https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters/large/800/Spike-Spiegel.Cowboy-Bebop.webp';
+  const imgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
   return (
     <StyledNavBar>
       <StyledNavLogo>Bebop Bounty</StyledNavLogo>
