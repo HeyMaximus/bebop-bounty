@@ -1,18 +1,23 @@
-import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import GlobalContext from '../GlobalContext.jsx';
+import BountyCard from './BountyCard.jsx';
+import { StyledBountyBoardWrapper, StyledDropdown } from './StyledBountyBoard';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
+export default function BountyBoard() {
+  // const Context = useContext(GlobalContext);
 
-function BountyBoard() {
+  // const cards = <BountyCard Context={Context} />;
+  const cards = <BountyCard Context={'Context'} />;
   return (
-    <Host>
-      <div>Bounty Board</div>
-    </Host>
+    <StyledBountyBoardWrapper>
+      <StyledDropdown>
+        <option name="Clothing">Clothing</option>
+        <option name="Clothing">Clothing</option>
+        <option name="Decor">Decor</option>
+        <option name="Furniture">Furniture</option>
+        <option name="Gadgets">Gadgets</option>
+      </StyledDropdown>
+      {cards}
+    </StyledBountyBoardWrapper>
   );
 }
-
-export default BountyBoard;
