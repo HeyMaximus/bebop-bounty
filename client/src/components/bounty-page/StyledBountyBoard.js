@@ -55,7 +55,7 @@ export const StyledImage = styled.img`
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: blue;
+  /* background-color: white; */
 `;
 
 export const StyledPrice = styled.div`
@@ -64,15 +64,19 @@ export const StyledPrice = styled.div`
   left: 0;
   right: 0;
   text-align: center;
+  font-size: x-large;
+  color: black;
   /* border: solid; */
 `;
 
 export const StyledWanted = styled.div`
   position: absolute;
+  color: black;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
+  font-size: x-large;
   /* border: solid; */
 `;
 

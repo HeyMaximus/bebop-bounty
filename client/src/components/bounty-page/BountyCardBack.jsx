@@ -1,4 +1,7 @@
 import React from 'react';
+import { OpenOfferModal } from './helpers.js';
+import CoinRating from '../common/coin-rating/CoinRating.jsx';
+
 import {
   StyledBountyCardBack,
   StyledTitle,
@@ -22,11 +25,14 @@ export default function BountyCardBack({ Context, flipCard }) {
       <StyledDescription>Description</StyledDescription>
       <StyledPreferredPayment>Preferred Payment</StyledPreferredPayment>
       <OfferLayout>
-        <StyledMakeOfferButton>Make an Offer</StyledMakeOfferButton>
+        <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
         <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
       </OfferLayout>
       <OfferLayout>
-        <StyledRatingBox>Rating Box</StyledRatingBox>
+        {/* <StyledRatingBox>
+          <CoinRating />
+        </StyledRatingBox> */}
+        <StyledRatingBox>Coin Rating</StyledRatingBox>
         <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront>
       </OfferLayout>
     </StyledBountyCardBack>

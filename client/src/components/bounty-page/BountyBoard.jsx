@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import GlobalContext from '../GlobalContext.jsx';
 // import CardFlip from './CardFlip.jsx';
 import BountyCard from './BountyCard.jsx';
+import NewOfferModal from './NewOfferModal.jsx';
 import { StyledBountyBoardWrapper, StyledDropdown, StyledCardFlip } from './StyledBountyBoard';
 
 const fakeContext = [
@@ -78,7 +79,9 @@ export default function BountyBoard() {
   // const Context = useContext(GlobalContext);
 
   // const cards = <BountyCard Context={Context} />;
-  const cards = <BountyCard Context={'Context'} />;
+
+  const Cards = fakeContext.map((bounty) => <StyledCardFlip key={bounty.id} Context={bounty} />);
+
   return (
     <StyledBountyBoardWrapper>
       <StyledDropdown>
@@ -88,11 +91,12 @@ export default function BountyBoard() {
         <option name="Furniture">Furniture</option>
         <option name="Gadgets">Gadgets</option>
       </StyledDropdown>
+      {/* <NewOfferModal /> */}
+      {/* <StyledCardFlip Context={'Context'} />
       <StyledCardFlip Context={'Context'} />
       <StyledCardFlip Context={'Context'} />
-      <StyledCardFlip Context={'Context'} />
-      <StyledCardFlip Context={'Context'} />
-      {/* {cards} */}
+      <StyledCardFlip Context={'Context'} /> */}
+      {Cards}
     </StyledBountyBoardWrapper>
   );
 }
