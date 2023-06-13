@@ -1,37 +1,28 @@
 const offerModel = require('../models/offer.model');
 
-module.exports.getBountyOffers = (req, res) => {
-  const bountyID = req.params.bounty_id;
-  offerModel
-    .getBountyOffers(bountyID)
-    .then((data) => {
-      res.status(200).json(data);
-    })
-    .catch(() => {
-      res.sendStatus(400);
-    });
+module.exports.getOffers = async (req, res) => {
+  const { bountyID, sellerID } = req.body;
+  try {
+    let data;
+    if (bountyID) {
+      data = await offerModel.getBountyOffers(bountyID);
+    } else {
+      data = await offerModel.getUserOffers(sellerID);
+    }
+    res.status(200).json(data);
+  } catch (err) {
+    console.error(err.message);
+    res.sendStatus(400);
+  }
 };
 
-module.exports.createOffer = (req, res) => {
+module.exports.createOffer = async (req, res) => {
   const offer = req.body;
-  offerModel
-    .createOffer(offer)
-    .then((data) => {
-      res.status(200).json(data);
-    })
-    .catch(() => {
-      res.sendStatus(400);
-    });
-};
-
-module.exports.getUserOffers = (req, res) => {
-  const userID = req.params.user_id;
-  offerModel
-    .getUserOffers(userID)
-    .then((data) => {
-      res.status(200).json(data);
-    })
-    .catch(() => {
-      res.sendStatus(400);
-    });
+  try {
+    await offerModel.createOffer(offer);
+    res.status(200).send('Offer created');
+  } catch (err) {
+    console.error(err.message);
+    res.sendStatus(400);
+  }
 };

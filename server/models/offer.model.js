@@ -52,12 +52,12 @@ module.exports.getUserOffers = (userID) => {
     });
 };
 
-module.exports.checkOfferCompleted = async (offerID) => {
+module.exports.checkOfferCompleted = (offerID) => {
   const queryStr = 'SELECT completed FROM offer WHERE id=$1';
-  try {
-    const queryRes = await pool.query(queryStr, [offerID]);
-    return queryRes.rows[0];
-  } catch (err) {
-    console.error('Query failed: check offer completed', err.message);
-  }
+  return pool
+    .query(queryStr, [offerID])
+    .then((queryRes) => queryRes.rows[0])
+    .catch((err) => {
+      console.error('Query failed: check offer complete', err.message);
+    });
 };

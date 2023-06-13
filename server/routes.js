@@ -8,13 +8,11 @@ const transactionController = require('./controllers/transaction.controller');
 // Connect controller methods to corresponding routes
 router.post('/users', userController.createUser);
 router.get('/users/:user_id', userController.getUser);
-router.get('/bounties', bountyController.getAllBounties);
-router.get('/bounties/:user_id', bountyController.getUserBounties);
+router.get('/bounties', bountyController.getBounties);
 router.post('/bounties', bountyController.createBounty);
-router.get('/offers/:bounty_id', offerController.getBountyOffers);
+router.get('/offers', offerController.getOffers);
 router.post('/offers', offerController.createOffer);
-router.get('/offers', offerController.getUserOffers);
-router.get('/transactions/:user_id', transactionController.getUserTransactions);
+router.get('/transactions', transactionController.getUserTransactions);
 router.post('/transactions', transactionController.createTransaction);
 router.patch('/transactions/:transaction_id', transactionController.updateTransaction);
 
