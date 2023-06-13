@@ -7,7 +7,8 @@ import Profile from './profile/Profile.jsx';
 import Login from './login/Login.jsx';
 import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyBoard from './bounty-board/BountyBoard.jsx';
-import OfferHistory from './profile/offer-history/OfferHistory.jsx';
+import OfferHistoryList from './profile/offer-history/OfferHistoryList.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="bounty-board" element={<BountyBoard />} />
           <Route path="profile" element={<Profile />} />
           <Route path="profile/bounty-history" element={<BountyHistory />} />
-          <Route path="profile/offer-history" element={<OfferHistory />} />
+          <Route path="profile/offer-history" element={<OfferHistoryList />} />
           <Route path="/*" element={<Navigate to="landing" />} />
         </Routes>
       </BrowserRouter>
