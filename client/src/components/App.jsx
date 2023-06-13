@@ -14,7 +14,6 @@ import OfferHistory from './profile/offer-history/OfferHistory.jsx';
 function App() {
   return (
     <GlobalContextProvider>
-      <div>Bebop Bounty</div>
       <BrowserRouter>
         <Routes>
           <Route index element={<Navigate to="landing" />} />
