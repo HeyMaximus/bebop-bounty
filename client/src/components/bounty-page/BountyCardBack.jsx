@@ -14,8 +14,6 @@ import {
 } from './StyledBountyBoard';
 
 export default function BountyCardBack({ Context, flipCard }) {
-  console.log(Context);
-
   return (
     <StyledBountyCardBack>
       <StyledTitle>Title</StyledTitle>

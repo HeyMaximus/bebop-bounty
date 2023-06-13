@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import BountyCardFront from './BountyCard.jsx';
+import CardFlip from './CardFlip.jsx';
 
 export const StyledBountyBoardWrapper = styled.div`
   border: solid;
@@ -10,10 +11,16 @@ export const StyledDropdown = styled.select`
   border: solid;
 `;
 
+export const StyledCardFlip = styled(CardFlip)`
+  border: solid;
+  background-color: yellow;
+  z-index: 2;
+`;
+
 export const StyledBountyCard = styled.div`
   /* border: solid; */
   /* display: flex; */
-  background-color: white;
+  /* background-color: white; */
   box-shadow: 0 0 3px black;
   width: 225px;
   height: 275px;
@@ -30,7 +37,7 @@ export const StyledBountyCardBack = styled(StyledBountyCard)`
 export const FlipToFront = styled.div``;
 
 export const OfferLayout = styled.div`
-  border: solid;
+  /* border: solid; */
   width: 100%;
   display: flex;
   justify-content: space-between;
