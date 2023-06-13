@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BountyCardFront from './BountyCard.jsx';
 
 export const StyledBountyBoardWrapper = styled.div`
   border: solid;
@@ -11,12 +12,28 @@ export const StyledDropdown = styled.select`
 
 export const StyledBountyCard = styled.div`
   /* border: solid; */
+  /* display: flex; */
   background-color: white;
   box-shadow: 0 0 3px black;
   width: 225px;
   height: 275px;
   padding: 10px;
   margin: 10px;
+`;
+
+export const StyledBountyCardBack = styled(StyledBountyCard)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const FlipToFront = styled.div``;
+
+export const OfferLayout = styled.div`
+  border: solid;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const StyledImageContainer = styled.div`
@@ -89,19 +106,19 @@ export const StyledDeadline = styled.div`
 `;
 
 export const StyledCategory = styled.div`
-  border: solid;
+  /* border: solid; */
 `;
 
 export const StyledDescription = styled.div`
-  border: solid;
+  /* border: solid; */
 `;
 
 export const StyledPreferredPayment = styled.div`
-  border: solid;
+  /* border: solid; */
 `;
 
 export const StyledRatingBox = styled.div`
-  border: solid;
+  /* border: solid; */
 `;
 
 export const StyledMakeOfferButton = styled.button`
