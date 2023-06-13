@@ -60,7 +60,7 @@ CREATE TABLE transaction (
   seller_id INT NOT NULL,
   buyer_id INT NOT NULL,
   sale_amount NUMERIC(12, 2),
-  transaction_date TIMESTAMP,
+  transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   rating_to_buyer rating,
   rating_to_seller rating,
   feedback_to_buyer TEXT,

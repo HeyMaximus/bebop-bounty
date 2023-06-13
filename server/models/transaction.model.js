@@ -11,24 +11,24 @@ module.exports.getUserTransactions = (userID) => {
     });
 };
 
-module.exports.updateTransaction = (transactionID, body) => {
+module.exports.updateTransaction = (transactionID, transaction) => {
   const updatedCols = [];
   const updatedValues = [];
-  if ('ratingToBuyer' in body) {
+  if ('ratingToBuyer' in transaction) {
     updatedCols.push('rating_to_buyer');
-    updatedValues.push(body.ratingToBuyer);
+    updatedValues.push(transaction.ratingToBuyer);
   }
-  if ('ratingToSeller' in body) {
+  if ('ratingToSeller' in transaction) {
     updatedCols.push('rating_to_seller');
-    updatedValues.push(body.ratingToSeller);
+    updatedValues.push(transaction.ratingToSeller);
   }
-  if ('feedbackToBuyer' in body) {
+  if ('feedbackToBuyer' in transaction) {
     updatedCols.push('feedback_to_buyer');
-    updatedValues.push(body.feedbackToBuyer);
+    updatedValues.push(transaction.feedbackToBuyer);
   }
-  if ('feedbackToSeller' in body) {
+  if ('feedbackToSeller' in transaction) {
     updatedCols.push('feedback_to_seller');
-    updatedValues.push(body.feedbackToSeller);
+    updatedValues.push(transaction.feedbackToSeller);
   }
 
   if (!updatedCols.length) {
@@ -40,6 +40,23 @@ module.exports.updateTransaction = (transactionID, body) => {
     .query(queryStr, [...updatedValues])
     .then((queryRes) => queryRes.rows)
     .catch((err) => {
-      console.error('Query failed: add transaction review', err.message);
+      console.error('Query failed: update transaction review', err.message);
+    });
+};
+
+module.exports.createTransaction = (offer) => {
+  const {
+    id: offerID,
+    bounty_id: bountyID,
+    seller_id: sellerID,
+    offer_amount: offerAmount,
+  } = offer;
+  const queryStr =
+    'INSERT INTO transaction (offer_id, bounty_id, seller_id, sale_amount, buyer_id) VALUES ($1, $2, $3, $4, (SELECT buyer_id FROM bounty JOIN offer ON bounty.id = offer.bounty_id AND offer.seller_id=$3 AND bounty.id = $2))';
+  return pool
+    .query(queryStr, [offerID, bountyID, sellerID, offerAmount])
+    .then((queryRes) => queryRes.rows)
+    .catch((err) => {
+      console.error('Query failed: create transaction', err.message);
     });
 };
