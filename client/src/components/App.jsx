@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
