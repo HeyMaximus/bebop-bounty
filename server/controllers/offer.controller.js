@@ -1,7 +1,7 @@
 const offerModel = require('../models/offer.model');
 
 module.exports.getOffers = async (req, res) => {
-  const { bountyID, sellerID } = req.body;
+  const { bountyID, sellerID } = req.query;
   try {
     let data;
     if (bountyID) {

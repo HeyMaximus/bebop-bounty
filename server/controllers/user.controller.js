@@ -1,3 +1,5 @@
+require('dotenv').config();
+const nodemailer = require('nodemailer');
 const userModel = require('../models/user.model');
 
 module.exports.createUser = (req, res) => {
@@ -17,6 +19,32 @@ module.exports.getUser = (req, res) => {
       res.sendStatus(500);
     } else {
       res.status(200).send(result.rows);
+    }
+  });
+};
+module.exports.sendEmail = (req, res) => {
+  const { userEmail, subject, message } = req.body;
+  console.log('sendEmail req.body: ', req.body);
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.OUR_EMAIL_ADDRESS,
+      pass: process.env.OUR_EMAIL_PASSWORD,
+    },
+  });
+  const mailOptions = {
+    from: process.env.OUR_EMAIL_ADDRESS,
+    to: userEmail,
+    subject,
+    text: message,
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Err in sending email: ', error);
+      res.status(500).send('Failed to send email');
+    } else {
+      console.log(`Email sent: ${info.response}`);
+      res.status(201).send('Email sent successfully');
     }
   });
 };

@@ -5,7 +5,7 @@ import BountyCardBack from './BountyCardBack.jsx';
 
 export default function CardFlip({ Context }) {
   const [isFlipped, setIsFlipped] = useState(false);
-
+  console.log(Context);
   const flipCard = (e) => {
     console.log('flip it!');
     e.preventDefault();
@@ -13,7 +13,7 @@ export default function CardFlip({ Context }) {
   };
 
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <BountyCardFront Context={Context} flipCard={flipCard}>
         FRONT of card
       </BountyCardFront>
