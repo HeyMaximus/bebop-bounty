@@ -7,7 +7,7 @@ import {
 } from './navbar.styled';
 import SearchBar from '../../bounty-page/SearchBar.jsx';
 import ProfileMenu from './ProfileMenu.jsx';
-import ListBounty from './ListBounty.jsx';
+import ListBountyModal from './ListBountyModal.jsx';
 
 export default function NavBar() {
   const [profileMenu, setProfileMenu] = useState(false);
@@ -22,7 +22,7 @@ export default function NavBar() {
       <StyledNavLogo>Bebop Bounty</StyledNavLogo>
       <SearchBar />
       <StyledListBountyBtn onClick={() => showListBountyModal()}>List Bounty</StyledListBountyBtn>
-      {listBountyModal && <ListBounty showListBountyModal={showListBountyModal} />}
+      {listBountyModal && <ListBountyModal showListBountyModal={showListBountyModal} />}
       <StyledProfilePic onClick={() => showProfileMenu()}>
         <img src={exampleImgURL} alt="profile pic" />
       </StyledProfilePic>

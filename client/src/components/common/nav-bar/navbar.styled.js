@@ -8,30 +8,34 @@ export const StyledNavBar = styled.nav`
   margin-top: 30px;
   display: grid;
   height: 100px;
-  grid-template-columns: repeat(10, 1fr);
-  grid-column-gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 100px;
 `;
 
 export const StyledNavLogo = styled.div`
   background-image: url(${logo});
-  background-size: cover;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   font-size: 35px;
-  grid-column: span 2;
+  grid-column: span 3;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: pre-wrap;
-  padding-left: 40px;
+  padding-left: 30px;
   padding-bottom: 10px;
 `;
 
 export const StyledListBountyBtn = styled.button`
   font-family: 'Coromorant Garamond', serif;
   color: white;
-  grid-column-start: 9;
+  grid-column-start: 11;
   cursor: pointer;
   font-size: 20px;
+  width: 150px;
+  padding-left: 20px;
+  padding-right: 20px;
   &::after {
     background: white;
   }
@@ -79,6 +83,8 @@ export const StyledProfilePic = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-column-start: 12;
+  margin-right: 30px;
   > img {
     height: 55px;
     width: 55px;
@@ -103,7 +109,7 @@ const showModal = keyframes`
     opactiy: 1;
   }
 `;
-export const UpArrow = styled.div`
+export const StyledUpArrow = styled.div`
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
@@ -114,7 +120,7 @@ export const UpArrow = styled.div`
   top: 140px;
   animation: ${showModal} 1s forwards ease-out;
 `;
-export const ProfileMenuContainer = styled.div`
+export const StyledProfileMenuContainer = styled.div`
   position: absolute;
   right: 10%;
   border: solid 1px;
@@ -126,8 +132,9 @@ export const ProfileMenuContainer = styled.div`
   background-color: #e7e5d5;
   color: #3e4334;
   box-shadow: 5px 5px 5px rgb(62, 67, 52);
+  z-index: 5;
 `;
-export const ProfileMenuHeader = styled.div`
+export const StyledProfileMenuHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 20px;
@@ -142,16 +149,16 @@ export const ProfileMenuHeader = styled.div`
     margin-right: 20px;
   }
   > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     font-family: Roboto;
     font-weight: 400;
     grid-column-start: 3;
     margin-left: 10px;
   }
+  > p {
+    margin-bottom: 0;
+  }
 `;
-export const ProfileMenuProperties = styled.div`
+export const StyledProfileMenuProperties = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -167,9 +174,9 @@ export const ProfileMenuProperties = styled.div`
 `;
 
 // ========================================================
-// ==================== Profile Pic =======================
+// ==================== List Bounty =======================
 // ========================================================
-export const ListBountyContainer = styled.div`
+export const StyledListBountyContainer = styled.div`
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -177,11 +184,19 @@ export const ListBountyContainer = styled.div`
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 10;
 `;
-export const ListBountyOverlay = styled(ListBountyContainer)`
+export const StyledListBountyOverlay = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
   background: rgba(0, 0, 0, 0.5);
 `;
-export const ListBountyBody = styled.div`
+export const StyledListBountyBody = styled.div`
   position: absolute;
   top: 48%;
   left: 50%;
@@ -190,35 +205,58 @@ export const ListBountyBody = styled.div`
   background: #e7e5d5;
   padding: 14px 28px;
   border-radius: 1px;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   overflow-y: auto;
   color: #3e4334;
-  > button {
-    color: rgb(62, 67, 52)
-    font-family: 'Coromorant Garamond', serif;
-    font-size: 15px;
-    cursor: pointer;
-    float: right;
-  }
-  > button:hover {
-    transform: scale(1.3) perspective(1px);
-    transition-duration: 0.4s;
-  }
   > h2 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
   }
 `;
-export const ListBountyContentContainer = styled.div`
+
+export const StyledListBountyContentContainer = styled.div`
   border: solid 1px #3e4334;
-  height: 270px;
+  height: 490px;
+  width: 590px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
-export const ListBountyBtn = styled.button.attrs({
+
+export const StyledListBountyTitle = styled.div`
+  display: flex;
+`;
+export const StyledListBountyTitleInput = styled.input`
+  color: #3e4334;
+  border-bottom: 1px solid #3e4334;
+`;
+
+export const StyledLBDropDowns1 = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const StyledListBountyCloseBtn = styled.button`
+  color: rgb(62, 67, 52);
+  font-family: 'Coromorant Garamond', serif;
+  font-size: 15px;
+  cursor: pointer;
+  float: right;
+  &:hover {
+    transform: scale(1.3) perspective(1px);
+    transition-duration: 0.4s;
+  }
+`;
+export const StyledSubmitListBounty = styled.button.attrs({
   className: 'list-bounty-btn',
 })`
+  font-family: 'Coromorant Garamond', serif;
+  font-size: 15px;
   position: relative;
-  right: 40%;
+  right: -40%;
   margin-top: 13px;
+  cursor: pointer;
 `;

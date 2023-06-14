@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "7759faf9-0700-49b7-8a3f-59cdfb529302",
+		"name": "Bebob Bounty APIs",
+		"description": "APIs for Bebop Bounty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26917611",
+		"_collection_link": "https://red-station-746566.postman.co/workspace/Bebop-Bounty~9c2fa573-d305-452c-ae0f-d8abd2e657b6/collection/26917611-7759faf9-0700-49b7-8a3f-59cdfb529302?action=share&creator=26917611&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/users/:user_id",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"users",
+						":user_id"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/users",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Bounties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/bounties",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"bounties"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "count",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "catagory",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "searchQuery",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creat Bounty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/bounties",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"bounties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bounty's Offers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/offers/",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"offers",
+						""
+					],
+					"query": [
+						{
+							"key": "bountyID",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "sellerID",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Bounty's Offer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/offers",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"offers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User's Transaction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transactions?userID",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "userID",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transactions",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transaction",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transactions?transaction_id",
+					"host": [
+						"{{SERVER}}"
+					],
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "transaction_id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SERVER_PORT",
+			"value": "8080",
+			"type": "string"
+		},
+		{
+			"key": "SERVER",
+			"value": "localhost",
+			"type": "string"
+		}
+	]
+}
