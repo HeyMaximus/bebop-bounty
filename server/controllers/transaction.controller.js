@@ -37,7 +37,6 @@ module.exports.updateTransaction = async (req, res) => {
     await transactionModel.updateTransaction(transactionID, transaction);
     res.status(200).send('Transaction updated');
   } catch (err) {
-    console.error(err.message);
     res.sendStatus(400);
   }
 };
