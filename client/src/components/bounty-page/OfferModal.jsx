@@ -15,12 +15,13 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Context
   const initialValues = {
     bounty_id: '',
     seller_id: '',
+    description: '',
     city: '',
     state: '',
     condition: '',
+    image: '',
     offer_amount: '',
     complete: false,
-    image: '',
   };
   const [formValues, setFormValues] = useState(initialValues);
 
