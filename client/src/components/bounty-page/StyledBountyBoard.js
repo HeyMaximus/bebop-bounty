@@ -1,10 +1,18 @@
 import styled from 'styled-components';
-import BountyCardFront from './BountyCard.jsx';
 import CardFlip from './CardFlip.jsx';
 
 export const StyledBountyBoardWrapper = styled.div`
-  border: solid;
+  border: 1px solid;
+  width: 93%;
+  margin: 10px auto;
   /* background-color: lightgray; */
+`;
+export const StyledBountyCollection = styled.div`
+  /* border: solid; */
+  /* background-color: lightgray; */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 export const StyledDropdown = styled.select`
@@ -18,9 +26,7 @@ export const StyledCardFlip = styled(CardFlip)`
 `;
 
 export const StyledBountyCard = styled.div`
-  /* border: solid; */
-  /* display: flex; */
-  /* background-color: white; */
+  display: inline-block;
   box-shadow: 0 0 3px black;
   width: 225px;
   height: 275px;
@@ -55,7 +61,7 @@ export const StyledImage = styled.img`
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: blue;
+  /* background-color: white; */
 `;
 
 export const StyledPrice = styled.div`
@@ -64,15 +70,19 @@ export const StyledPrice = styled.div`
   left: 0;
   right: 0;
   text-align: center;
+  font-size: x-large;
+  color: black;
   /* border: solid; */
 `;
 
 export const StyledWanted = styled.div`
   position: absolute;
+  color: black;
   bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
+  font-size: x-large;
   /* border: solid; */
 `;
 

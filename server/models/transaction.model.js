@@ -35,9 +35,9 @@ module.exports.updateTransaction = (transactionID, transaction) => {
     return Promise.resolve([]);
   }
   const querySegment = updatedCols.map((col, index) => `${col}=$${index + 1}`).join(',');
-  const queryStr = `UPDATE transaction SET ${querySegment} WHERE id=${transactionID}`;
+  const queryStr = `UPDATE transaction SET ${querySegment} WHERE id=$${updatedCols.length + 1}`;
   return pool
-    .query(queryStr, [...updatedValues])
+    .query(queryStr, [...updatedValues, transactionID])
     .then((queryRes) => queryRes.rows)
     .catch((err) => {
       console.error('Query failed: update transaction review', err.message);
