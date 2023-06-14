@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import {
   StyledListBountyContainer,
@@ -10,16 +10,20 @@ import {
   StyledListBountyTitleInput,
   StyledListBountyTitle,
 } from '../common/nav-bar/navbar.styled';
+import { GlobalContext } from '../GlobalContext.jsx';
 
-export default function ListBountyModal({ showOfferModal, setOfferModal, Context }) {
+export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty }) {
+  const Context = useContext(GlobalContext);
+  console.log(Context, 'SDFL:KSDFL:KJSDFL:KJ');
+
   const initialValues = {
-    bounty_id: '',
-    seller_id: '',
+    bounty_id: Bounty.id,
+    // seller_id: Context.userData.user_id,
     description: '',
     city: '',
     state: '',
     condition: '',
-    image: '',
+    image: Bounty.image,
     offer_amount: '',
     complete: false,
   };
@@ -46,6 +50,19 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Context
           setFormValues({ ...formValues, image: data.secure_url });
         })
         .catch((err) => console.error(err));
+    }
+  };
+
+  const submitOffer = async () => {
+    showOfferModal();
+    console.log('Bounty>>>>', Bounty);
+
+    console.log('Form Values', formValues);
+    try {
+      const response = await axios.post('api/offers', formValues);
+      console.log('Offer submitted successfully:', response.data);
+    } catch (error) {
+      console.error('Error submitting offer:', error);
     }
   };
 
@@ -106,7 +123,7 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Context
             />
           </div>
         </StyledListBountyContentContainer>
-        <StyledSubmitListBounty className="list-bounty-btn" onClick={showOfferModal} type="button">
+        <StyledSubmitListBounty className="list-bounty-btn" onClick={submitOffer} type="button">
           List Bounty
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}

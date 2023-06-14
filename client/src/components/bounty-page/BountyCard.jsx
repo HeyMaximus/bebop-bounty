@@ -18,8 +18,8 @@ import {
   StyledBottomCardContainer,
 } from './StyledBountyBoard.js';
 
-export default function BountyCardFront({ Context, flipCard, isFlipped, showOfferModal }) {
-  const { id, buyer_id, name, price, deadline, image } = Context;
+export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
+  const { id, buyer_id, name, price, deadline, image } = Bounty;
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
       <StyledImageContainer>
