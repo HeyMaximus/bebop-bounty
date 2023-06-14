@@ -1,5 +1,5 @@
 FROM postgres:14.8
 COPY ./server/db/schema.sql /docker-entrypoint-initdb.d/
 RUN mkdir /data/
-COPY ./sdc_data.sql /data/
+COPY ./bounty_data.sql /data/
 EXPOSE 5432
