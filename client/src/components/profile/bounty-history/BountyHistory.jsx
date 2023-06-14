@@ -22,7 +22,7 @@ const Host = styled.div`
 `;
 
 function BountyHistory() {
-  const { userBounties } = useContext(GlobalContext);
+  // const { userBounties } = useContext(GlobalContext);
   const [showOffers, setShowOffers] = useState(false);
   const [bountyId, setBountyId] = useState('');
 
@@ -30,34 +30,41 @@ function BountyHistory() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (e) => {
+    console.log('triggered')
     setBountyId(1) //retrieve id from event and update state with it
-    setShow(true)
+    setShow(true);
   };
 
   return (
-    <Host>
-      <Container>
-        <Col>
+    <div>
+      <Container fluid="lg">
+        <Row>
+        <Col sm={10}>
           <div>Bounty History</div>
-          <Stack direction="horizontal" gap={3}>
-            {[1,2,3,4].map((bounty) => (
-              <BountyCard id={bounty} onClick={(e) => handleShow(e)} bounty={bounty} />
+          <div><Stack direction="horizontal" gap={1}>
+            {[1, 2, 3, 4].map((bounty) => (
+              <div onClick={(e) => handleShow(e)}><BountyCard id={bounty} bounty={bounty} /></div>
             ))}
-          </Stack>
+          </Stack></div>
         </Col>
-        <Col><div>Transaction History</div>
-              <TransactionHistoryList userId={userBounties} />
+        <Col sm={2}>
+          <div>Transaction History</div>
+          <TransactionHistoryList userId={bountyId} />
         </Col>
-      </Container>
-    </Host>
-    <Offcanvas show={show} onHide={handleClose}>
+        </Row>
+        </Container>
+        <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <OfferHistoryList bountyId={bountyId}/>
+          <OfferHistoryList bountyId={bountyId} />
         </Offcanvas.Body>
-    </Offcanvas>
+      </Offcanvas>
+      </div>
+
+
+
   );
 }
 

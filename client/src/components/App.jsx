@@ -12,6 +12,7 @@ import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyPage from './bounty-page/BountyPage.jsx';
 import OfferHistoryList from './profile/offer-history/OfferHistoryList.jsx';
 import UserProfile from './user-profile/UserProfile.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const theme = {
 }
@@ -45,7 +46,6 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 `;
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -55,15 +55,15 @@ function App() {
         {/* <div>Bebop Bounty</div> */}
         <BrowserRouter>
           <Routes>
-            {/* <Route index element={<Navigate to="landing" />} />
+            <Route index element={<Navigate to="landing" />} />
             <Route path="landing" element={<Landing />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="bounty-page" element={<BountyPage />} />
-            <Route path="profile" element={<Profile />} /> */}
+            <Route path="profile" element={<Profile />} />
             <Route path="profile/bounty-history" element={<BountyHistory />} />
-            {/* <Route path="profile/offer-history" element={<OfferHistoryList />} />
-            <Route path="/*" element={<Navigate to="landing" />} /> */}
+            <Route path="profile/offer-history" element={<OfferHistoryList />} />
+            <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
         </BrowserRouter>
         <Outlet />

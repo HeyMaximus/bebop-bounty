@@ -21,9 +21,9 @@ function TransactionHistoryList({ userId }) {
   const [userTransactions, setUserTransactions] = useState([]);
 
   const mockUserTransaction = [
-    {seller_id: 123, sale._amount: 12.12, item: 'Berkin Bag', transaction_date: '01/01/23'},
-    {seller_id: 123, sale._amount: 12.12, item: 'Berkin Shoe', transaction_date: '01/02/23'},
-    {seller_id: 1, sale._amount: 12.12, item: 'Berkin Belt', transaction_date: '01/01/23'},
+    { seller_id: 123, sale_amount: 12.12, item: 'Berkin Bag', transaction_date: '01/01/23' },
+    { seller_id: 123, sale_amount: 12.12, item: 'Berkin Shoe', transaction_date: '01/02/23' },
+    { seller_id: 1, sale_amount: 12.12, item: 'Berkin Belt', transaction_date: '01/01/23' },
 
   ]
 
@@ -37,7 +37,7 @@ function TransactionHistoryList({ userId }) {
   return (
     <Host>
       <Stack gap={3}>
-      {mockUserTransaction.map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
+        {mockUserTransaction.map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
       </Stack>
     </Host>
   );

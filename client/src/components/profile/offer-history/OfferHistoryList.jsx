@@ -14,10 +14,10 @@ function OfferHistoryList({ bountyId }) {
   const [bountyOffers, setBountyOffers] = useState([]);
 
   const mockBountyOffers = [
-    {id: 123, seller: 'Person1', condition: 'Good', price: 123.45},
-    {id: 456, seller: 'Person1', condition: 'New', price: 65.17},
-    {id: 789, seller: 'Person1', condition: 'Fair', price: 12.12}
-  ]
+    { id: 123, seller: 'Person1', condition: 'Good', price: 123.45 },
+    { id: 456, seller: 'Person1', condition: 'New', price: 65.17 },
+    { id: 789, seller: 'Person1', condition: 'Fair', price: 12.12 },
+  ];
 
   // useEffect(() => {
   //   axios
@@ -30,9 +30,7 @@ function OfferHistoryList({ bountyId }) {
     <Host>
       <div>Total Offers: {mockBountyOffers.length}</div>
       <Stack gap={3}>
-      {mockNountyOffers.map((offer) => (
-        <OfferHistoryEntry offer={{offer}} />
-      ))}
+        {mockBountyOffers.map((offer) => {return <OfferHistoryEntry offer={offer} />})}
       </Stack>
     </Host>
   );

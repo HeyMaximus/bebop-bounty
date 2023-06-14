@@ -14,13 +14,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/:user_id",
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/users/:user_id",
 					"host": [
 						"{{SERVER}}"
 					],
 					"port": "{{SERVER_PORT}}",
 					"path": [
 						"api",
+						"users",
 						":user_id"
 					],
 					"query": [
@@ -65,7 +66,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/bounties?page&count&sort&catagory&location&searchQuery",
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/bounties",
 					"host": [
 						"{{SERVER}}"
 					],
@@ -77,53 +78,33 @@
 					"query": [
 						{
 							"key": "page",
-							"value": null
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "count",
-							"value": null
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "sort",
-							"value": null
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "catagory",
-							"value": null
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "location",
-							"value": null
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "searchQuery",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get User's Bounties",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/bounties/:user_id",
-					"host": [
-						"{{SERVER}}"
-					],
-					"port": "{{SERVER_PORT}}",
-					"path": [
-						"api",
-						"bounties",
-						":user_id"
-					],
-					"variable": [
-						{
-							"key": "user_id",
-							"value": null
+							"value": null,
+							"disabled": true
 						}
 					]
 				}
@@ -155,7 +136,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/offers/:bounty_id",
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/offers/",
 					"host": [
 						"{{SERVER}}"
 					],
@@ -163,12 +144,18 @@
 					"path": [
 						"api",
 						"offers",
-						":bounty_id"
+						""
 					],
-					"variable": [
+					"query": [
 						{
-							"key": "bounty_id",
-							"value": null
+							"key": "bountyID",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "sellerID",
+							"value": null,
+							"disabled": true
 						}
 					]
 				}
@@ -176,7 +163,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Offer",
+			"name": "Create Bounty's Offer",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -195,24 +182,23 @@
 			"response": []
 		},
 		{
-			"name": "Buy (Complete Offer)",
+			"name": "Get User's Transaction",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/offers/:offer_id",
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transactions?userID",
 					"host": [
 						"{{SERVER}}"
 					],
 					"port": "{{SERVER_PORT}}",
 					"path": [
 						"api",
-						"offers",
-						":offer_id"
+						"transactions"
 					],
-					"variable": [
+					"query": [
 						{
-							"key": "offer_id",
+							"key": "userID",
 							"value": null
 						}
 					]
@@ -221,24 +207,42 @@
 			"response": []
 		},
 		{
-			"name": "Get User's Transaction",
+			"name": "Create Transaction",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transaction/:user_id",
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transactions",
 					"host": [
 						"{{SERVER}}"
 					],
 					"port": "{{SERVER_PORT}}",
 					"path": [
 						"api",
-						"transaction",
-						":user_id"
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Transaction",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}:{{SERVER_PORT}}/api/transactions?transaction_id",
+					"host": [
+						"{{SERVER}}"
 					],
-					"variable": [
+					"port": "{{SERVER_PORT}}",
+					"path": [
+						"api",
+						"transactions"
+					],
+					"query": [
 						{
-							"key": "user_id",
+							"key": "transaction_id",
 							"value": null
 						}
 					]

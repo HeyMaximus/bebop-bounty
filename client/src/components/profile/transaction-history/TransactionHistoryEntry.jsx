@@ -9,10 +9,9 @@ const Host = styled.div`
 `;
 
 function TransactionHistoryEntry({ userId, entry }) {
-
   return (
     <Host>
-  <div>{entry.seller_id === userId ? 'Earned' : 'Paid'} {entry.sale_amount} for (entry.item) on {entry.transaction_date}</div>
+      <div>{entry.seller_id === userId ? 'Earned' : 'Paid'} {entry.sale_amount} for (entry.item) on {entry.transaction_date}</div>
     </Host>
   );
 }
