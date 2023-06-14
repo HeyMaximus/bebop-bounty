@@ -1,6 +1,8 @@
 import React from 'react';
 import BountyCardBack from './BountyCardBack.jsx';
 import { OpenOfferModal } from './helpers.js';
+import coinGoldImage from '../../assets/coin-gold.png'; // Import the image
+
 import {
   StyledBountyCard,
   StyledImageContainer,
@@ -17,23 +19,24 @@ import {
 } from './StyledBountyBoard';
 
 export default function BountyCardFront({ Context, flipCard, isFlipped }) {
+  const { id, buyer_id, name, price, deadline, image } = Context;
   return (
-    <StyledBountyCard>
-      <StyledImageContainer onClick={flipCard} isFlipped={isFlipped}>
-        <StyledImage src="" />
-        <StyledPrice>$10,000</StyledPrice>
+    <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
+      <StyledImageContainer>
+        <StyledImage src={image} />
+        <StyledPrice>${price}</StyledPrice>
         <StyledWanted>WANTED</StyledWanted>
       </StyledImageContainer>
       <StyledMidcardContainer>
         <div>
-          <StyledTitle>Title</StyledTitle>
+          <StyledTitle>{name}</StyledTitle>
           <StyledBuyerName>BuyerName</StyledBuyerName>
         </div>
         <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
       </StyledMidcardContainer>
       <StyledBottomCardContainer>
         <StyledCurrentOffers>Current Offers: ###</StyledCurrentOffers>
-        <StyledDeadline>Deadline</StyledDeadline>
+        <StyledDeadline>{deadline}</StyledDeadline>
       </StyledBottomCardContainer>
     </StyledBountyCard>
   );
