@@ -12,10 +12,10 @@ import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyPage from './bounty-page/BountyPage.jsx';
 import OfferHistoryList from './profile/offer-history/OfferHistoryList.jsx';
 import UserProfile from './user-profile/UserProfile.jsx';
+import Footer from './common/footer/Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const theme = {
-}
+const theme = {};
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: #4D4E67;
@@ -66,6 +66,7 @@ function App() {
             <Route path="profile/offer-history" element={<OfferHistoryList />} />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
         <Outlet />
       </GlobalContextProvider>
