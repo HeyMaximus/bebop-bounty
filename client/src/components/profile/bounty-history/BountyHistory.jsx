@@ -104,8 +104,8 @@ function BountyHistory() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (e) => {
-    console.log('triggered')
-    setBountyId(1) //retrieve id from event and update state with it
+    console.log('triggered');
+    setBountyId(1); //retrieve id from event and update state with it
     setShow(true);
   };
 

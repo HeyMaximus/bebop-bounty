@@ -12,7 +12,7 @@ export function GlobalContextProvider({ children }) {
       userData,
       setUserData,
     }),
-    [allBounties, userBounties]
+    [userBounties]
   );
 
   return <GlobalContext.Provider value={globalContextMemo}>{children}</GlobalContext.Provider>;

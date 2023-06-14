@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import BountyCardFront from './BountyCard.jsx';
 import BountyCardBack from './BountyCardBack.jsx';
+import OfferModal from './OfferModal.jsx';
 
 export default function CardFlip({ Context }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -12,15 +13,28 @@ export default function CardFlip({ Context }) {
     isFlipped ? setIsFlipped(false) : setIsFlipped(true);
   };
 
-  return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      <BountyCardFront Context={Context} flipCard={flipCard}>
-        FRONT of card
-      </BountyCardFront>
+  const [offerModal, setOfferModal] = useState(false);
 
-      <BountyCardBack Context={Context} flipCard={flipCard}>
-        BACK of card
-      </BountyCardBack>
-    </ReactCardFlip>
+  const showOfferModal = () => {
+    console.log(offerModal);
+
+    setOfferModal(!offerModal);
+  };
+
+  return (
+    <>
+      {offerModal && (
+        <OfferModal offerModal={offerModal} showOfferModal={showOfferModal} Context={Context} />
+      )}
+      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+        <BountyCardFront Context={Context} flipCard={flipCard} showOfferModal={showOfferModal}>
+          FRONT of card
+        </BountyCardFront>
+
+        <BountyCardBack Context={Context} flipCard={flipCard} showOfferModal={showOfferModal}>
+          BACK of card
+        </BountyCardBack>
+      </ReactCardFlip>
+    </>
   );
 }

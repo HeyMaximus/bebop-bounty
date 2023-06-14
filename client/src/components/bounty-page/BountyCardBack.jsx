@@ -16,7 +16,7 @@ import {
   OfferLayout,
 } from './StyledBountyBoard';
 
-export default function BountyCardBack({ Context, flipCard }) {
+export default function BountyCardBack({ Context, flipCard, showOfferModal }) {
   const { name, category, description, preferred_payment } = Context;
   let { deadline } = Context;
   [deadline] = deadline.split(' ');
@@ -28,7 +28,7 @@ export default function BountyCardBack({ Context, flipCard }) {
       <StyledDescription>Description: {description}</StyledDescription>
       <StyledPreferredPayment>Preferred Payment Option:{preferred_payment}</StyledPreferredPayment>
       <OfferLayout>
-        <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
+        <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton>
         <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
       </OfferLayout>
       <OfferLayout>

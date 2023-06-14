@@ -52,9 +52,8 @@ export default function ListBountyModal({ showListBountyModal }) {
 
   return (
     <StyledListBountyContainer>
-      <StyledListBountyOverlay />
+      <StyledListBountyOverlay onClick={() => showListBountyModal()} />
       <StyledListBountyBody>
-
         {/* ====== INSERT UNIQUE CONTENT BELOW HERE ====== */}
         <StyledListBountyCloseBtn type="button" onClick={() => showListBountyModal()}>
           X
@@ -142,11 +141,14 @@ export default function ListBountyModal({ showListBountyModal }) {
             />
           </div>
         </StyledListBountyContentContainer>
-        <StyledSubmitListBounty className="list-bounty-btn" type="button">
+        <StyledSubmitListBounty
+          className="list-bounty-btn"
+          onClick={showListBountyModal}
+          type="button"
+        >
           List Bounty
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}
-
       </StyledListBountyBody>
     </StyledListBountyContainer>
   );
