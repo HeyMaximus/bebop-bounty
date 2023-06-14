@@ -2,28 +2,19 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1em;
-`;
+const Host = styled.div``;
 
 const ReviewList = styled.div`
-  width: 60vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 const ReviewEntry = styled.div`
-  width: 100%;
-  border: 1px solid black;
+  width: 80%;
   margin-bottom: 1em;
   display: flex;
   flex-direction: column;
-  padding: 1em;
 `;
 
 const ReviewTop = styled.div`

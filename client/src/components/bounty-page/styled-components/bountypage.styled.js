@@ -11,7 +11,6 @@ export const BountyPageBorder = styled.div`
 `;
 
 export const FilterBar = styled.div`
-  /* border: solid 1px; */
   border-bottom: solid 1px;
   margin: auto;
   margin-top: 30px;
