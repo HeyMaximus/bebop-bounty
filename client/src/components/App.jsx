@@ -62,6 +62,7 @@ function App() {
             <Route path="bounty-page" element={<BountyPage />} />
             <Route path="profile" element={<Profile />} />
             <Route path="profile/bounty-history" element={<BountyHistory />} />
+            <Route path="user-profile" element={<UserProfile />} />
             <Route path="profile/offer-history" element={<OfferHistoryList />} />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
