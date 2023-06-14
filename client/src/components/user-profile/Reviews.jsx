@@ -2,15 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-const Host = styled.div`
-
-`;
+const Host = styled.div``;
 
 const ReviewList = styled.div`
-display: flex;
-flex-direction: column;
--webkit-box-align: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const ReviewEntry = styled.div`

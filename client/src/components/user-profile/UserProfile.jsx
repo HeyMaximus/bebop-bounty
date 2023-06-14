@@ -1,76 +1,39 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import axios from 'axios';
 import Reviews from './Reviews.jsx';
 import TransactionHistory from './TransactionHistory.jsx';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 import NavBar from '../common/nav-bar/NavBar.jsx';
+import {
+  Host,
+  UserProfileContainer,
+  UserInfoContainer,
+  ProfileImage,
+  UserDetails,
+  RightContainer,
+  ReviewContainer,
+  TransactionContainer,
+} from './ProfileStyles';
 
-const Host = styled.div`
-  margin-top: 50px;
-`;
-
-const UserProfileContainer = styled.div`
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  border: 2px solid white;
-  padding: 20px;
-  box-sizing: border-box;
-  width: 93%;
-  height: 80vh;
-  margin: 10px auto;
-`;
-
-const UserInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const ProfileImage = styled.img`
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
-`;
-
-const UserDetails = styled.div`
-  h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-
-  p {
-    font-size: 1em;
-  }
-`;
-
-const RightContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  gap: 10px;
-  margin-right: 70px;
-`;
-
-const ReviewContainer = styled.div`
-  flex: 1 1 0%;
-  overflow: auto;
-  width: 400px;
-  padding: 10px;
-  border: 1px solid white;
-`;
-
-const TransactionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  -webkit-box-align: center;
-  border: 1px solid white;
-  width: 400px;
-  align-items: center;
-  overflow: auto;
-`;
+const userID = 1;
 
 function UserProfile() {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('/api/transactions', {
+        params: {
+          userID: 1,
+        },
+      })
+      .then((result) => {
+        console.log(transactions);
+        setTransactions(result.data);
+      })
+      .catch((err) => console.error('Error getting transactions', err));
+  }, []);
+
   return (
     <Host>
       <NavBar />
@@ -86,12 +49,14 @@ function UserProfile() {
           />
         </UserInfoContainer>
         <RightContainer>
-          <CoinRating />
+          <div>
+            Rating: <CoinRating />
+          </div>
           <ReviewContainer>
             <Reviews />
           </ReviewContainer>
           <TransactionContainer>
-            <TransactionHistory />
+            <TransactionHistory transactions={transactions} />
           </TransactionContainer>
         </RightContainer>
       </UserProfileContainer>
