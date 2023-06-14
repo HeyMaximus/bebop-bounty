@@ -1,27 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-
-const Host = styled.div``;
-
-const ReviewList = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const ReviewEntry = styled.div`
-  width: 80%;
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-`;
-
-const ReviewTop = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
+import { Host, ReviewList, ReviewEntry, ReviewTop } from './RightContainerStyles';
 
 const mockReviews = [
   {

@@ -10,6 +10,7 @@ import {
   UserInfoContainer,
   ProfileImage,
   UserDetails,
+  Rating,
   RightContainer,
   ReviewContainer,
   TransactionContainer,
@@ -28,7 +29,7 @@ function UserProfile() {
         },
       })
       .then((result) => {
-        console.log(transactions);
+        console.log('transactions: ', transactions);
         setTransactions(result.data);
       })
       .catch((err) => console.error('Error getting transactions', err));
@@ -47,15 +48,17 @@ function UserProfile() {
             src="https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/774a5e05e3cd3c64e61d6f7e6e5a7e6a.png"
             alt="Profile"
           />
+          <Rating>
+            Rating: <CoinRating />
+          </Rating>
         </UserInfoContainer>
         <RightContainer>
-          <div>
-            Rating: <CoinRating />
-          </div>
           <ReviewContainer>
+            <h2>Reviews:</h2>
             <Reviews />
           </ReviewContainer>
           <TransactionContainer>
+            <h2>Transaction History:</h2>
             <TransactionHistory transactions={transactions} />
           </TransactionContainer>
         </RightContainer>

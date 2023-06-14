@@ -32,7 +32,6 @@ export const ProfileImage = styled.img`
 export const UserDetails = styled.div`
   h2 {
     font-size: 1.5em;
-    margin-bottom: 10px;
   }
 
   p {
@@ -40,26 +39,39 @@ export const UserDetails = styled.div`
   }
 `;
 
+export const Rating = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5em;
+`;
+
 export const RightContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 80%;
-  gap: 10px;
-  margin-right: 70px;
+  width: 100%;
+  padding: 10px;
+  gap: 30px;
 `;
 
 export const ReviewContainer = styled.div`
   flex: 1 1 0%;
   overflow: auto;
-  width: 80%;
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
   border: 1px solid white;
+  h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const TransactionContainer = styled.div`
   flex: 1 1 0%;
   overflow: auto;
-  width: 80%;
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
   border: 1px solid white;
+  h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
 `;

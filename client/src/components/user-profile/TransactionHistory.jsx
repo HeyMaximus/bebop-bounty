@@ -1,29 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import moment from 'moment';
 import axios from 'axios';
-
-const Host = styled.div``;
-
-const TransactionList = styled.div``;
-
-const TransactionEntry = styled.div`
-  width: 80%;
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-  }
-`;
-
-const TransactionTop = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
+import { Host, TransactionList, TransactionEntry, TransactionTop } from './RightContainerStyles';
 
 function TransactionHistory({ transactions }) {
   return (
@@ -32,13 +10,15 @@ function TransactionHistory({ transactions }) {
         {transactions.map((transaction) => (
           <TransactionEntry key={transaction.id}>
             <TransactionTop>
-              <div>{transaction.item.title}</div>
-              <div>{transaction.transaction_date}</div>
+              {transaction.item && <div>{transaction.item.title}</div>}
+              <div>{moment(transaction.transaction_date).format('YYYY-MM-DD')}</div>
             </TransactionTop>
             <div>{transaction.type}</div>
-            <img src={transaction.item.imageUrl} alt={transaction.item.title} />
+            {transaction.item && (
+              <img src={transaction.item.imageUrl} alt={transaction.item.title} />
+            )}
             <div>
-              Completed with {transaction.buyer_id} on {transaction.transaction_date}
+              Completed with {transaction.buyer_id} {moment(transaction.transaction_date).fromNow()}
             </div>
           </TransactionEntry>
         ))}
