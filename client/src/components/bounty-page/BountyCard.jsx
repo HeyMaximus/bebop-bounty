@@ -16,7 +16,7 @@ import {
   StyledCurrentOffers,
   StyledDeadline,
   StyledBottomCardContainer,
-} from './StyledBountyBoard';
+} from './StyledBountyBoard.js';
 
 export default function BountyCardFront({ Context, flipCard, isFlipped, showOfferModal }) {
   const { id, buyer_id, name, price, deadline, image } = Context;
