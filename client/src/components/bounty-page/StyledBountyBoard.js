@@ -9,10 +9,10 @@ export const StyledBountyBoardWrapper = styled.div`
 `;
 export const StyledBountyCollection = styled.div`
   /* border: solid; */
-  /* background-color: lightgray; */
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  /* background-color: lightgray; */
+  justify-content: space-between;
 `;
 
 export const StyledDropdown = styled.select`

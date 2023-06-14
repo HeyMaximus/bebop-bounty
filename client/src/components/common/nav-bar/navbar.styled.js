@@ -126,7 +126,9 @@ export const ProfileMenuContainer = styled.div`
   background-color: #e7e5d5;
   color: #3e4334;
   box-shadow: 5px 5px 5px rgb(62, 67, 52);
+  z-index: 2;
 `;
+
 export const ProfileMenuHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -177,6 +179,7 @@ export const ListBountyContainer = styled.div`
   right: 0;
   bottom: 0;
   position: fixed;
+  /* z-index: 3; */
 `;
 export const ListBountyOverlay = styled(ListBountyContainer)`
   background: rgba(0, 0, 0, 0.5);
@@ -195,7 +198,7 @@ export const ListBountyBody = styled.div`
   overflow-y: auto;
   color: #3e4334;
   > button {
-    color: rgb(62, 67, 52)
+    color: rgb(62, 67, 52);
     font-family: 'Coromorant Garamond', serif;
     font-size: 15px;
     cursor: pointer;

@@ -12,7 +12,6 @@ import {
   StyledBountyCollection,
 } from './StyledBountyBoard';
 
-
 const fakeContext = [
   {
     id: 1,
@@ -92,21 +91,8 @@ export default function BountyBoard() {
 
   return (
     <StyledBountyBoardWrapper>
-      <StyledDropdown>
-        <option name="Clothing">Clothing</option>
-        <option name="Clothing">Clothing</option>
-        <option name="Decor">Decor</option>
-        <option name="Furniture">Furniture</option>
-        <option name="Gadgets">Gadgets</option>
-      </StyledDropdown>
-
+      <StyledBountyCollection>{Cards}</StyledBountyCollection>
       {/* <NewOfferModal /> */}
-      {/* <StyledCardFlip Context={'Context'} />
-      <StyledCardFlip Context={'Context'} />
-      <StyledCardFlip Context={'Context'} />
-      <StyledCardFlip Context={'Context'} /> */}
-      {Cards}
-
     </StyledBountyBoardWrapper>
   );
 }
