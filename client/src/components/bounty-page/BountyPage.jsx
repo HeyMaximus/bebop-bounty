@@ -5,6 +5,7 @@ import BountyBoard from './BountyBoard.jsx';
 
 export default function BountyPage() {
   const [filter, setFilter] = useState('All items');
+  const [allBounties, setAllBounties] = useState([]);
 
   return (
     <BountyPageBorder>
