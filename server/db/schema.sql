@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS offer;
 DROP TABLE IF EXISTS transaction;
 
 CREATE TYPE condition AS ENUM ('new', 'like new', 'good', 'fair', 'poor');
-CREATE TYPE category AS ENUM ('clothing', 'furniture', 'gadget');
+CREATE TYPE category AS ENUM ('clothing', 'furniture', 'decor', 'gadgets');
 CREATE TYPE payment AS ENUM ('paypal', 'zelle', 'venmo', 'visa', 'cash');
 CREATE TYPE rating AS ENUM ('good', 'bad');
 
@@ -13,9 +13,8 @@ CREATE TABLE bounty_user (
   username VARCHAR(50) NOT NULL UNIQUE,
   uid VARCHAR(100) NOT NULL UNIQUE,
   email VARCHAR(50) NOT NULL UNIQUE,
-  uid VARCHAR(50) NOT NULL UNIQUE,
   profile_image TEXT,
-  last_edited TIMESTAMP,
+  last_edited TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   rating_thumbs_up INT,
   rating_thumbs_down INT
 );
@@ -29,12 +28,12 @@ CREATE TABLE bounty (
   category category,
   city VARCHAR(20),
   state VARCHAR(20),
-  completed BOOLEAN,
+  completed BOOLEAN DEFAULT FALSE,
   price NUMERIC(12,2),
   deadline TIMESTAMP,
   preferred_payment payment,
   image TEXT,
-  created_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY(buyer_id) REFERENCES bounty_user(id)
 );
 CREATE INDEX ON bounty (buyer_id);
@@ -45,7 +44,10 @@ CREATE TABLE offer (
   seller_id INT NOT NULL,
   condition condition,
   offer_amount NUMERIC(12, 2),
-  completed BOOLEAN,
+  description TEXT,
+  city VARCHAR(20),
+  state VARCHAR(20),
+  completed BOOLEAN DEFAULT FALSE,
   image TEXT,
   FOREIGN KEY (bounty_id) REFERENCES bounty(id),
   FOREIGN KEY (seller_id) REFERENCES bounty_user(id)
