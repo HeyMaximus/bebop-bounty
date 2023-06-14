@@ -25,6 +25,7 @@ export const StyledNavLogo = styled.div`
   white-space: pre-wrap;
   padding-left: 30px;
   padding-bottom: 10px;
+  cursor: pointer;
 `;
 
 export const StyledListBountyBtn = styled.button`
