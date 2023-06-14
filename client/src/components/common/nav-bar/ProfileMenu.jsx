@@ -28,6 +28,12 @@ export default function ProfileMenu() {
         console.error('Error occurrs during sign out:', error);
       });
   };
+
+  const routeToMyBounties = (e) => {
+    e.preventDefault();
+    navigate('/profile/bounty-history');
+  };
+
   return (
     <>
       <StyledUpArrow />
@@ -41,7 +47,9 @@ export default function ProfileMenu() {
         </StyledProfileMenuHeader>
         <StyledProfileMenuProperties>
           <button type="button">Notifications</button>
-          <button type="button">Your Bounties</button>
+          <button type="button" onClick={(e) => routeToMyBounties(e)}>
+            Your Bounties
+          </button>
           <button type="button">Settings</button>
           <button type="button">Dark Mode</button>
           <button type="button" onClick={handleSignOut}>
