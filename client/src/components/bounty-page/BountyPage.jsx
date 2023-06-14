@@ -18,10 +18,6 @@ export default function BountyPage() {
         </FilterSelector>
       </FilterBar>
       <BountyBoard />
-      <div
-        id="placeholder div container"
-        style={{ border: 'solid 1px', height: 650, width: '93%', margin: 'auto', marginTop: 30 }}
-      />
     </BountyPageBorder>
   );
 }
