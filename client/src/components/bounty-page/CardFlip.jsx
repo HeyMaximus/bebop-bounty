@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import BountyCardFront from './BountyCard.jsx';
 import BountyCardBack from './BountyCardBack.jsx';
-import styled from 'styled-components';
-
-const Container = styled(ReactCardFlip)`
-  display: inline-block;
-`;
 
 export default function CardFlip({ Context }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -18,7 +13,7 @@ export default function CardFlip({ Context }) {
   };
 
   return (
-    <Container isFlipped={isFlipped} flipDirection="vertical">
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <BountyCardFront Context={Context} flipCard={flipCard}>
         FRONT of card
       </BountyCardFront>
@@ -26,6 +21,6 @@ export default function CardFlip({ Context }) {
       <BountyCardBack Context={Context} flipCard={flipCard}>
         BACK of card
       </BountyCardBack>
-    </Container>
+    </ReactCardFlip>
   );
 }
