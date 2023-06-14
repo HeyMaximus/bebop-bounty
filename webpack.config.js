@@ -1,4 +1,5 @@
-require('dotenv').config();
+// require('dotenv').config();
+const Dotenv = require('dotenv-webpack');;
 
 const path = require('path');
 
@@ -9,6 +10,7 @@ module.exports = {
     path: path.join(__dirname, '/client/dist'),
     filename: 'bundle.js',
   },
+  plugins: [new Dotenv()],
   devtool: 'source-map',
   module: {
     rules: [
