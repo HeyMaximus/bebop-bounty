@@ -132,6 +132,7 @@ export const ProfileMenuContainer = styled.div`
   background-color: #e7e5d5;
   color: #3e4334;
   box-shadow: 5px 5px 5px rgb(62, 67, 52);
+  z-index: 5;
 `;
 export const ProfileMenuHeader = styled.div`
   display: grid;
@@ -183,8 +184,16 @@ export const StyledListBountyContainer = styled.div`
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 10;
 `;
-export const StyledListBountyOverlay = styled(StyledListBountyContainer)`
+export const StyledListBountyOverlay = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
   background: rgba(0, 0, 0, 0.5);
 `;
 export const StyledListBountyBody = styled.div`
