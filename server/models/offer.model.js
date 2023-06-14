@@ -37,17 +37,7 @@ module.exports.createOffer = (offer) => {
   const queryStr =
     'INSERT INTO offer (bounty_id, seller_id, condition, offer_amount, description, city, state, completed, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
   return pool
-    .query(queryStr, [
-      bounty_id,
-      seller_id,
-      condition,
-      offer_amount,
-      description,
-      city,
-      state,
-      complete,
-      image,
-    ])
+    .query(queryStr, [bountyID, sellerID, condition, offerAmount, false])
     .then((queryRes) => queryRes.rows)
     .catch((err) => {
       console.error('Query failed in Model: create offer', err.message);
