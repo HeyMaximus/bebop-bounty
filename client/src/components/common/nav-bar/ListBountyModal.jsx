@@ -141,7 +141,11 @@ export default function ListBountyModal({ showListBountyModal }) {
             />
           </div>
         </StyledListBountyContentContainer>
-        <StyledSubmitListBounty className="list-bounty-btn" type="button">
+        <StyledSubmitListBounty
+          className="list-bounty-btn"
+          onClick={showListBountyModal}
+          type="button"
+        >
           List Bounty
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}
