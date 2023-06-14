@@ -25,3 +25,5 @@ npm-debug.log*
 # auth
 client/src/firebase.js
 
+# ignore db seeds
+bounty_data.sql
