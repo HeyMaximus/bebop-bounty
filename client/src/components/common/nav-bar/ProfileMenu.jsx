@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { ProfileMenuContainer, ProfileMenuHeader, UpArrow, ProfileMenuProperties } from './navbar.styled';
-import firebaseApp from '../../../firebase';
+import { firebaseApp } from '../../../firebase';
 import { GlobalContext } from '../../GlobalContext.jsx';
 
 export default function ProfileMenu() {
