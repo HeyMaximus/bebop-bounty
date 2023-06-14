@@ -17,13 +17,16 @@ import {
 } from './StyledBountyBoard';
 
 export default function BountyCardBack({ Context, flipCard }) {
+  const { name, category, description, preferred_payment } = Context;
+  let { deadline } = Context;
+  [deadline] = deadline.split(' ');
   return (
     <StyledBountyCardBack>
-      <StyledTitle>Title</StyledTitle>
-      <StyledCategory>Category</StyledCategory>
-      <StyledDeadline>Deadline</StyledDeadline>
-      <StyledDescription>Description</StyledDescription>
-      <StyledPreferredPayment>Preferred Payment</StyledPreferredPayment>
+      <StyledTitle>{name}</StyledTitle>
+      <StyledCategory>Category: {category}</StyledCategory>
+      <StyledDeadline>Deadline: {deadline}</StyledDeadline>
+      <StyledDescription>Description: {description}</StyledDescription>
+      <StyledPreferredPayment>Preferred Payment Option:{preferred_payment}</StyledPreferredPayment>
       <OfferLayout>
         <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
         <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
