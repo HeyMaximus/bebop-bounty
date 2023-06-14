@@ -1,24 +1,19 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1em;
-`;
+const Host = styled.div``;
 
 const TransactionList = styled.div`
-  width: 60vw;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid white;
+  overflow: auto;
 `;
 
 const TransactionEntry = styled.div`
-  width: 100%;
-  border: 1px solid black;
+  width: 80%;
   margin-bottom: 1em;
   display: flex;
   flex-direction: column;
