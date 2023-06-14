@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./server/app.js",
     "server-dev": "npx nodemon --watch server server/app.js",
     "client-dev": "npx webpack --watch",
     "test": "jest --forceExit --setupFiles dotenv/config",
@@ -43,6 +44,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "bootstrap": "^5.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -51,6 +53,7 @@
     "nodemon": "^2.0.22",
     "pg": "^8.11.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-card-flip": "^1.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.7",
