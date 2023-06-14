@@ -9,9 +9,9 @@ import {
   StyledListBountyCloseBtn,
   StyledListBountyTitleInput,
   StyledListBountyTitle,
-} from './navbar.styled';
+} from '../common/nav-bar/navbar.styled';
 
-export default function ListBountyModal({ showListBountyModal }) {
+export default function ListBountyModal({ showOfferModal, setOfferModal }) {
   const [initialValues, setInitialValues] = useState({
     name: '',
     price: '',
@@ -52,10 +52,10 @@ export default function ListBountyModal({ showListBountyModal }) {
 
   return (
     <StyledListBountyContainer>
-      <StyledListBountyOverlay onClick={() => showListBountyModal()} />
+      <StyledListBountyOverlay onClick={showOfferModal} />
       <StyledListBountyBody>
         {/* ====== INSERT UNIQUE CONTENT BELOW HERE ====== */}
-        <StyledListBountyCloseBtn type="button" onClick={() => showListBountyModal()}>
+        <StyledListBountyCloseBtn type="button" onClick={showOfferModal}>
           X
         </StyledListBountyCloseBtn>
         <h2>Bounty</h2>

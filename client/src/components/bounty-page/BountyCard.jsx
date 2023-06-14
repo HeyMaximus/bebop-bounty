@@ -18,7 +18,7 @@ import {
   StyledBottomCardContainer,
 } from './StyledBountyBoard';
 
-export default function BountyCardFront({ Context, flipCard, isFlipped }) {
+export default function BountyCardFront({ Context, flipCard, isFlipped, showOfferModal }) {
   const { id, buyer_id, name, price, deadline, image } = Context;
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
@@ -32,7 +32,7 @@ export default function BountyCardFront({ Context, flipCard, isFlipped }) {
           <StyledTitle>{name}</StyledTitle>
           <StyledBuyerName>BuyerName</StyledBuyerName>
         </div>
-        <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
+        <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton>
       </StyledMidcardContainer>
       <StyledBottomCardContainer>
         <StyledCurrentOffers>Current Offers: ###</StyledCurrentOffers>
