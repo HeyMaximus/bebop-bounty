@@ -2,7 +2,7 @@ const { pool } = require('../db');
 
 module.exports.getTransactions = (userID) => {
   const queryStr =
-    'SELECT * FROM transaction WHERE seller_id=$1 OR buyer_id=$1 ORDER BY transaction_date DESC';
+    'SELECT bounty.name AS bounty_name, transaction.* FROM transaction JOIN bounty ON transaction.bounty_id=bounty.id AND seller_id=$1 OR transaction.buyer_id=$1 ORDER BY transaction_date DESC';
   return pool
     .query(queryStr, [userID])
     .then((queryRes) => queryRes.rows)
