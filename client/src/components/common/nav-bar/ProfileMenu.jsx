@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  ProfileMenuContainer,
-  ProfileMenuHeader,
-  UpArrow,
-  ProfileMenuProperties,
+  StyledProfileMenuContainer,
+  StyledProfileMenuHeader,
+  StyledUpArrow,
+  StyledProfileMenuProperties,
 } from './navbar.styled';
 
 export default function ProfileMenu() {
@@ -11,23 +11,23 @@ export default function ProfileMenu() {
 
   return (
     <>
-      <UpArrow />
-      <ProfileMenuContainer>
-        <ProfileMenuHeader>
+      <StyledUpArrow />
+      <StyledProfileMenuContainer>
+        <StyledProfileMenuHeader>
           <img src={exampleImgURL} alt="profile pic" />
           <div>
             <p>Spike Spiegal</p>
             <p>spacecowboy@gmail.com</p>
           </div>
-        </ProfileMenuHeader>
-        <ProfileMenuProperties>
+        </StyledProfileMenuHeader>
+        <StyledProfileMenuProperties>
           <button type="button">Notifications</button>
           <button type="button">Your Bounties</button>
           <button type="button">Settings</button>
           <button type="button">Dark Mode</button>
           <button type="button">Sign Out</button>
-        </ProfileMenuProperties>
-      </ProfileMenuContainer>
+        </StyledProfileMenuProperties>
+      </StyledProfileMenuContainer>
     </>
   );
 }

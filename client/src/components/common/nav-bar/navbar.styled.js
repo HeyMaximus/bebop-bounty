@@ -109,7 +109,7 @@ const showModal = keyframes`
     opactiy: 1;
   }
 `;
-export const UpArrow = styled.div`
+export const StyledUpArrow = styled.div`
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
@@ -120,7 +120,7 @@ export const UpArrow = styled.div`
   top: 140px;
   animation: ${showModal} 1s forwards ease-out;
 `;
-export const ProfileMenuContainer = styled.div`
+export const StyledProfileMenuContainer = styled.div`
   position: absolute;
   right: 10%;
   border: solid 1px;
@@ -134,7 +134,7 @@ export const ProfileMenuContainer = styled.div`
   box-shadow: 5px 5px 5px rgb(62, 67, 52);
   z-index: 5;
 `;
-export const ProfileMenuHeader = styled.div`
+export const StyledProfileMenuHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 20px;
@@ -149,16 +149,16 @@ export const ProfileMenuHeader = styled.div`
     margin-right: 20px;
   }
   > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     font-family: Roboto;
     font-weight: 400;
     grid-column-start: 3;
     margin-left: 10px;
   }
+  > p {
+    margin-bottom: 0;
+  }
 `;
-export const ProfileMenuProperties = styled.div`
+export const StyledProfileMenuProperties = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -205,8 +205,8 @@ export const StyledListBountyBody = styled.div`
   background: #e7e5d5;
   padding: 14px 28px;
   border-radius: 1px;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   overflow-y: auto;
   color: #3e4334;
   > h2 {
@@ -218,7 +218,12 @@ export const StyledListBountyBody = styled.div`
 
 export const StyledListBountyContentContainer = styled.div`
   border: solid 1px #3e4334;
-  height: 270px;
+  height: 490px;
+  width: 590px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 export const StyledListBountyTitle = styled.div`

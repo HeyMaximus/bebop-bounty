@@ -29,7 +29,7 @@ export default function ListBountyModal({ showListBountyModal }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-  }
+  };
 
   const getImageURL = (e) => {
     const uploadedFile = e.target.files[0];
@@ -109,7 +109,7 @@ export default function ListBountyModal({ showListBountyModal }) {
             value={formValues.preferred_payment}
             onChange={handleChange}
           >
-            Preferred Payment
+            <option>-- Select Payment Method --</option>
             <option>cash</option>
             <option>paypal</option>
             <option>venmo</option>
@@ -130,17 +130,20 @@ export default function ListBountyModal({ showListBountyModal }) {
             />
           </div>
           <div>
-            Description{' '}
+            Description:{' '}
             <textarea
               type="text"
               name="description"
+              rows="5"
+              cols="40"
+              placeholder="Describe what you're looking for"
               value={formValues.description}
               onChange={handleChange}
             />
           </div>
         </StyledListBountyContentContainer>
         <StyledSubmitListBounty className="list-bounty-btn" type="button">
-          List Button
+          List Bounty
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}
 
