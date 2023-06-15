@@ -16,10 +16,17 @@ import {
   StyledCurrentOffers,
   StyledDeadline,
   StyledBottomCardContainer,
-} from './StyledBountyBoard';
+} from './StyledBountyBoard.js';
 
-export default function BountyCardFront({ Context, flipCard, isFlipped }) {
-  const { id, buyer_id, name, price, deadline, image } = Context;
+export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
+  const { id, buyer_id, name, price, image } = Bounty;
+
+  let { deadline } = Bounty;
+  deadline = deadline.substring(5, 10);
+  deadline = deadline.replaceAll('-', '/');
+  if (deadline.charAt(0) === '0') {
+    deadline = deadline.slice(1);
+  }
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
       <StyledImageContainer>
@@ -32,7 +39,7 @@ export default function BountyCardFront({ Context, flipCard, isFlipped }) {
           <StyledTitle>{name}</StyledTitle>
           <StyledBuyerName>BuyerName</StyledBuyerName>
         </div>
-        <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
+        <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton>
       </StyledMidcardContainer>
       <StyledBottomCardContainer>
         <StyledCurrentOffers>Current Offers: ###</StyledCurrentOffers>
