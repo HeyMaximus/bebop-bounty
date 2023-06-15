@@ -4,12 +4,6 @@ import axios from 'axios';
 
 import Button from 'react-bootstrap/Button';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
-
 function OfferHistoryEntry({ offer, getOffers }) {
 
   const handleBuyClick = (e) => {
