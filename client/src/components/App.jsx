@@ -25,7 +25,7 @@ function App() {
         <GlobalStyles />
         <BrowserRouter>
           <Routes>
-            <Route index element={<Navigate to="landing" />} />
+            <Route index element={<Navigate to="Signup" />} />
             <Route path="landing" element={<Landing />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
