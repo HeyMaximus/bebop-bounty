@@ -5,9 +5,9 @@ export const BountyPageBorder = styled.div`
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  height: 100%;
+  height: 90%;
   width: 92%;
-  height: 900px;
+  min-height: 900px;
 `;
 
 export const FilterBar = styled.div`
