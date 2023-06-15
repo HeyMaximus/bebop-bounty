@@ -225,7 +225,7 @@ export const StyledListBountyTitle = styled.div`
 export const StyledListBountyTitleInput = styled.input`
   color: #3e4334;
   border-bottom: 1px solid #3e4334;
-  width: 70%;
+  width: 78%;
 `;
 
 export const StyledLBDropDowns = styled.div`

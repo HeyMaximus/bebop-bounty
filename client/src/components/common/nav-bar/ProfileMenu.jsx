@@ -60,7 +60,7 @@ export default function ProfileMenu({ toggleTheme }) {
           >
             {darkModeIcon ? 'Light Mode 🌞' : 'Dark Mode 🌜'}
           </button>
-n
+
           <button type="button" onClick={handleSignOut}>
             Sign Out
           </button>

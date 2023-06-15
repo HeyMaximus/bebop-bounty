@@ -3,23 +3,20 @@ import styled from 'styled-components';
 
 const Footer = styled.footer`
   width: 100%;
-  position: fixed;
   bottom: 0;
   padding: 20px 0;
-  background-color: #4d4e67; // This color can be adjusted to match your background color
-  color: #fff; // This will make the text color white, change it if you want another color
+  color: #fff;
   text-align: center;
-  z-index: 1000;
   border: none;
 `;
 
 const Link = styled.a`
-  color: #fff; // This will make the link color white, change it if you want another color
+  color: #fff;
   margin: 0 10px;
-  font-size: 0.8em; // Adjust this value to change the size of the text
+  font-size: 0.8em;
   text-decoration: none;
   &:hover {
-    color: #a5a9f6; // Adjust this color to what you want for hover effect
+    color: #a5a9f6;
   }
 `;
 

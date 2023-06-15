@@ -111,15 +111,33 @@ export default function ListBountyModal({ showListBountyModal }) {
             </div>
             <div>
               City:
-              <input type="text" name="city" value={formValues.city} onChange={handleChange} />
+              <input
+                style={{ width: '91%' }}
+                type="text"
+                name="city"
+                value={formValues.city}
+                onChange={handleChange}
+              />
             </div>
             <div>
               State:
-              <input type="text" name="state" value={formValues.state} onChange={handleChange} />
+              <input
+                style={{ width: '90%' }}
+                type="text"
+                name="state"
+                value={formValues.state}
+                onChange={handleChange}
+              />
             </div>
             <div>
               Price:
-              <input type="text" name="price" value={formValues.price} onChange={handleChange} />
+              <input
+                style={{ width: '90%' }}
+                type="text"
+                name="price"
+                value={formValues.price}
+                onChange={handleChange}
+              />
             </div>
             <div>
               Upload An Image:{' '}
@@ -137,7 +155,7 @@ export default function ListBountyModal({ showListBountyModal }) {
                 type="text"
                 name="description"
                 rows="5"
-                cols="40"
+                cols="50"
                 placeholder="Describe what you're looking for..."
                 value={formValues.description}
                 onChange={handleChange}
