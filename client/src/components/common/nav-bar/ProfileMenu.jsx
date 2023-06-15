@@ -29,6 +29,12 @@ export default function ProfileMenu({ toggleTheme }) {
         console.error('Error occurrs during sign out:', error);
       });
   };
+
+  const routeToMyBounties = (e) => {
+    e.preventDefault();
+    navigate('/profile/bounty-history');
+  };
+
   return (
     <>
       <StyledUpArrow />
@@ -43,6 +49,7 @@ export default function ProfileMenu({ toggleTheme }) {
         <StyledProfileMenuProperties>
           <button type="button">Profile</button>
           <button type="button">Notifications</button>
+
           <button type="button">Your Bounties</button>
           <button
             type="button"
@@ -53,6 +60,7 @@ export default function ProfileMenu({ toggleTheme }) {
           >
             {darkModeIcon ? 'Light Mode 🌞' : 'Dark Mode 🌜'}
           </button>
+n
           <button type="button" onClick={handleSignOut}>
             Sign Out
           </button>

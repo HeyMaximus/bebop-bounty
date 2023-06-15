@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import GlobalContext from '../GlobalContext.jsx';
 // import CardFlip from './CardFlip.jsx';
 import BountyCard from './BountyCard.jsx';
+import OfferModal from './OfferModal.jsx';
 
-import NewOfferModal from './NewOfferModal.jsx';
+import NewOfferModal from './OfferInputs.jsx';
 
 import {
   StyledBountyBoardWrapper,
@@ -82,17 +83,19 @@ const fakeContext = [
   },
 ];
 
-export default function BountyBoard() {
+export default function BountyBoard({ Context }) {
   // const Context = useContext(GlobalContext);
 
   // const cards = <BountyCard Context={Context} />;
 
-  const Cards = fakeContext.map((bounty) => <StyledCardFlip key={bounty.id} Context={bounty} />);
+  const Cards = fakeContext.map((bounty) => <StyledCardFlip key={bounty.id} Bounty={bounty} />);
 
   return (
-    <StyledBountyBoardWrapper>
-      <StyledBountyCollection>{Cards}</StyledBountyCollection>
-      {/* <NewOfferModal /> */}
-    </StyledBountyBoardWrapper>
+    <>
+      <StyledBountyBoardWrapper>
+        <StyledBountyCollection>{Cards}</StyledBountyCollection>
+        {/* <NewOfferModal /> */}
+      </StyledBountyBoardWrapper>
+    </>
   );
 }

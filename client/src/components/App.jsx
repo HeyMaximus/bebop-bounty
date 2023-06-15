@@ -13,7 +13,41 @@ import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyPage from './bounty-page/BountyPage.jsx';
 import OfferHistoryList from './profile/offer-history/OfferHistoryList.jsx';
 import UserProfile from './user-profile/UserProfile.jsx';
+import Footer from './common/footer/Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+const theme = {};
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #4D4E67;
+    color: white;
+    font-family: 'Coromorant Garamond', serif;
+  }
+  button {
+    border: none;
+    background: none;
+  }
+  button::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: rgb(62, 67, 52);
+    transition: width 0.4s;
+  }
+  button:hover::after {
+    width: 100%;
+  }
+  input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+  }
+  input:focus {
+    outline: none;
+  }
+`;
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -37,6 +71,7 @@ function App() {
             <Route path="profile/offer-history" element={<OfferHistoryList />} />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
         <Outlet />
       </ThemeProvider>
