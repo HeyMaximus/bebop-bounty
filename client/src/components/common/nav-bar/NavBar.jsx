@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { StyledNavBar, StyledListBountyBtn, StyledProfilePic } from './navbar.styled';
 import { StyledNavLogo } from '../../../theme';
 import SearchBar from '../../bounty-page/SearchBar.jsx';
@@ -9,13 +10,19 @@ export default function NavBar({ toggleTheme }) {
   const [profileMenu, setProfileMenu] = useState(false);
   const [listBountyModal, setListBountyModal] = useState(false);
   const exampleImgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
+  const navigate = useNavigate();
 
   const showProfileMenu = () => setProfileMenu(!profileMenu);
   const showListBountyModal = () => setListBountyModal(!listBountyModal);
 
+  const handleLogoOnClick = (e) => {
+    e.preventDefault();
+    navigate('/bounty-page');
+  };
+
   return (
     <StyledNavBar>
-      <StyledNavLogo>Bebop Bounty</StyledNavLogo>
+      <StyledNavLogo onClick={handleLogoOnClick}>Bebop Bounty</StyledNavLogo>
       <SearchBar />
       <StyledListBountyBtn onClick={() => showListBountyModal()}>List Bounty</StyledListBountyBtn>
       {listBountyModal && <ListBountyModal showListBountyModal={showListBountyModal} />}

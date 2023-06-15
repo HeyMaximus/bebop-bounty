@@ -29,7 +29,7 @@ export const StyledBountyCard = styled.div`
   display: inline-block;
   /* box-shadow: 0 0 3px black; */
   border: 1px solid rgb(62, 67, 52);
-  box-shadow: 5px 5px 5px rgb(62, 67, 52);
+  box-shadow: 3px 3px 3px rgb(62, 67, 52);
   width: 225px;
   height: 275px;
   /* padding: 10px; */
@@ -130,6 +130,7 @@ export const StyledTitle = styled.div`
 
 export const StyledBuyerName = styled.div`
   font-size: small;
+  cursor: pointer;
   /* border: solid; */
 `;
 
