@@ -7,7 +7,7 @@ module.exports.getTransactions = async (req, res) => {
     const data = await transactionModel.getTransactions(userID);
     res.status(200).json(data);
   } catch (err) {
-    console.error('Query failed: get user transactions', err.message);
+    console.error('Query failed: get transactions', err.message);
     res.sendStatus(400);
   }
 };

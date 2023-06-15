@@ -4,10 +4,11 @@ module.exports.getAllBounties = (params) => {
   const page = params.page ? Number(params.page) : 1;
   const count = params.count ? Number(params.count) : 10;
   let sortBy = 'created_at';
+  let sortDir = 'DESC';
   if (params.sortBy === 'price-low-to-high' || params.sortBy === 'price-high-to-low') {
     sortBy = 'price';
+    sortDir = params.sortBy === 'price-low-to-high' ? 'ASC' : 'DESC';
   }
-  const sortDir = ['ASC', 'DESC'].includes(params.sortDir) ? params.sortDir : 'ASC';
 
   const filterCols = [];
   const filterValues = [];
@@ -23,7 +24,12 @@ module.exports.getAllBounties = (params) => {
     filterCols.push('state');
     filterValues.push(params.state);
   }
-  const conditions = filterCols.map((col, index) => `${col} = $${index + 1}`);
+  const conditions = filterCols.map((col, index) => {
+    if (col === 'category') {
+      return `${col} = $${index + 1}`;
+    }
+    return `LOWER(${col}) = LOWER($${index + 1})`;
+  });
   if ('searchQuery' in params) {
     conditions.push(
       `LOWER(name) LIKE LOWER($${filterCols.length + 1}) OR LOWER(description) LIKE LOWER($${
@@ -34,15 +40,22 @@ module.exports.getAllBounties = (params) => {
   }
   const conditionSegment = ['TRUE', ...conditions].join(' AND ');
 
-  const queryStr = `SELECT bounty.*, COALESCE((SELECT count(id) FROM offer GROUP BY bounty_id HAVING bounty_id=bounty.id), 0) AS offer_count FROM bounty WHERE ${conditionSegment} ORDER BY ${sortBy} ${sortDir} LIMIT ${count} OFFSET ((${
-    page - 1
-  }) * ${count})`;
+  const queryStr = `SELECT bounty.*, \
+  COALESCE((SELECT count(id) FROM offer GROUP BY bounty_id HAVING bounty_id=bounty.id), 0) AS offer_count, \
+  username AS buyer_name \
+  FROM bounty \
+  JOIN bounty_user \
+  ON bounty.buyer_id=bounty_user.id \
+  WHERE ${conditionSegment} \
+  ORDER BY ${sortBy} ${sortDir} \
+  LIMIT ${count} OFFSET ((${page - 1}) * ${count})`;
+
   return pool.query(queryStr, [...filterValues]).then((queryRes) => queryRes.rows);
 };
 
 module.exports.getUserBounties = (userID) => {
   const queryStr =
-    'SELECT bounty.*, (SELECT count(id) FROM offer GROUP BY bounty_id HAVING bounty_id=$1) AS offer_count FROM bounty WHERE buyer_id=$1 ORDER BY created_at DESC';
+    'SELECT bounty.*, COALESCE((SELECT count(id) FROM offer GROUP BY bounty_id HAVING bounty_id=bounty.id),0) AS offer_count FROM bounty WHERE buyer_id=$1 ORDER BY created_at DESC';
   return pool.query(queryStr, [userID]).then((queryRes) => queryRes.rows);
 };
 
@@ -93,5 +106,9 @@ module.exports.createBounty = (bounty) => {
   const queryCols = insertedCols.join(',');
   const queryValues = insertedValues.map((val, index) => `$${index + 1}`).join(',');
   const queryStr = `INSERT INTO bounty (${queryCols}) VALUES (${queryValues})`;
+<<<<<<< HEAD
   return pool.query(queryStr, insertedValues).then((queryRes) => queryRes.rows);
+=======
+  return pool.query(queryStr, insertedValues);
+>>>>>>> b1a3fca (fix sort bounty issue and refactor controller and model)
 };

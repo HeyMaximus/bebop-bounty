@@ -52,13 +52,13 @@ module.exports.updateUser = (userID, user) => {
   return pool.query(queryStr, [...updatedValues, userID]);
 };
 
-// module.exports.rateUser = (userID, rating) => {
-//   const querySegment = updatedCols.map((col, index) => `${col}=$${index + 1}`).join(',');
-//   const queryStr = `UPDATE bounty_user SET ${querySegment} WHERE id=$${updatedCols.length + 1}`;
-//   return pool
-//     .query(queryStr, [...updatedValues, userID])
-//     .then((queryRes) => queryRes.rows)
-//     .catch((err) => {
-//       console.error('Query failed: update user', err.message);
-//     });
-// };
+module.exports.rateUser = (userID, rating) => {
+  const ratingQuery = rating === 'good' ? 'rating_thumbs_up' : 'rating_thumbs_down';
+  const queryStr = `UPDATE bounty_user SET ${ratingQuery} = ${ratingQuery} + 1 WHERE id=$1`;
+  return pool
+    .query(queryStr, [userID])
+    .then((queryRes) => queryRes.rows)
+    .catch((err) => {
+      console.error('Query failed: rate user', err.message);
+    });
+};

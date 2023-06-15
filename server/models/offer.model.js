@@ -9,12 +9,7 @@ module.exports.getBountyOffers = (bountyID) => {
 module.exports.getUserOffers = (userID) => {
   const queryStr =
     'SELECT offer.*, bounty_user.username AS seller_name FROM offer JOIN bounty_user ON seller_id=bounty_user.id AND seller_id=$1';
-  return pool
-    .query(queryStr, [userID])
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: get user offers', err.message);
-    });
+  return pool.query(queryStr, [userID]).then((queryRes) => queryRes.rows);
 };
 
 module.exports.getOffer = (offerID) => {
