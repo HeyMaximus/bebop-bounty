@@ -3,7 +3,7 @@ import axios from 'axios';
 import Stack from 'react-bootstrap/Stack';
 import OfferHistoryEntry from './OfferHistoryEntry.jsx';
 
-function OfferHistoryList({ bountyID }) {
+function OfferHistoryList({ bountyID, bountyName }) {
   const [bountyOffers, setBountyOffers] = useState([]);
 
   const getOffers = () => {
