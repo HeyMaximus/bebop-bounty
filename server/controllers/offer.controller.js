@@ -18,11 +18,12 @@ module.exports.getOffers = async (req, res) => {
 
 module.exports.createOffer = async (req, res) => {
   const offer = req.body;
+  // console.log('IN CONTROLLER', offer);
   try {
     await offerModel.createOffer(offer);
     res.status(200).send('Offer created');
   } catch (err) {
-    console.error(err.message);
+    console.error('CONTROLLER ERROR', err.message);
     res.sendStatus(400);
   }
 };
