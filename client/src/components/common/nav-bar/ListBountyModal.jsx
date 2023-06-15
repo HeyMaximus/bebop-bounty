@@ -74,9 +74,10 @@ export default function ListBountyModal({ showListBountyModal }) {
             <StyledLBDropDowns>
               <select name="category" value={formValues.category} onChange={handleChange}>
                 <option>Category</option>
-                <option>Gadget</option>
                 <option>Clothing</option>
+                <option>Decor</option>
                 <option>Furniture</option>
+                <option>Gadget</option>
               </select>
               <select name="condition" value={formValues.condition} onChange={handleChange}>
                 <option>Condition</option>

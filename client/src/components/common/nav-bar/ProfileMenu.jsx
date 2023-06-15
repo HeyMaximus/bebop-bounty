@@ -49,8 +49,7 @@ export default function ProfileMenu({ toggleTheme }) {
         <StyledProfileMenuProperties>
           <button type="button">Profile</button>
           <button type="button">Notifications</button>
-
-          <button type="button">Your Bounties</button>
+          <button type="button" onClick={() => routeToMyBounties()}>Your Bounties</button>
           <button
             type="button"
             onClick={() => {
@@ -60,7 +59,6 @@ export default function ProfileMenu({ toggleTheme }) {
           >
             {darkModeIcon ? 'Light Mode 🌞' : 'Dark Mode 🌜'}
           </button>
-
           <button type="button" onClick={handleSignOut}>
             Sign Out
           </button>

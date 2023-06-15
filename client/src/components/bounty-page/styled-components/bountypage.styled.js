@@ -1,26 +1,17 @@
 import styled from 'styled-components';
 
-export const BountyPageBorder = styled.div`
-  border: solid 4px #3e4334;
-  margin: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  height: 90%;
-  width: 92%;
-  min-height: 900px;
-`;
-
-export const FilterBar = styled.div`
+export const StyledFilterBar = styled.div`
   border-bottom: solid 1px;
   margin: auto;
   margin-top: 30px;
   width: 93%;
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const FilterSelector = styled.select`
+export const StyledSelect = styled.select`
   font-family: 'Coromorant Garamond', serif;
   font-weight: lighter;
-  font-size: 20px;
   color: white;
   cursor: pointer;
   background: none;
@@ -32,5 +23,20 @@ export const FilterSelector = styled.select`
   }
   &:focus {
     outline: none;
+  }
+`;
+
+export const StyledLocation = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+export const StyledLocationInputs = styled.div`
+  > button {
+    color: white;
+    cursor: pointer;
+  }
+  > input {
+    border-bottom: none;
+    color: white;
   }
 `;

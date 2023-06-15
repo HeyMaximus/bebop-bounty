@@ -83,12 +83,12 @@ const fakeContext = [
   },
 ];
 
-export default function BountyBoard({ Context }) {
+export default function BountyBoard({ Context, allBounties }) {
   // const Context = useContext(GlobalContext);
 
   // const cards = <BountyCard Context={Context} />;
 
-  const Cards = fakeContext.map((bounty) => <StyledCardFlip key={bounty.id} Bounty={bounty} />);
+  const Cards = allBounties.map((bounty) => <StyledCardFlip key={bounty.id} Bounty={bounty} />);
 
   return (
     <>

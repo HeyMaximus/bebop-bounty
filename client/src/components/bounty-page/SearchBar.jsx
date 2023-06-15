@@ -10,8 +10,12 @@ import {
 function SearchBar() {
   const [searchEntry, setSearchEntry] = useState('');
 
+  console.log('searchentry', searchEntry)
   const handleSearch = (entry) => {
-    // axios.get('/api/bounties')
+    axios
+      .get('http://54.176.108.13:8080/api/bounties', { params: { searchQuery: entry } })
+      .then(({ data }) => console.log('SEARCHDATA: ', data))
+      .catch((err) => console.error('There was an error retreiving search data', err));
   };
 
   return (
