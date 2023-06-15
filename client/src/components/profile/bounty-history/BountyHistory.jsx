@@ -1,40 +1,31 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
-
-//boostrap layout styling
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
-import GlobalContext from '../../GlobalContext.jsx';
+import { GlobalContext } from '../../GlobalContext.jsx';
 import BountyCardFront from '../../bounty-page/BountyCard.jsx';
 import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
-
 import { StyledBountyBoardWrapper } from '../../bounty-page/StyledBountyBoard';
-import { BountyPageBorder, FilterBar, FilterSelector } from '../../bounty-page/styled-components/bountypage.styled';
+import { BountyPageBorder } from '../../bounty-page/styled-components/bountypage.styled';
 import NavBar from '../../common/nav-bar/NavBar.jsx';
 
 function BountyHistory() {
-  // const { userBounties } = useContext(GlobalContext);
-  const [userBounties, setUserBounties] = useState([]);
-  const [showOffers, setShowOffers] = useState(false);
-  const [bountyId, setBountyId] = useState('');
-  //grab userID from global context
-  //Off Canvas
+  const { userBounties, setUserBounties, userData } = useContext(GlobalContext);
+  const [bountyID, setBountyID] = useState('');
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
-  const handleShow = (e) => {
-    setBountyId(1) //retrieve id from event and update state with it
+  const handleShow = (ID) => {
+    setBountyID(ID);
     setShow(true);
   };
 
   const getUserBounties = () => {
-    axios.get(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.SERVER_PORT}/api/bounties`, { params: { userID: 1 } })
+    axios
+      .get(`/api/bounties`, { params: { userID: userData.id } })
       .then((r) => setUserBounties(r.data))
       .catch((e) => console.log(e));
   };
@@ -62,7 +53,7 @@ function BountyHistory() {
               <Col lg="9">
                 <h2>Your Open Bounties</h2>
                 {userBounties.map((entry) => (
-                  <span key={entry.id} onClick={(e) => handleShow(e)}>
+                  <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
                     <BountyCardFront Bounty={entry} />
                   </span>
                 ))}
@@ -78,7 +69,7 @@ function BountyHistory() {
               <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <OfferHistoryList bountyId={bountyId} />
+              <OfferHistoryList bountyID={bountyID} />
             </Offcanvas.Body>
           </Offcanvas>
         </StyledBountyBoardWrapper>

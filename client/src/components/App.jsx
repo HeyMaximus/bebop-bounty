@@ -7,11 +7,9 @@ import { lightTheme, darkTheme, GlobalStyles } from '../theme';
 import { GlobalContextProvider } from './GlobalContext.jsx';
 import SignUp from './signup/SignUp.jsx';
 import Landing from './landing/Landing.jsx';
-import Profile from './profile/Profile.jsx';
 import Login from './login/Login.jsx';
 import BountyHistory from './profile/bounty-history/BountyHistory.jsx';
 import BountyPage from './bounty-page/BountyPage.jsx';
-import OfferHistoryList from './profile/offer-history/OfferHistoryList.jsx';
 import UserProfile from './user-profile/UserProfile.jsx';
 import Footer from './common/footer/Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,10 +30,8 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="bounty-page" element={<BountyPage toggleTheme={toggleTheme} />} />
-            <Route path="profile" element={<Profile />} />
             <Route path="profile/bounty-history" element={<BountyHistory />} />
             <Route path="user-profile" element={<UserProfile />} />
-            <Route path="profile/offer-history" element={<OfferHistoryList />} />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
           <Footer />
