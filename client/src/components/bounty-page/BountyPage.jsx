@@ -5,6 +5,7 @@ import {
   StyledSelect,
   StyledLocation,
   StyledLocationInputs,
+  StyledSeeMore,
 } from './styled-components/bountypage.styled';
 import { StyledBountyPageBorder } from '../../theme';
 import NavBar from '../common/nav-bar/NavBar.jsx';
@@ -29,12 +30,12 @@ export default function BountyPage({ toggleTheme }) {
       .get('http://54.176.108.13:8080/api/bounties')
       .then(({ data }) => setAllBounties(data))
       .catch((err) => console.error('There was a problem GETTING all bounties: ', err));
-  }
+  };
 
   const submitCity = () => {
     if (city.length >= 2) {
       axios
-        .get('http://54.176.108.13:8080/api/bounties', { params: { city: city }})
+        .get('http://54.176.108.13:8080/api/bounties', { params: { city: city } })
         .then(({ data }) => {
           setAllBounties(data);
           setCity('');
@@ -45,7 +46,7 @@ export default function BountyPage({ toggleTheme }) {
   const submitState = () => {
     if (state.length >= 2) {
       axios
-        .get('http://54.176.108.13:8080/api/bounties', { params: { state: state }})
+        .get('http://54.176.108.13:8080/api/bounties', { params: { state: state } })
         .then(({ data }) => {
           setAllBounties(data);
           setState('');
@@ -59,12 +60,12 @@ export default function BountyPage({ toggleTheme }) {
   }, []);
 
   useEffect(() => {
-    console.log('categorrrry state', category)
+    console.log('categorrrry state', category);
     if (category) {
       axios
         .get('http://54.176.108.13:8080/api/bounties', { params: { category: category } })
         .then(({ data }) => {
-          console.log('category data', data)
+          console.log('category data', data);
           setAllBounties(data);
           setCategory('');
         })
@@ -81,6 +82,8 @@ export default function BountyPage({ toggleTheme }) {
       })
       .catch((err) => console.error('There was a problem retreiving sort data', err));
   }, [sortBy]);
+
+  const seeMore = () => {};
 
   console.log('allBounties: ', allBounties);
   return (
@@ -122,6 +125,7 @@ export default function BountyPage({ toggleTheme }) {
         </StyledLocation>
       </StyledFilterBar>
       <BountyBoard allBounties={allBounties} />
+      <StyledSeeMore onClick={seeMore}>See More...</StyledSeeMore>
     </StyledBountyPageBorder>
   );
 }
