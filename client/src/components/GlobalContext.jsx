@@ -3,7 +3,7 @@ import React, { useState, createContext, useMemo } from 'react';
 export const GlobalContext = createContext();
 
 export function GlobalContextProvider({ children }) {
-  const [userData, setUserData] = useState({ id: 1 });
+  const [userData, setUserData] = useState({});
   const [userBounties, setUserBounties] = useState([]);
   const [userTransactions, setUserTransactions] = useState([]);
 
