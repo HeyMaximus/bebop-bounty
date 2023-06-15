@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 //boostrap layout styling
-import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,12 +16,8 @@ import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
 
 import { StyledBountyBoardWrapper } from '../../bounty-page/StyledBountyBoard';
-
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
+import { BountyPageBorder, FilterBar, FilterSelector } from '../../bounty-page/styled-components/bountypage.styled';
+import NavBar from '../../common/nav-bar/NavBar.jsx';
 
 //mock data
 const fakeContext = [
@@ -92,11 +88,107 @@ const fakeContext = [
     image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
     created_at: '2023-01-04 00:00:00',
   },
+  {
+    id: 4,
+    buyer_id: 4,
+    name: 'iPhone 12',
+    description: 'Smartphone',
+    condition: 'like new',
+    category: 'gadget',
+    city: 'Earth',
+    state: 'Saturn',
+    completed: false,
+    price: 800,
+    deadline: '2023-06-22 0:00:00',
+    preferred_payment: 'paypal',
+    image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
+    created_at: '2023-01-04 00:00:00',
+  },
+  {
+    id: 4,
+    buyer_id: 4,
+    name: 'iPhone 12',
+    description: 'Smartphone',
+    condition: 'like new',
+    category: 'gadget',
+    city: 'Earth',
+    state: 'Saturn',
+    completed: false,
+    price: 800,
+    deadline: '2023-06-22 0:00:00',
+    preferred_payment: 'paypal',
+    image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
+    created_at: '2023-01-04 00:00:00',
+  },
+  {
+    id: 4,
+    buyer_id: 4,
+    name: 'iPhone 12',
+    description: 'Smartphone',
+    condition: 'like new',
+    category: 'gadget',
+    city: 'Earth',
+    state: 'Saturn',
+    completed: false,
+    price: 800,
+    deadline: '2023-06-22 0:00:00',
+    preferred_payment: 'paypal',
+    image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
+    created_at: '2023-01-04 00:00:00',
+  },
+  {
+    id: 4,
+    buyer_id: 4,
+    name: 'iPhone 12',
+    description: 'Smartphone',
+    condition: 'like new',
+    category: 'gadget',
+    city: 'Earth',
+    state: 'Saturn',
+    completed: false,
+    price: 800,
+    deadline: '2023-06-22 0:00:00',
+    preferred_payment: 'paypal',
+    image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
+    created_at: '2023-01-04 00:00:00',
+  },
+  {
+    id: 4,
+    buyer_id: 4,
+    name: 'iPhone 12',
+    description: 'Smartphone',
+    condition: 'like new',
+    category: 'gadget',
+    city: 'Earth',
+    state: 'Saturn',
+    completed: false,
+    price: 800,
+    deadline: '2023-06-22 0:00:00',
+    preferred_payment: 'paypal',
+    image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
+    created_at: '2023-01-04 00:00:00',
+  },
+  {
+    id: 4,
+    buyer_id: 4,
+    name: 'iPhone 12',
+    description: 'Smartphone',
+    condition: 'like new',
+    category: 'gadget',
+    city: 'Earth',
+    state: 'Saturn',
+    completed: false,
+    price: 800,
+    deadline: '2023-06-22 0:00:00',
+    preferred_payment: 'paypal',
+    image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
+    created_at: '2023-01-04 00:00:00',
+  },
 ];
-
 
 function BountyHistory() {
   // const { userBounties } = useContext(GlobalContext);
+  const [userBounties, setUserBounties] = useState([]);
   const [showOffers, setShowOffers] = useState(false);
   const [bountyId, setBountyId] = useState('');
   //grab userID from global context
@@ -104,39 +196,58 @@ function BountyHistory() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (e) => {
-    console.log('triggered')
     setBountyId(1) //retrieve id from event and update state with it
     setShow(true);
   };
 
+  const getUserBounties = () => {
+    axios.get(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.SERVER_PORT}/api/bounties`, { params: { userID: 1 } })
+      .then((r) => setUserBounties(r.data))
+      .catch((e) => console.log(e));
+  };
+
+  useEffect(() => {
+    getUserBounties();
+  }, []);
+
   return (
     <div>
-      <StyledBountyBoardWrapper>
-        <Container fluid="lg">
-          <Row>
-            <Col sm={10}>
-              <div>Your Open Bounties</div>
-              <div><Stack direction="horizontal" gap={1}>
-                {fakeContext.map((bounty) => (
-                  <div onClick={(e) => handleShow(e)}><BountyCardFront id={bounty.id} Context={bounty} /></div>
+      <style type="text/css">
+        {`
+    .offcanvas {
+      background-color: rgba(0, 0, 0, .25);
+      backdrop-filter: blur(10px);
+      color: white;
+    }
+    `}
+      </style>
+      <BountyPageBorder>
+        <NavBar />
+        <StyledBountyBoardWrapper>
+          <Container fluid>
+            <Row>
+              <Col lg="9">
+                <h2>Your Open Bounties</h2>
+                {userBounties.map((bounty) => (
+                  <span onClick={(e) => handleShow(e)}><BountyCardFront id={bounty.id} Context={bounty} /></span>
                 ))}
-              </Stack></div>
-            </Col>
-            <Col sm={2}>
-              <div>Bounty Transaction History</div>
-              <TransactionHistoryList />
-            </Col>
-          </Row>
-        </Container>
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <OfferHistoryList bountyId={bountyId} />
-          </Offcanvas.Body>
-        </Offcanvas>
-      </StyledBountyBoardWrapper>
+              </Col>
+              <Col lg="3">
+                <h2>Transaction History</h2>
+                <TransactionHistoryList />
+              </Col>
+            </Row>
+          </Container>
+          <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas.Header>
+              <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <OfferHistoryList bountyId={bountyId} />
+            </Offcanvas.Body>
+          </Offcanvas>
+        </StyledBountyBoardWrapper>
+      </BountyPageBorder>
     </div>
   );
 }

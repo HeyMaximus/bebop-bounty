@@ -7,24 +7,14 @@ import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import TransactionHistoryEntry from './TransactionHistoryEntry.jsx';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
 
 function TransactionHistoryList() {
   const [userTransactions, setUserTransactions] = useState([]);
-
-//mock data
-  const mockUserTransaction = [
-    { seller_id: 123, sale_amount: 12.12, item: 'Berkin Bag', transaction_date: '01/01/23' },
-    { seller_id: 123, sale_amount: 12.12, item: 'Berkin Shoe', transaction_date: '01/02/23' },
-    { seller_id: 1, sale_amount: 12.12, item: 'Berkin Belt', transaction_date: '01/01/23' },
-  ];
+  const [slice, setSlice] = useState(15);
   const userId = 1;
 
   const getUserTransactions = () => {
@@ -40,11 +30,13 @@ useEffect(()=> {
 }, [])
 
   return (
-    <Host>
-      <Stack gap={3}>
-        {userTransactions.map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
+<div>
+      <Stack gap={1}>
+        {userTransactions.slice(0, slice).map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
       </Stack>
-    </Host>
+      {slice < userTransactions.length ? <Button variant="link" size="sm" onClick={() => setSlice(slice+10)}>Show More</Button> : null}
+      </div>
+
   );
 }
 
