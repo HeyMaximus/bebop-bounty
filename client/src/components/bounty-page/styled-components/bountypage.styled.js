@@ -40,3 +40,9 @@ export const StyledLocationInputs = styled.div`
     color: white;
   }
 `;
+
+export const StyledSeeMore = styled.div`
+  text-align: center;
+  margin-top: 50px;
+  cursor: pointer;
+`;

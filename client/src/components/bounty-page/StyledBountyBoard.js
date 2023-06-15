@@ -23,6 +23,7 @@ export const StyledCardFlip = styled(CardFlip)`
   border: solid;
   background-color: yellow;
   z-index: 2;
+  cursor: pointer;
 `;
 
 export const StyledBountyCard = styled.div`
@@ -34,6 +35,7 @@ export const StyledBountyCard = styled.div`
   height: 275px;
   /* padding: 10px; */
   margin-bottom: 12px;
+  cursor: pointer;
   /* background-color: #e7e5d5; */
 `;
 
