@@ -27,11 +27,14 @@ export const StyledCardFlip = styled(CardFlip)`
 
 export const StyledBountyCard = styled.div`
   display: inline-block;
-  box-shadow: 0 0 3px black;
+  /* box-shadow: 0 0 3px black; */
+  border: 1px solid rgb(62, 67, 52);
+  box-shadow: 5px 5px 5px rgb(62, 67, 52);
   width: 225px;
   height: 275px;
   /* padding: 10px; */
   margin-bottom: 12px;
+  /* background-color: #e7e5d5; */
 `;
 
 export const StyledBountyCardBack = styled(StyledBountyCard)`
@@ -52,7 +55,7 @@ export const OfferLayout = styled.div`
 
 export const StyledImageContainer = styled.div`
   position: relative;
-  height: 50%;
+  height: 65%;
   width: 100%;
   /* margin-bottom: 20px; */
   /* border: solid; */
@@ -66,24 +69,33 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledPrice = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  right: 0; */
+  height: 80%;
   text-align: center;
   font-size: x-large;
   color: black;
   /* border: solid; */
 `;
 
+export const StyledTitleAndName = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const StyledWanted = styled.div`
   position: absolute;
+  background-color: grey;
+  opacity: 0.75;
   color: black;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   text-align: center;
   font-size: x-large;
+  z-index: 2;
   /* border: solid; */
 `;
 
@@ -92,10 +104,11 @@ export const StyledMidcardContainer = styled.div`
   /* padding-top: 2%; */
   padding: 3%;
   width: 100%;
-  height: 35%;
+  height: 15%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* align-items: center; */
   /* height: fit-content; */
 `;
 export const StyledBottomCardContainer = styled.div`

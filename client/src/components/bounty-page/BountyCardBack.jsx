@@ -2,6 +2,8 @@ import React from 'react';
 import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 
+import Button from 'react-bootstrap/Button';
+
 import {
   StyledBountyCardBack,
   StyledTitle,
@@ -25,15 +27,19 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
   if (deadline.charAt(0) === '0') {
     deadline = deadline.slice(1);
   }
+
   return (
     <StyledBountyCardBack onClick={flipCard}>
       <StyledTitle>{name}</StyledTitle>
       <StyledCategory>Category: {category}</StyledCategory>
       <StyledDeadline>Deadline: {deadline}</StyledDeadline>
       <StyledDescription>Description: {description}</StyledDescription>
-      <StyledPreferredPayment>Preferred Payment Option:{preferred_payment}</StyledPreferredPayment>
+      <StyledPreferredPayment>Preferred Payment:{preferred_payment}</StyledPreferredPayment>
       <OfferLayout>
-        <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton>
+        <Button onClick={showOfferModal} variant="success" size="sm">
+          Make An Offer!
+        </Button>
+        {/* <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton> */}
       </OfferLayout>
       <OfferLayout>
         {/* <StyledRatingBox>
