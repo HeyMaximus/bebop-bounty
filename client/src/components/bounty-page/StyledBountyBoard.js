@@ -31,7 +31,7 @@ export const StyledBountyCard = styled.div`
   width: 225px;
   height: 275px;
   /* padding: 10px; */
-  margin: 10px;
+  margin-bottom: 12px;
 `;
 
 export const StyledBountyCardBack = styled(StyledBountyCard)`
