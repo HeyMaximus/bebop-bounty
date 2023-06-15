@@ -39,12 +39,12 @@ const EmptyCoin = styled.img`
   width: 30px;
 `;
 
-const user = {
-  rating_thumbs_up: 35,
-  rating_thumbs_down: 15,
-};
+// const user = {
+//   rating_thumbs_up: 35,
+//   rating_thumbs_down: 15,
+// };
 
-function CoinRating() {
+function CoinRating({ user }) {
   const rating = `${Math.round(
     (user.rating_thumbs_up / (user.rating_thumbs_up + user.rating_thumbs_down)) * 100
   ).toFixed(2)}%`;
