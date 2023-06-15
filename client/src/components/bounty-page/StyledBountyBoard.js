@@ -38,6 +38,7 @@ export const StyledBountyCardBack = styled(StyledBountyCard)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 3%;
 `;
 
 export const FlipToFront = styled.div``;

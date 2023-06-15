@@ -20,8 +20,13 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
   const { name, category, description, preferred_payment } = Bounty;
   let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
+  deadline = deadline.substring(5, 10);
+  deadline = deadline.replaceAll('-', '/');
+  if (deadline.charAt(0) === '0') {
+    deadline = deadline.slice(1);
+  }
   return (
-    <StyledBountyCardBack>
+    <StyledBountyCardBack onClick={flipCard}>
       <StyledTitle>{name}</StyledTitle>
       <StyledCategory>Category: {category}</StyledCategory>
       <StyledDeadline>Deadline: {deadline}</StyledDeadline>
@@ -29,14 +34,14 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
       <StyledPreferredPayment>Preferred Payment Option:{preferred_payment}</StyledPreferredPayment>
       <OfferLayout>
         <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton>
-        <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
       </OfferLayout>
       <OfferLayout>
         {/* <StyledRatingBox>
           <CoinRating />
         </StyledRatingBox> */}
         <StyledRatingBox>Coin Rating</StyledRatingBox>
-        <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront>
+        <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
+        {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
       </OfferLayout>
     </StyledBountyCardBack>
   );
