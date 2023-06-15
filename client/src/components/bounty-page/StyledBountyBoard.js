@@ -30,7 +30,7 @@ export const StyledBountyCard = styled.div`
   box-shadow: 0 0 3px black;
   width: 225px;
   height: 275px;
-  padding: 10px;
+  /* padding: 10px; */
   margin: 10px;
 `;
 
@@ -88,7 +88,8 @@ export const StyledWanted = styled.div`
 
 export const StyledMidcardContainer = styled.div`
   /* border: solid; */
-  padding-top: 2%;
+  /* padding-top: 2%; */
+  padding: 3%;
   width: 100%;
   height: 35%;
   display: flex;
@@ -98,6 +99,7 @@ export const StyledMidcardContainer = styled.div`
 `;
 export const StyledBottomCardContainer = styled.div`
   /* border: solid; */
+  padding: 3%;
   width: 100%;
   height: 15%;
   display: flex;
