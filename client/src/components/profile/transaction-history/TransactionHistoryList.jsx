@@ -32,7 +32,7 @@ useEffect(()=> {
   return (
 <div>
       <Stack gap={1}>
-        {userTransactions.slice(0, slice).map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
+        {userTransactions.slice(0, slice).map((entry) => <TransactionHistoryEntry key={entry.id} userId={userId} entry={entry} />)}
       </Stack>
       {slice < userTransactions.length ? <Button variant="link" size="sm" onClick={() => setSlice(slice+10)}>Show More</Button> : null}
       </div>

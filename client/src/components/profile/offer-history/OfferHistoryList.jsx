@@ -25,7 +25,7 @@ function OfferHistoryList({ bountyId }) {
       <h2>Total Offers: {bountyOffers.length}</h2>
       <Stack gap={3}>
         {bountyOffers.map((offer) => (
-          <OfferHistoryEntry offer={offer} getOffers={getOffers} />
+          <OfferHistoryEntry key={offer.id} offer={offer} getOffers={getOffers} />
         ))}
       </Stack>
     </div>

@@ -61,8 +61,10 @@ function BountyHistory() {
             <Row>
               <Col lg="9">
                 <h2>Your Open Bounties</h2>
-                {userBounties.map((bounty) => (
-                  <span onClick={(e) => handleShow(e)}><BountyCardFront id={bounty.id} Context={bounty} /></span>
+                {userBounties.map((entry) => (
+                  <span key={entry.id} onClick={(e) => handleShow(e)}>
+                    <BountyCardFront Bounty={entry} />
+                  </span>
                 ))}
               </Col>
               <Col lg="3">
