@@ -51,3 +51,14 @@ module.exports.updateUser = (userID, user) => {
   const queryStr = `UPDATE bounty_user SET ${querySegment} WHERE id=$${updatedCols.length + 1}`;
   return pool.query(queryStr, [...updatedValues, userID]);
 };
+
+// module.exports.rateUser = (userID, rating) => {
+//   const querySegment = updatedCols.map((col, index) => `${col}=$${index + 1}`).join(',');
+//   const queryStr = `UPDATE bounty_user SET ${querySegment} WHERE id=$${updatedCols.length + 1}`;
+//   return pool
+//     .query(queryStr, [...updatedValues, userID])
+//     .then((queryRes) => queryRes.rows)
+//     .catch((err) => {
+//       console.error('Query failed: update user', err.message);
+//     });
+// };

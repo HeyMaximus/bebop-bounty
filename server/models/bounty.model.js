@@ -34,7 +34,7 @@ module.exports.getAllBounties = (params) => {
   }
   const conditionSegment = ['TRUE', ...conditions].join(' AND ');
 
-  const queryStr = `SELECT * FROM bounty WHERE ${conditionSegment} ORDER BY ${sortBy} ${sortDir} LIMIT ${count} OFFSET ((${
+  const queryStr = `SELECT bounty.*, COALESCE((SELECT count(id) FROM offer GROUP BY bounty_id HAVING bounty_id=bounty.id), 0) AS offer_count FROM bounty WHERE ${conditionSegment} ORDER BY ${sortBy} ${sortDir} LIMIT ${count} OFFSET ((${
     page - 1
   }) * ${count})`;
   return pool.query(queryStr, [...filterValues]).then((queryRes) => queryRes.rows);

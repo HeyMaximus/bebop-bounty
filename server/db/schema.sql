@@ -15,8 +15,8 @@ CREATE TABLE bounty_user (
   email VARCHAR(50) NOT NULL UNIQUE,
   profile_image TEXT,
   last_edited TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  rating_thumbs_up INT,
-  rating_thumbs_down INT
+  rating_thumbs_up INT DEFAULT 0,
+  rating_thumbs_down INT DEFAULT 0
 );
 
 CREATE TABLE bounty (

@@ -3,12 +3,12 @@ const nodemailer = require('nodemailer');
 const userModel = require('../models/user.model');
 
 module.exports.createUser = (req, res) => {
-  userModel.createUser(req.body, (err, result) => {
+  userModel.createUser(req.body, (err) => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
     } else {
-      res.status(201).send(result.rows);
+      res.status(201).send('User created');
     }
   });
 };

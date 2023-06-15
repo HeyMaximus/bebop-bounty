@@ -1,4 +1,5 @@
 const { pool } = require('../db');
+const userModel = require('./user.model');
 
 module.exports.getTransactions = (userID) => {
   const queryStr =
