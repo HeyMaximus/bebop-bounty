@@ -1,7 +1,8 @@
 const { pool } = require('../db');
 
 module.exports.getBountyOffers = (bountyID) => {
-  const queryStr = 'SELECT * FROM offer WHERE bounty_id=$1 ORDER BY offer_amount ASC';
+  const queryStr =
+    'SELECT offer.*, bounty_user.username AS seller_name FROM offer JOIN bounty_user ON seller_id=bounty_user.id AND bounty_id=$1 ORDER BY offer_amount ASC';
   return pool
     .query(queryStr, [bountyID])
     .then((queryRes) => queryRes.rows)
