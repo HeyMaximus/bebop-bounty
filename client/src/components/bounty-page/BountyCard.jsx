@@ -19,7 +19,14 @@ import {
 } from './StyledBountyBoard.js';
 
 export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
-  const { id, buyer_id, name, price, deadline, image } = Bounty;
+  const { id, buyer_id, name, price, image } = Bounty;
+
+  let { deadline } = Bounty;
+  deadline = deadline.substring(5, 10);
+  deadline = deadline.replaceAll('-', '/');
+  if (deadline.charAt(0) === '0') {
+    deadline = deadline.slice(1);
+  }
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
       <StyledImageContainer>
