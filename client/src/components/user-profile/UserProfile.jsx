@@ -1,7 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
+/* eslint-disable camelcase */
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Reviews from './Reviews.jsx';
-import TransactionHistory from './TransactionHistory.jsx';
+import { useParams } from 'react-router-dom';
+import UserProfileDetails from './UserProfileDetails.jsx';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 import NavBar from '../common/nav-bar/NavBar.jsx';
 import {
@@ -12,27 +13,30 @@ import {
   UserDetails,
   Rating,
   RightContainer,
-  ReviewContainer,
-  TransactionContainer,
 } from './ProfileStyles';
 
-const userID = 1;
-
 function UserProfile() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState(null);
+  const [user, setUser] = useState(null);
+  const userId = Number(useParams().buyer_id);
 
   useEffect(() => {
     axios
-      .get('/api/transactions', {
+      .get('http://54.176.108.13:8080/api/transactions', {
         params: {
-          userID: 1,
+          userID: userId,
         },
       })
-      .then((result) => {
-        console.log('transactions: ', transactions);
-        setTransactions(result.data);
+      .then((response) => {
+        setTransactions(response.data);
       })
       .catch((err) => console.error('Error getting transactions', err));
+    axios
+      .get(`http://54.176.108.13:8080/api/users/${userId}?auth=false`)
+      .then((response) => {
+        setUser(response.data[0]);
+      })
+      .catch((err) => console.log('Err in sendUserDataToServer: ', err));
   }, []);
 
   return (
@@ -41,26 +45,16 @@ function UserProfile() {
       <UserProfileContainer>
         <UserInfoContainer>
           <UserDetails>
-            <h2>Spike123</h2>
-            <p>SpiegMaster@yahoo.com</p>
+            {user && <h2>{user.username}</h2>}
+            {user && <p>{user.email}</p>}
           </UserDetails>
-          <ProfileImage
-            src="https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/774a5e05e3cd3c64e61d6f7e6e5a7e6a.png"
-            alt="Profile"
-          />
-          <Rating>
-            Rating: <CoinRating />
-          </Rating>
+          {user && <ProfileImage src={user.profile_image} alt="profile-image" />}
+          <Rating>Rating: {user && <CoinRating user={user} />}</Rating>
         </UserInfoContainer>
         <RightContainer>
-          <ReviewContainer>
-            <h2>Reviews:</h2>
-            <Reviews />
-          </ReviewContainer>
-          <TransactionContainer>
-            <h2>Transaction History:</h2>
-            <TransactionHistory transactions={transactions} />
-          </TransactionContainer>
+          {transactions && user && (
+            <UserProfileDetails userId={userId} transactions={transactions} />
+          )}
         </RightContainer>
       </UserProfileContainer>
     </Host>

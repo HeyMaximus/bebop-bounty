@@ -14,29 +14,30 @@ export const UserProfileContainer = styled.div`
   width: 93%;
   height: 80vh;
   margin: 10px auto;
+  min-height: 400px;
+  min-width: 900px;
 `;
 
 export const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-right: 30px;
+`;
+
+export const UserDetails = styled.div`
+  h2 {
+    font-size: 1.7em;
+  }
+  p {
+    font-size: 1em;
+  }
 `;
 
 export const ProfileImage = styled.img`
   width: 400px;
   height: 400px;
   object-fit: cover;
-  padding-right: 40px;
-`;
-
-export const UserDetails = styled.div`
-  h2 {
-    font-size: 1.5em;
-  }
-
-  p {
-    font-size: 1em;
-  }
 `;
 
 export const Rating = styled.div`
@@ -52,26 +53,4 @@ export const RightContainer = styled.div`
   width: 100%;
   padding: 10px;
   gap: 30px;
-`;
-
-export const ReviewContainer = styled.div`
-  flex: 1 1 0%;
-  overflow: auto;
-  width: 100%;
-  padding: 20px;
-  border: 1px solid white;
-  h2 {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-`;
-
-export const TransactionContainer = styled.div`
-  flex: 1 1 0%;
-  overflow: auto;
-  width: 100%;
-  padding: 20px;
-  border: 1px solid white;
-  h2 {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
 `;
