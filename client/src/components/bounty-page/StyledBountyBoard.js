@@ -79,6 +79,7 @@ export const StyledPrice = styled.div`
   text-align: center;
   font-size: x-large;
   color: black;
+  margin-bottom: 4%;
   /* border: solid; */
 `;
 
@@ -110,6 +111,7 @@ export const StyledMidcardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 4%;
   /* align-items: center; */
   /* height: fit-content; */
 `;
