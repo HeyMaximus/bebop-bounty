@@ -6,11 +6,12 @@ import {
   StyledProfileMenuHeader,
   StyledUpArrow,
   StyledProfileMenuProperties,
+  StyledClearCurtain,
 } from './navbar.styled';
 import { firebaseApp } from '../../../firebase';
 import { GlobalContext } from '../../GlobalContext.jsx';
 
-export default function ProfileMenu({ toggleTheme }) {
+export default function ProfileMenu({ toggleTheme, showProfileMenu }) {
   const exampleImgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function ProfileMenu({ toggleTheme }) {
 
   return (
     <>
+      <StyledClearCurtain onClick={showProfileMenu} />
       <StyledUpArrow />
       <StyledProfileMenuContainer>
         <StyledProfileMenuHeader>
@@ -60,7 +62,6 @@ export default function ProfileMenu({ toggleTheme }) {
           >
             {darkModeIcon ? 'Light Mode 🌞' : 'Dark Mode 🌜'}
           </button>
-n
           <button type="button" onClick={handleSignOut}>
             Sign Out
           </button>
