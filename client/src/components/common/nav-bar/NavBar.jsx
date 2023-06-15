@@ -22,7 +22,7 @@ export default function NavBar({ toggleTheme }) {
       <StyledProfilePic onClick={() => showProfileMenu()}>
         <img src={exampleImgURL} alt="profile pic" />
       </StyledProfilePic>
-      {profileMenu && <ProfileMenu toggleTheme={toggleTheme} />}
+      {profileMenu && <ProfileMenu showProfileMenu={showProfileMenu} toggleTheme={toggleTheme} />}
     </StyledNavBar>
   );
 }

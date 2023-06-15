@@ -16,6 +16,7 @@ import {
   StyledCurrentOffers,
   StyledDeadline,
   StyledBottomCardContainer,
+  StyledTitleAndName,
 } from './StyledBountyBoard.js';
 
 export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
@@ -30,16 +31,15 @@ export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOffer
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
       <StyledImageContainer>
-        <StyledImage src={image} />
-        <StyledPrice>${price}</StyledPrice>
         <StyledWanted>WANTED</StyledWanted>
+        <StyledImage src={image} />
       </StyledImageContainer>
       <StyledMidcardContainer>
-        <div>
+        <StyledPrice>${price}</StyledPrice>
+        <StyledTitleAndName>
           <StyledTitle>{name}</StyledTitle>
           <StyledBuyerName>BuyerName</StyledBuyerName>
-        </div>
-        <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton>
+        </StyledTitleAndName>
       </StyledMidcardContainer>
       <StyledBottomCardContainer>
         <StyledCurrentOffers>Current Offers: ###</StyledCurrentOffers>

@@ -15,13 +15,15 @@ import {
 
 export default function ListBountyModal({ showListBountyModal }) {
   const [initialValues, setInitialValues] = useState({
+    buyer_id: 1,
     name: '',
-    price: '',
     description: '',
     condition: '',
     category: '',
     city: '',
     state: '',
+    completed: false,
+    price: '',
     deadline: '',
     preferred_payment: '',
     image: '',
@@ -49,6 +51,18 @@ export default function ListBountyModal({ showListBountyModal }) {
           setFormValues({ ...formValues, image: data.secure_url });
         })
         .catch((err) => console.error(err));
+    }
+  };
+
+  const submitBounty = async () => {
+    showListBountyModal();
+
+    console.log('Form Values', formValues);
+    try {
+      const response = await axios.post('api/bounties', formValues);
+      console.log('Bounty submitted successfully:', response.data);
+    } catch (error) {
+      console.error('Error submitting offer:', error);
     }
   };
 
@@ -145,11 +159,7 @@ export default function ListBountyModal({ showListBountyModal }) {
             </div>
           </StyledListBountyContent>
         </StyledListBountyContentContainer>
-        <StyledSubmitListBounty
-          className="list-bounty-btn"
-          onClick={showListBountyModal}
-          type="button"
-        >
+        <StyledSubmitListBounty className="list-bounty-btn" onClick={submitBounty} type="button">
           List Bounty
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}
