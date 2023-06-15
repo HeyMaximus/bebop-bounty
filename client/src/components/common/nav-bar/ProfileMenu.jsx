@@ -51,8 +51,7 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu }) {
         <StyledProfileMenuProperties>
           <button type="button">Profile</button>
           <button type="button">Notifications</button>
-
-          <button type="button">Your Bounties</button>
+          <button type="button" onClick={() => routeToMyBounties()}>Your Bounties</button>
           <button
             type="button"
             onClick={() => {

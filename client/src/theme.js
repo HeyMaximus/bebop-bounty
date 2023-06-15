@@ -59,9 +59,10 @@ export const StyledNavLogo = styled.div`
   justify-content: center;
   white-space: pre-wrap;
   padding-bottom: 10px;
+  cursor: pointer;
 `;
 
-export const BountyPageBorder = styled.div`
+export const StyledBountyPageBorder = styled.div`
   border: solid 4px ${({ theme }) => theme.border};
   margin: auto;
   margin-top: 30px;

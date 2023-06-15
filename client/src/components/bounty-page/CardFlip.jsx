@@ -16,7 +16,7 @@ export default function CardFlip({ Bounty }) {
   const [offerModal, setOfferModal] = useState(false);
 
   const showOfferModal = () => {
-    console.log(offerModal);
+    // console.log(offerModal);
 
     setOfferModal(!offerModal);
   };
