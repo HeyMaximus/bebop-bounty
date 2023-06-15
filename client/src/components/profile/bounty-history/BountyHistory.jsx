@@ -69,7 +69,7 @@ function BountyHistory() {
               <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <OfferHistoryList bountyID={bountyID} />
+              <OfferHistoryList bountyID={bountyID}/>
             </Offcanvas.Body>
           </Offcanvas>
         </StyledBountyBoardWrapper>

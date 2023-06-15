@@ -11,7 +11,7 @@ function TransactionHistoryEntry({ userID, entry }) {
   return (
     <TransEntry>
       {entry.seller_id === userID ? 'Earned' : 'Paid'} {entry.sale_amount} for{' '}
-      {entry.item || 'pizza'} on {date}
+      {entry.bounty_name || 'a bounty'} on {date}
     </TransEntry>
   );
 }

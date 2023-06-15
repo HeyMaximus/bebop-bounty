@@ -15,7 +15,7 @@ function OfferHistoryEntry({ offer, getOffers }) {
       <Button onClick={handleBuyClick} variant="success" size="sm">
         Buy
       </Button>{' '}
-      {'  '}| Seller: {offer.seller} | Condition: {offer.condition} | ${offer.offer_amount}
+      {'  '}{offer.condition} condition from {offer.seller_name} for ${offer.offer_amount}
     </div>
   );
 }
