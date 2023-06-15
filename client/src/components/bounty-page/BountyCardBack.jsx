@@ -16,9 +16,9 @@ import {
   OfferLayout,
 } from './StyledBountyBoard';
 
-export default function BountyCardBack({ Context, flipCard, showOfferModal }) {
-  const { name, category, description, preferred_payment } = Context;
-  let { deadline } = Context;
+export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
+  const { name, category, description, preferred_payment } = Bounty;
+  let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
   return (
     <StyledBountyCardBack>
