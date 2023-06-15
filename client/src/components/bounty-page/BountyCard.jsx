@@ -17,29 +17,37 @@ import {
   StyledCurrentOffers,
   StyledDeadline,
   StyledBottomCardContainer,
-} from './StyledBountyBoard';
+  StyledTitleAndName,
+} from './StyledBountyBoard.js';
 
-export default function BountyCardFront({ Context, flipCard, isFlipped }) {
-  const { id, buyer_id, name, price, deadline, image } = Context;
+export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
+  const { id, buyer_id, name, price, image } = Bounty;
+
   const navigate = useNavigate();
   const handleBuyerNameClick = (e) => {
     e.preventDefault();
     navigate(`/user-profile/${buyer_id}`);
   };
 
+  let { deadline } = Bounty;
+  deadline = deadline.substring(5, 10);
+  deadline = deadline.replaceAll('-', '/');
+  if (deadline.charAt(0) === '0') {
+    deadline = deadline.slice(1);
+  }
+
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
       <StyledImageContainer>
-        <StyledImage src={image} />
-        <StyledPrice>${price}</StyledPrice>
         <StyledWanted>WANTED</StyledWanted>
+        <StyledImage src={image} />
       </StyledImageContainer>
       <StyledMidcardContainer>
-        <div>
+        <StyledPrice>${price}</StyledPrice>
+        <StyledTitleAndName>
           <StyledTitle>{name}</StyledTitle>
           <StyledBuyerName onClick={handleBuyerNameClick}>BuyerName</StyledBuyerName>
-        </div>
-        <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
+        </StyledTitleAndName>
       </StyledMidcardContainer>
       <StyledBottomCardContainer>
         <StyledCurrentOffers>Current Offers: ###</StyledCurrentOffers>

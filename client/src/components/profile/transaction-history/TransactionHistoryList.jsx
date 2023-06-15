@@ -1,45 +1,38 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
-
-//boostrap layout styling
 import Stack from 'react-bootstrap/Stack';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
+import Button from 'react-bootstrap/Button';
+import { GlobalContext } from '../../GlobalContext.jsx';
 import TransactionHistoryEntry from './TransactionHistoryEntry.jsx';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
+function TransactionHistoryList() {
+  const { userTransactions, setUserTransactions, userData } = useContext(GlobalContext);
+  const [slice, setSlice] = useState(15);
 
-function TransactionHistoryList({ userId }) {
-
-  const [userTransactions, setUserTransactions] = useState([]);
-
-  const mockUserTransaction = [
-    { seller_id: 123, sale_amount: 12.12, item: 'Berkin Bag', transaction_date: '01/01/23' },
-    { seller_id: 123, sale_amount: 12.12, item: 'Berkin Shoe', transaction_date: '01/02/23' },
-    { seller_id: 1, sale_amount: 12.12, item: 'Berkin Belt', transaction_date: '01/01/23' },
-
-  ]
-
-  const getUserTransactions = (e) => {
-    // axios
-    //   .post('/transactions', {param: {userID: userId}})
-    //   .then((r) => setUserTransactions(r.data))
-    //   .catch((e) => console.log(e));
+  const getUserTransactions = () => {
+    axios
+      .get(`/api/transactions`, { params: { userID: userData.id } })
+      .then((r) => setUserTransactions(r.data))
+      .catch((e) => console.log(e));
   };
 
+  useEffect(() => {
+    getUserTransactions();
+  }, []);
+
   return (
-    <Host>
-      <Stack gap={3}>
-        {mockUserTransaction.map((entry) => <TransactionHistoryEntry userId={userId} entry={entry} />)}
+    <div>
+      <Stack gap={1}>
+        {userTransactions.slice(0, slice).map((entry) => (
+          <TransactionHistoryEntry key={entry.id} userID={userData.id} entry={entry} />
+        ))}
       </Stack>
-    </Host>
+      {slice < userTransactions.length ? (
+        <Button variant="link" size="sm" onClick={() => setSlice(slice + 10)}>
+          Show More
+        </Button>
+      ) : null}
+    </div>
   );
 }
 

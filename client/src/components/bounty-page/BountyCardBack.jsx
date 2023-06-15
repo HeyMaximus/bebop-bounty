@@ -2,6 +2,8 @@ import React from 'react';
 import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 
+import Button from 'react-bootstrap/Button';
+
 import {
   StyledBountyCardBack,
   StyledTitle,
@@ -16,27 +18,36 @@ import {
   OfferLayout,
 } from './StyledBountyBoard';
 
-export default function BountyCardBack({ Context, flipCard }) {
-  const { name, category, description, preferred_payment } = Context;
-  let { deadline } = Context;
+export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
+  const { name, category, description, preferred_payment } = Bounty;
+  let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
+  deadline = deadline.substring(5, 10);
+  deadline = deadline.replaceAll('-', '/');
+  if (deadline.charAt(0) === '0') {
+    deadline = deadline.slice(1);
+  }
+
   return (
-    <StyledBountyCardBack>
+    <StyledBountyCardBack onClick={flipCard}>
       <StyledTitle>{name}</StyledTitle>
       <StyledCategory>Category: {category}</StyledCategory>
       <StyledDeadline>Deadline: {deadline}</StyledDeadline>
       <StyledDescription>Description: {description}</StyledDescription>
-      <StyledPreferredPayment>Preferred Payment Option:{preferred_payment}</StyledPreferredPayment>
+      <StyledPreferredPayment>Preferred Payment:{preferred_payment}</StyledPreferredPayment>
       <OfferLayout>
-        <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
-        <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
+        <Button onClick={showOfferModal} variant="success" size="sm">
+          Make An Offer!
+        </Button>
+        {/* <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton> */}
       </OfferLayout>
       <OfferLayout>
         {/* <StyledRatingBox>
           <CoinRating />
         </StyledRatingBox> */}
         <StyledRatingBox>Coin Rating</StyledRatingBox>
-        <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront>
+        <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
+        {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
       </OfferLayout>
     </StyledBountyCardBack>
   );

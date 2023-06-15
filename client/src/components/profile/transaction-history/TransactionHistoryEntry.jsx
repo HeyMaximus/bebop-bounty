@@ -1,18 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
+import React from 'react';
+import { TransEntry } from '../BountyHistoryStyles';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
+function TransactionHistoryEntry({ userID, entry }) {
+  const date = new Date(entry.transaction_date).toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
-function TransactionHistoryEntry({ userId, entry }) {
   return (
-    <Host>
-      <div>{entry.seller_id === userId ? 'Earned' : 'Paid'} {entry.sale_amount} for (entry.item) on {entry.transaction_date}</div>
-    </Host>
+    <TransEntry>
+      {entry.seller_id === userID ? 'Earned' : 'Paid'} {entry.sale_amount} for{' '}
+      {entry.item || 'pizza'} on {date}
+    </TransEntry>
   );
 }
 

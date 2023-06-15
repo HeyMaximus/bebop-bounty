@@ -37,7 +37,7 @@ export default function NewOfferModal() {
         onChange={handleChange}
       />
       <br />
-      Image:
+      Upload An Image{' '}
       <input type="text" name="image" value={newOfferInputs.image} onChange={handleChange} />
     </div>
   );

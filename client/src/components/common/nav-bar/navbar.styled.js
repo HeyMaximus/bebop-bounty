@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import logo from '../../../../dist/assets/CbShip_Black_.png';
 
 export const StyledNavBar = styled.nav`
   border: solid 1px;
@@ -7,25 +6,8 @@ export const StyledNavBar = styled.nav`
   margin: auto;
   margin-top: 30px;
   display: grid;
-  height: 100px;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 100px;
-`;
-
-export const StyledNavLogo = styled.div`
-  background-image: url(${logo});
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  font-size: 35px;
-  grid-column: span 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: pre-wrap;
-  padding-left: 30px;
-  padding-bottom: 10px;
-  cursor: pointer;
+  grid-template-rows: 80px;
 `;
 
 export const StyledListBountyBtn = styled.button`
@@ -69,7 +51,7 @@ export const StyledSearchButton = styled.button`
   background: none;
   border-bottom: solid 1px white;
   position: relative;
-  top: -1.5%;
+  padding: 0;
   cursor: pointer;
   > svg:hover {
     transform: scale(1.3) perspective(1px);
@@ -110,6 +92,16 @@ const showModal = keyframes`
     opactiy: 1;
   }
 `;
+
+export const StyledClearCurtain = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+`;
+
 export const StyledUpArrow = styled.div`
   width: 0;
   height: 0;
@@ -198,18 +190,16 @@ export const StyledListBountyOverlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
 `;
 export const StyledListBountyBody = styled.div`
+  color: #3e4334;
   position: absolute;
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background: #e7e5d5;
-  padding: 14px 28px;
   border-radius: 1px;
   width: 600px;
   height: 600px;
-  overflow-y: auto;
-  color: #3e4334;
   > h2 {
     text-align: center;
     margin-top: 20px;
@@ -220,11 +210,23 @@ export const StyledListBountyBody = styled.div`
 export const StyledListBountyContentContainer = styled.div`
   border: solid 1px #3e4334;
   height: 490px;
-  width: 590px;
+  width: 520px;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+`;
+export const StyledListBountyContent = styled.div`
+  color: #3e4334;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: auto;
+  height: 100%;
+  width: 80%;
+  input {
+    border-bottom: 1px solid #3e4334;
+  }
 `;
 
 export const StyledListBountyTitle = styled.div`
@@ -233,17 +235,26 @@ export const StyledListBountyTitle = styled.div`
 export const StyledListBountyTitleInput = styled.input`
   color: #3e4334;
   border-bottom: 1px solid #3e4334;
+  width: 70%;
 `;
 
-export const StyledLBDropDowns1 = styled.div`
+export const StyledLBDropDowns = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  > select {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #3e4334;
+  }
 `;
 
 export const StyledListBountyCloseBtn = styled.button`
-  color: rgb(62, 67, 52);
+  color: #3e4334;
   font-family: 'Coromorant Garamond', serif;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   float: right;
   &:hover {
@@ -258,6 +269,6 @@ export const StyledSubmitListBounty = styled.button.attrs({
   font-size: 15px;
   position: relative;
   right: -40%;
-  margin-top: 13px;
+  margin-top: 10px;
   cursor: pointer;
 `;

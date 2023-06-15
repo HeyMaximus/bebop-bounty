@@ -1,70 +1,80 @@
 import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
-
-//boostrap layout styling
-import Stack from 'react-bootstrap/Stack';
+import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
-import GlobalContext from '../../GlobalContext.jsx';
-import BountyCard from '../../bounty-page/BountyCard.jsx';
+import { GlobalContext } from '../../GlobalContext.jsx';
+import BountyCardFront from '../../bounty-page/BountyCard.jsx';
 import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
-
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
+import { StyledBountyBoardWrapper } from '../../bounty-page/StyledBountyBoard';
+import { BountyPageBorder } from '../../bounty-page/styled-components/bountypage.styled';
+import NavBar from '../../common/nav-bar/NavBar.jsx';
 
 function BountyHistory() {
-  // const { userBounties } = useContext(GlobalContext);
-  const [showOffers, setShowOffers] = useState(false);
-  const [bountyId, setBountyId] = useState('');
-
-  //Off Canvas
+  const { userBounties, setUserBounties, userData } = useContext(GlobalContext);
+  const [bountyID, setBountyID] = useState('');
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
-  const handleShow = (e) => {
-    console.log('triggered')
-    setBountyId(1) //retrieve id from event and update state with it
+  const handleShow = (ID) => {
+    setBountyID(ID);
     setShow(true);
   };
 
+  const getUserBounties = () => {
+    axios
+      .get(`/api/bounties`, { params: { userID: userData.id } })
+      .then((r) => setUserBounties(r.data))
+      .catch((e) => console.log(e));
+  };
+
+  useEffect(() => {
+    getUserBounties();
+  }, []);
+
   return (
     <div>
-      <Container fluid="lg">
-        <Row>
-        <Col sm={10}>
-          <div>Bounty History</div>
-          <div><Stack direction="horizontal" gap={1}>
-            {[1, 2, 3, 4].map((bounty) => (
-              <div onClick={(e) => handleShow(e)}><BountyCard id={bounty} bounty={bounty} /></div>
-            ))}
-          </Stack></div>
-        </Col>
-        <Col sm={2}>
-          <div>Transaction History</div>
-          <TransactionHistoryList userId={bountyId} />
-        </Col>
-        </Row>
-        </Container>
-        <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <OfferHistoryList bountyId={bountyId} />
-        </Offcanvas.Body>
-      </Offcanvas>
-      </div>
-
-
-
+      <style type="text/css">
+        {`
+    .offcanvas {
+      background-color: rgba(0, 0, 0, .25);
+      backdrop-filter: blur(10px);
+      color: white;
+    }
+    `}
+      </style>
+      <BountyPageBorder>
+        <NavBar />
+        <StyledBountyBoardWrapper>
+          <Container fluid>
+            <Row>
+              <Col lg="9">
+                <h2>Your Open Bounties</h2>
+                {userBounties.map((entry) => (
+                  <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
+                    <BountyCardFront Bounty={entry} />
+                  </span>
+                ))}
+              </Col>
+              <Col lg="3">
+                <h2>Transaction History</h2>
+                <TransactionHistoryList />
+              </Col>
+            </Row>
+          </Container>
+          <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas.Header>
+              <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <OfferHistoryList bountyID={bountyID} />
+            </Offcanvas.Body>
+          </Offcanvas>
+        </StyledBountyBoardWrapper>
+      </BountyPageBorder>
+    </div>
   );
 }
 

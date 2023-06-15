@@ -1,26 +1,22 @@
-import React, { useContext, useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
-const Host = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
-
-function OfferHistoryEntry({ offer }) {
-  const handleBuyClick = (e) => {
-    // axios
-    //   .post('/transaction', {offerID: e.target.id} )
-    //   .then((r) => console.log('Bought!'))
-    //   .catch((e) => console.log(e));
+function OfferHistoryEntry({ offer, getOffers }) {
+  const handleBuyClick = () => {
+    axios
+      .post(`/api/transactions`, { offerID: offer.id })
+      .then(getOffers())
+      .catch((err) => console.log(err));
   };
 
   return (
-    <Host>
-      <div> Seller: {offer.seller} | Condition: {offer.condition} | ${offer.price}</div>
-      <button id={offer.id} onClick={(e) => handleBuyClick(e)}>Buy</button>
-    </Host>
+    <div>
+      <Button onClick={handleBuyClick} variant="success" size="sm">
+        Buy
+      </Button>{' '}
+      {'  '}| Seller: {offer.seller} | Condition: {offer.condition} | ${offer.offer_amount}
+    </div>
   );
 }
 
