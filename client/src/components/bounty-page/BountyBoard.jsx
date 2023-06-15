@@ -77,6 +77,7 @@ const fakeContext = [
     completed: false,
     price: 800,
     deadline: '2023-06-22 0:00:00',
+    complete: false,
     preferred_payment: 'paypal',
     image: 'https://i.insider.com/5f8f4178dace450018a3e489?width=700',
     created_at: '2023-01-04 00:00:00',

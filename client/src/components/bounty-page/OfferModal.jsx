@@ -14,11 +14,11 @@ import { GlobalContext } from '../GlobalContext.jsx';
 
 export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty }) {
   const Context = useContext(GlobalContext);
-  console.log(Context, 'SDFL:KSDFL:KJSDFL:KJ');
 
   const initialValues = {
     bounty_id: Bounty.id,
-    // seller_id: Context.userData.user_id,
+    buyer_id: Bounty.buyer_id,
+    seller_id: Context.userData.user_id || 2,
     description: '',
     city: '',
     state: '',
@@ -83,7 +83,7 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
               name="description"
               rows="5"
               cols="40"
-              placeholder="Describe what you're looking for"
+              placeholder="Describe the item you are providing"
               value={formValues.description}
               onChange={handleChange}
             />
