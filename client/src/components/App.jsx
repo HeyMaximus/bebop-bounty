@@ -31,7 +31,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="bounty-page" element={<BountyPage toggleTheme={toggleTheme} />} />
             <Route path="profile/bounty-history" element={<BountyHistory />} />
-            <Route path="user-profile" element={<UserProfile />} />
+            <Route path="user-profile/:buyer_id" element={<UserProfile />} />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
           <Footer />
