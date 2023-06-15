@@ -114,6 +114,7 @@ export const StyledTitle = styled.div`
 
 export const StyledBuyerName = styled.div`
   font-size: small;
+  cursor: pointer;
   /* border: solid; */
 `;
 

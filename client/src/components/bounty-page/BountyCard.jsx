@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import BountyCardBack from './BountyCardBack.jsx';
 import { OpenOfferModal } from './helpers.js';
 import coinGoldImage from '../../assets/coin-gold.png'; // Import the image
@@ -20,6 +21,12 @@ import {
 
 export default function BountyCardFront({ Context, flipCard, isFlipped }) {
   const { id, buyer_id, name, price, deadline, image } = Context;
+  const navigate = useNavigate();
+  const handleBuyerNameClick = (e) => {
+    e.preventDefault();
+    navigate(`/user-profile/${buyer_id}`);
+  };
+
   return (
     <StyledBountyCard onClick={flipCard} isFlipped={isFlipped}>
       <StyledImageContainer>
@@ -30,7 +37,7 @@ export default function BountyCardFront({ Context, flipCard, isFlipped }) {
       <StyledMidcardContainer>
         <div>
           <StyledTitle>{name}</StyledTitle>
-          <StyledBuyerName>BuyerName</StyledBuyerName>
+          <StyledBuyerName onClick={handleBuyerNameClick}>BuyerName</StyledBuyerName>
         </div>
         <StyledMakeOfferButton onClick={OpenOfferModal}>Make an Offer</StyledMakeOfferButton>
       </StyledMidcardContainer>
