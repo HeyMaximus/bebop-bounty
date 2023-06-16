@@ -15,12 +15,12 @@ import {
   StyledImagePreview,
 } from './navbar.styled';
 
+
 export default function ListBountyModal({ showListBountyModal }) {
   let context = useContext(GlobalContext);
   console.log('buyerID', context);
 
   const [initialValues, setInitialValues] = useState({
-
     // buyer_id
     name: '',
     description: '',
@@ -38,7 +38,7 @@ export default function ListBountyModal({ showListBountyModal }) {
   const [previewImage, setPreviewImage] = useState();
   const { userData } = useContext(GlobalContext);
 
-  console.log('BOUNTYMODAL USERDATA', userData)
+  console.log('BOUNTYMODAL USERDATA', userData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
