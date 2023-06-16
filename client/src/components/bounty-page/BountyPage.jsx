@@ -11,7 +11,7 @@ import { StyledBountyPageBorder } from '../../theme';
 import NavBar from '../common/nav-bar/NavBar.jsx';
 import BountyBoard from './BountyBoard.jsx';
 
-export default function BountyPage({ toggleTheme }) {
+export default function BountyPage({ toggleTheme, theme }) {
   const [sortBy, setSortBy] = useState('');
   const [category, setCategory] = useState('');
   const [city, setCity] = useState('');
@@ -108,7 +108,7 @@ export default function BountyPage({ toggleTheme }) {
   console.log('allBounties: ', allBounties);
   return (
     <StyledBountyPageBorder>
-      <NavBar toggleTheme={toggleTheme} />
+      <NavBar theme={theme} toggleTheme={toggleTheme} />
       <StyledFilterBar>
         <div style={{ display: 'flex' }}>
           <div style={{ marginRight: 50 }}>
