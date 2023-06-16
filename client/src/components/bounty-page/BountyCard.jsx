@@ -21,8 +21,9 @@ import {
 } from './StyledBountyBoard.js';
 
 export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
-  const { id, buyer_id, name, price, image } = Bounty;
+  const { id, buyer_name, buyer_id, offer_count, name, price, image } = Bounty;
 
+  console.log(Bounty);
   const navigate = useNavigate();
   const handleBuyerNameClick = (e) => {
     e.preventDefault();
@@ -46,11 +47,11 @@ export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOffer
         <StyledPrice>${price}</StyledPrice>
         <StyledTitleAndName>
           <StyledTitle>{name}</StyledTitle>
-          <StyledBuyerName onClick={handleBuyerNameClick}>BuyerName</StyledBuyerName>
+          <StyledBuyerName onClick={handleBuyerNameClick}>{buyer_name}</StyledBuyerName>
         </StyledTitleAndName>
       </StyledMidcardContainer>
       <StyledBottomCardContainer>
-        <StyledCurrentOffers>Current Offers: ###</StyledCurrentOffers>
+        <StyledCurrentOffers>Current Offers: {offer_count}</StyledCurrentOffers>
         <StyledDeadline>{deadline}</StyledDeadline>
       </StyledBottomCardContainer>
     </StyledBountyCard>
