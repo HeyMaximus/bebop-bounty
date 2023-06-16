@@ -3,12 +3,7 @@ const { pool } = require('../db');
 module.exports.getTransactions = (userID) => {
   const queryStr =
     'SELECT bounty.name AS bounty_name, transaction.* FROM transaction JOIN bounty ON transaction.bounty_id=bounty.id AND seller_id=$1 OR transaction.buyer_id=$1 ORDER BY transaction_date DESC';
-  return pool
-    .query(queryStr, [userID])
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: get user transactions', err.message);
-    });
+  return pool.query(queryStr, [userID]).then((queryRes) => queryRes.rows);
 };
 
 module.exports.updateTransaction = (transactionID, transaction) => {
@@ -36,12 +31,7 @@ module.exports.updateTransaction = (transactionID, transaction) => {
   }
   const querySegment = updatedCols.map((col, index) => `${col}=$${index + 1}`).join(',');
   const queryStr = `UPDATE transaction SET ${querySegment} WHERE id=$${updatedCols.length + 1}`;
-  return pool
-    .query(queryStr, [...updatedValues, transactionID])
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: update transaction review', err.message);
-    });
+  return pool.query(queryStr, [...updatedValues, transactionID]);
 };
 
 module.exports.createTransaction = (offer) => {
@@ -53,10 +43,5 @@ module.exports.createTransaction = (offer) => {
   } = offer;
   const queryStr =
     'INSERT INTO transaction (offer_id, bounty_id, seller_id, sale_amount, buyer_id) VALUES ($1, $2, $3, $4, (SELECT buyer_id FROM bounty JOIN offer ON bounty.id = offer.bounty_id AND offer.seller_id=$3 AND bounty.id = $2))';
-  return pool
-    .query(queryStr, [offerID, bountyID, sellerID, offerAmount])
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: create transaction', err.message);
-    });
+  return pool.query(queryStr, [offerID, bountyID, sellerID, offerAmount]);
 };

@@ -37,23 +37,13 @@ module.exports.getAllBounties = (params) => {
   const queryStr = `SELECT * FROM bounty WHERE ${conditionSegment} ORDER BY ${sortBy} ${sortDir} LIMIT ${count} OFFSET ((${
     page - 1
   }) * ${count})`;
-  return pool
-    .query(queryStr, [...filterValues])
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: get all bounties', err.message);
-    });
+  return pool.query(queryStr, [...filterValues]).then((queryRes) => queryRes.rows);
 };
 
 module.exports.getUserBounties = (userID) => {
   const queryStr =
     'SELECT bounty.*, (SELECT count(id) FROM offer GROUP BY bounty_id HAVING bounty_id=$1) AS offer_count FROM bounty WHERE buyer_id=$1 ORDER BY created_at DESC';
-  return pool
-    .query(queryStr, [userID])
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: get user bounties', err.message);
-    });
+  return pool.query(queryStr, [userID]).then((queryRes) => queryRes.rows);
 };
 
 module.exports.createBounty = (bounty) => {
@@ -103,10 +93,5 @@ module.exports.createBounty = (bounty) => {
   const queryCols = insertedCols.join(',');
   const queryValues = insertedValues.map((val, index) => `$${index + 1}`).join(',');
   const queryStr = `INSERT INTO bounty (${queryCols}) VALUES (${queryValues})`;
-  return pool
-    .query(queryStr, insertedValues)
-    .then((queryRes) => queryRes.rows)
-    .catch((err) => {
-      console.error('Query failed: create bounty', err.message);
-    });
+  return pool.query(queryStr, insertedValues).then((queryRes) => queryRes.rows);
 };

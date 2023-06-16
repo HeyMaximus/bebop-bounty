@@ -13,7 +13,7 @@ module.exports.createUser = (req, res) => {
   });
 };
 module.exports.getUser = (req, res) => {
-  userModel.getUser(req.params.user_id, (err, result) => {
+  userModel.getUser(req.params.id, req.query.auth, (err, result) => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
@@ -21,6 +21,17 @@ module.exports.getUser = (req, res) => {
       res.status(200).send(result.rows);
     }
   });
+};
+module.exports.updateUser = async (req, res) => {
+  const userID = req.params.user_id;
+  const user = req.body;
+  try {
+    await userModel.updateUser(userID, user);
+    res.status(200).send('User updated');
+  } catch (err) {
+    console.error('Query failed: update user', err.message);
+    res.sendStatus(400);
+  }
 };
 module.exports.sendEmail = (req, res) => {
   const { userEmail, subject, message } = req.body;

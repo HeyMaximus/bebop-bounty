@@ -11,7 +11,7 @@ module.exports.getBounties = async (req, res) => {
     }
     res.status(200).json(data);
   } catch (err) {
-    console.error(err.message);
+    console.error('Query failed: get bounties', err.message);
     res.sendStatus(400);
   }
 };
@@ -22,7 +22,7 @@ module.exports.createBounty = async (req, res) => {
     await bountyModel.createBounty(bounty);
     res.status(201).send('Bounty created');
   } catch (err) {
-    console.error(err.message);
+    console.error('Query failed: create bounty', err.message);
     res.sendStatus(400);
   }
 };

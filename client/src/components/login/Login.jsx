@@ -16,7 +16,11 @@ function Login() {
 
   const sendUserDataToServer = (user) => {
     axios
+<<<<<<< HEAD
       .get(`http://54.176.108.13:8080/api/users/${user.uid}?auth=true`)
+=======
+      .get(`/api/users/${user.uid}?auth=true`)
+>>>>>>> f8dd32b (set up endpoint for patch a user)
       .then((response) => {
         setUserData(response.data[0]);
         navigate('/bounty-page');
