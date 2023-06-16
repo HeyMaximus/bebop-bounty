@@ -17,9 +17,6 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
   const { userData } = useContext(GlobalContext);
   const [id, setID] = useState(userData.id);
 
-  // const { id } = Context;
-  console.log({ id }, 'IDIDIDI');
-
   const initialValues = {
     bountyID: Bounty.id,
     sellerID: id,
