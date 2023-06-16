@@ -11,7 +11,7 @@ function TransactionHistoryList() {
 
   const getUserTransactions = () => {
     axios
-      .get(`/api/transactions`, { params: { userID: userData.id } })
+      .get(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.SERVER_PORT}/api/transactions`, { params: { userID: userData.id } })
       .then((r) => setUserTransactions(r.data))
       .catch((e) => console.log(e));
   };

@@ -9,14 +9,13 @@ import BountyCardFront from '../../bounty-page/BountyCard.jsx';
 import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
 import { StyledBountyBoardWrapper } from '../../bounty-page/StyledBountyBoard';
-import { BountyPageBorder } from '../../bounty-page/styled-components/bountypage.styled';
+import { StyledBountyPageBorder } from '../../../theme';
 import NavBar from '../../common/nav-bar/NavBar.jsx';
 
 function BountyHistory() {
   const { userBounties, setUserBounties, userData } = useContext(GlobalContext);
   const [bountyID, setBountyID] = useState('');
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = (ID) => {
     setBountyID(ID);
@@ -25,7 +24,7 @@ function BountyHistory() {
 
   const getUserBounties = () => {
     axios
-      .get(`/api/bounties`, { params: { userID: userData.id } })
+      .get(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.SERVER_PORT}/api/bounties`, { params: { userID: userData.id } })
       .then((r) => setUserBounties(r.data))
       .catch((e) => console.log(e));
   };
@@ -45,35 +44,35 @@ function BountyHistory() {
     }
     `}
       </style>
-      <BountyPageBorder>
-        <NavBar />
-        <StyledBountyBoardWrapper>
-          <Container fluid>
-            <Row>
-              <Col lg="9">
-                <h2>Your Open Bounties</h2>
-                {userBounties.map((entry) => (
-                  <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
-                    <BountyCardFront Bounty={entry} />
-                  </span>
-                ))}
-              </Col>
-              <Col lg="3">
-                <h2>Transaction History</h2>
-                <TransactionHistoryList />
-              </Col>
-            </Row>
-          </Container>
-          <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header>
-              <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <OfferHistoryList bountyID={bountyID}/>
-            </Offcanvas.Body>
-          </Offcanvas>
-        </StyledBountyBoardWrapper>
-      </BountyPageBorder>
+      <StyledBountyPageBorder>
+      <NavBar />
+      <StyledBountyBoardWrapper>
+        <Container fluid>
+          <Row>
+            <Col lg="9">
+              <h2>Your Open Bounties</h2>
+              {userBounties.map((entry) => (
+                <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
+                  <BountyCardFront Bounty={entry} />
+                </span>
+              ))}
+            </Col>
+            <Col lg="3">
+              <h2>Transaction History</h2>
+              <TransactionHistoryList />
+            </Col>
+          </Row>
+        </Container>
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header>
+            <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <OfferHistoryList bountyID={bountyID} />
+          </Offcanvas.Body>
+        </Offcanvas>
+      </StyledBountyBoardWrapper>
+      </StyledBountyPageBorder>
     </div>
   );
 }
