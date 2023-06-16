@@ -15,6 +15,7 @@ import {
   StyledImagePreview,
 } from './navbar.styled';
 
+
 export default function ListBountyModal({ showListBountyModal }) {
   const { userData } = useContext(GlobalContext);
   console.log('BOUNTYMODAL USERDATA', userData);
@@ -35,6 +36,7 @@ export default function ListBountyModal({ showListBountyModal }) {
   });
   const [formValues, setFormValues] = useState(initialValues);
   const [previewImage, setPreviewImage] = useState();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
