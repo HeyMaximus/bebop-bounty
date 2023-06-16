@@ -190,3 +190,17 @@ export const StyledCurrentOffers = styled.div`
 export const ModalWrapper = styled.div`
   /* border: solid; */
 `;
+
+export const StyledCategory = styled.div`
+  /* border: solid; */
+`;
+export const StyledDescription = styled.div`
+  /* border: solid; */
+`;
+export const StyledPreferredPayment = styled.div`
+  /* */
+`;
+
+export const OfferLayout = styled.div`
+  /* */
+`;
