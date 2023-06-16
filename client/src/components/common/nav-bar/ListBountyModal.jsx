@@ -16,7 +16,11 @@ import {
 } from './navbar.styled';
 
 export default function ListBountyModal({ showListBountyModal }) {
+  let context = useContext(GlobalContext);
+  console.log('buyerID', context);
+
   const [initialValues, setInitialValues] = useState({
+
     // buyer_id
     name: '',
     description: '',

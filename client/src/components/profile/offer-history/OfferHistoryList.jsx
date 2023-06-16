@@ -3,12 +3,12 @@ import axios from 'axios';
 import Stack from 'react-bootstrap/Stack';
 import OfferHistoryEntry from './OfferHistoryEntry.jsx';
 
-function OfferHistoryList({ bountyID, bountyName }) {
+function OfferHistoryList({ bountyID }) {
   const [bountyOffers, setBountyOffers] = useState([]);
 
   const getOffers = () => {
     axios
-      .get(`/api/offers`, { params: { sellerID: bountyID } })
+      .get(`http://54.176.108.13:8080/api/offers`, { params: { sellerID: bountyID } })
       .then((r) => setBountyOffers(r.data))
       .catch((e) => console.log(e));
   };

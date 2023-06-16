@@ -16,7 +16,6 @@ function BountyHistory() {
   const { userBounties, setUserBounties, userData } = useContext(GlobalContext);
   const [bountyID, setBountyID] = useState('');
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = (ID) => {
     setBountyID(ID);
@@ -25,7 +24,7 @@ function BountyHistory() {
 
   const getUserBounties = () => {
     axios
-      .get(`/api/bounties`, { params: { userID: userData.id } })
+      .get(`http://54.176.108.13:8080/api/bounties`, { params: { userID: userData.id } })
       .then((r) => setUserBounties(r.data))
       .catch((e) => console.log(e));
   };
