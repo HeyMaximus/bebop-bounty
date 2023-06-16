@@ -57,6 +57,7 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
 
       <OfferLayout>
         <StyledRatingBox>
+          <p style={{ marginRight: 10 }}>Rating: </p>
           <CoinRating user={buyer_id} size="20px" />
         </StyledRatingBox>
         {/* <StyledCurrentOffers>Current Offers</StyledCurrentOffers> */}
