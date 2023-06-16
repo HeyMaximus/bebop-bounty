@@ -11,6 +11,7 @@ import {
   StyledListBountyTitle,
   StyledListBountyContent,
   StyledLBDropDowns,
+  StyledImagePreview,
 } from './navbar.styled';
 
 export default function ListBountyModal({ showListBountyModal }) {
@@ -29,6 +30,7 @@ export default function ListBountyModal({ showListBountyModal }) {
     image: '',
   });
   const [formValues, setFormValues] = useState(initialValues);
+  const [previewImage, setPreviewImage] = useState();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +51,7 @@ export default function ListBountyModal({ showListBountyModal }) {
         .then(({ data }) => {
           console.log('data.secure', data.secure_url);
           setFormValues({ ...formValues, image: data.secure_url });
+          setPreviewImage(data.secure_url);
         })
         .catch((err) => console.error(err));
     }
@@ -163,6 +166,7 @@ export default function ListBountyModal({ showListBountyModal }) {
                 style={{ borderBottom: 'none' }}
                 onChange={(e) => getImageURL(e)}
               />
+              {previewImage && <StyledImagePreview src={previewImage} alt="preview" />}
             </div>
             <div>
               Description:{' '}
