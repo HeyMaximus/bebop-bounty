@@ -24,7 +24,7 @@ function BountyHistory() {
 
   const getUserBounties = () => {
     axios
-      .get(`http://${process.env.REACT_APP_SERVER_IP}:${process.env.SERVER_PORT}/api/bounties`, { params: { userID: userData.id } })
+      .get(`http://54.176.108.13:8080/api/bounties`, { params: { userID: userData.id } })
       .then((r) => setUserBounties(r.data))
       .catch((e) => console.log(e));
   };
