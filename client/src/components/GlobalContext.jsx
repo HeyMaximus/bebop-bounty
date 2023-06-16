@@ -7,7 +7,6 @@ export function GlobalContextProvider({ children }) {
   const [userBounties, setUserBounties] = useState([]);
   const [userTransactions, setUserTransactions] = useState([]);
 
-  console.log('userdata', userData)
   const globalContextMemo = useMemo(
     () => ({
       userBounties,
@@ -17,7 +16,7 @@ export function GlobalContextProvider({ children }) {
       userTransactions,
       setUserTransactions,
     }),
-    [userBounties]
+    [userBounties, userData]
   );
 
   return <GlobalContext.Provider value={globalContextMemo}>{children}</GlobalContext.Provider>;
