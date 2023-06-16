@@ -11,12 +11,11 @@ import {
 import { firebaseApp } from '../../../firebase';
 import { GlobalContext } from '../../GlobalContext.jsx';
 
-export default function ProfileMenu({ toggleTheme, showProfileMenu }) {
+export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
   const exampleImgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
   const { setUserData } = useContext(GlobalContext);
-  const [darkModeIcon, setDarkModeIcon] = useState(false);
 
   const handleSignOut = (e) => {
     e.preventDefault();
@@ -51,15 +50,16 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu }) {
         <StyledProfileMenuProperties>
           <button type="button">Profile</button>
           <button type="button">Notifications</button>
-          <button type="button" onClick={() => routeToMyBounties()}>Your Bounties</button>
+          <button type="button" onClick={() => routeToMyBounties()}>
+            Your Bounties
+          </button>
           <button
             type="button"
             onClick={() => {
               toggleTheme();
-              setDarkModeIcon(!darkModeIcon);
             }}
           >
-            {darkModeIcon ? 'Light Mode 🌞' : 'Dark Mode 🌜'}
+            {theme === 'dark' ? 'Light Mode 🌞' : 'Dark Mode 🌜'}
           </button>
           <button type="button" onClick={handleSignOut}>
             Sign Out
