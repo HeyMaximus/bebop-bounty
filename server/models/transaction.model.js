@@ -50,9 +50,6 @@ module.exports.updateTransaction = async (transactionID, transaction) => {
     updatedValues.push(transaction.feedbackToSeller);
   }
 
-  if (!updatedCols.length) {
-    return Promise.resolve([]);
-  }
   const querySegment = updatedCols.map((col, index) => `${col}=$${index + 1}`).join(',');
   const queryStr = `UPDATE transaction SET ${querySegment} WHERE id=$${updatedCols.length + 1}`;
   await pool.query(queryStr, [...updatedValues, transactionID]);

@@ -106,9 +106,5 @@ module.exports.createBounty = (bounty) => {
   const queryCols = insertedCols.join(',');
   const queryValues = insertedValues.map((val, index) => `$${index + 1}`).join(',');
   const queryStr = `INSERT INTO bounty (${queryCols}) VALUES (${queryValues})`;
-<<<<<<< HEAD
-  return pool.query(queryStr, insertedValues).then((queryRes) => queryRes.rows);
-=======
   return pool.query(queryStr, insertedValues);
->>>>>>> b1a3fca (fix sort bounty issue and refactor controller and model)
 };
