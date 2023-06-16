@@ -17,16 +17,15 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
   const Context = useContext(GlobalContext);
 
   const initialValues = {
-    bounty_id: Bounty.id,
-    buyer_id: Bounty.buyer_id,
-    seller_id: Context.userData.user_id || 2,
+    bountyID: Bounty.id,
+    // buyer_id: Bounty.buyer_id,
+    sellerID: 2, //update when we have context
     description: '',
     city: '',
     state: '',
     condition: '',
     image: Bounty.image,
-    offer_amount: '',
-    complete: false,
+    offerAmount: '',
   };
   const [formValues, setFormValues] = useState(initialValues);
 
@@ -60,7 +59,7 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
 
     console.log('Form Values', formValues);
     try {
-      const response = await axios.post('api/offers', formValues);
+      const response = await axios.post('http://54.176.108.13:8080/api/offers', formValues);
       console.log('Offer submitted successfully:', response.data);
     } catch (error) {
       console.error('Error submitting offer:', error);
@@ -133,7 +132,7 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
               <input
                 style={{ width: '55%' }}
                 type="text"
-                name="offer_amount"
+                name="offerAmount"
                 value={formValues.offer_amount}
                 onChange={handleChange}
               />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -15,7 +15,7 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
   const exampleImgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
   const auth = getAuth(firebaseApp);
   const navigate = useNavigate();
-  const { setUserData } = useContext(GlobalContext);
+  const { setUserData, userData } = useContext(GlobalContext);
 
   const handleSignOut = (e) => {
     e.preventDefault();
@@ -41,10 +41,10 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
       <StyledUpArrow />
       <StyledProfileMenuContainer>
         <StyledProfileMenuHeader>
-          <img src={exampleImgURL} alt="profile pic" />
+          <img src={userData.profile_image || exampleImgURL} alt="profile pic" />
           <div>
-            <p>Spike Spiegal</p>
-            <p>spacecowboy@gmail.com</p>
+            <p>{userData.username || 'Guest'}</p>
+            <p>{userData.email || ''}</p>
           </div>
         </StyledProfileMenuHeader>
         <StyledProfileMenuProperties>
