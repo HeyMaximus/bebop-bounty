@@ -17,12 +17,13 @@ function TransactionHistoryList() {
   };
 
   useEffect(() => {
+    console.log('using user data:', userData.id)
     getUserTransactions();
   }, []);
 
   return (
     <div>
-      <Stack gap={1}>
+      <Stack gap={3}>
         {userTransactions.slice(0, slice).map((entry) => (
           <TransactionHistoryEntry key={entry.id} userID={userData.id} entry={entry} getUserTransactions={getUserTransactions} />
         ))}

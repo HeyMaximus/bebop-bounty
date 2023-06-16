@@ -17,7 +17,8 @@ function TransactionHistoryEntry({ userID, entry, getUserTransactions }) {
     let feedBack = {}
     if (role === 'seller') { feedBack.ratingToBuyer = 'good' }
     else { feedBack.ratingToSeller = 'good' }
-    axios.patch(`http://54.176.108.13:8080/api/transactions/${entry.id}`, feedback)
+    console.log('button Clicked:', feedBack )
+    axios.patch(`http://54.176.108.13:8080/api/transactions/${entry.id}`, feedBack)
       .then((r) => getUserTransactions())
       .catch((err) => console.log(err))
   };
@@ -26,7 +27,8 @@ function TransactionHistoryEntry({ userID, entry, getUserTransactions }) {
     let feedBack = {}
     if (role === 'seller') { feedBack.ratingToBuyer = 'bad' }
     else { feedBack.ratingToSeller = 'bad' }
-    axios.patch(`http://54.176.108.13:8080/api/transactions/${entry.id}`, feedback)
+    console.log('button Clicked:', feedBack )
+    axios.patch(`http://54.176.108.13:8080/api/transactions/${entry.id}`, feedBack)
       .then((r) => getUserTransactions())
       .catch((err) => console.log(err))
   };
@@ -40,8 +42,10 @@ function TransactionHistoryEntry({ userID, entry, getUserTransactions }) {
     <TransEntry>
       {entry.seller_id === userID ? 'Earned' : 'Paid'} {entry.sale_amount} for {' '}
       {entry.bounty_name || 'a bounty'} on {date} {' '}
-      {entry.rating_to_buyer === null && role === 'seller' ? <span><Button onClick={() => { handleGoodFeedbackClick() }} variant="outline-success" size="sm">Good</Button> <Button onClick={() => { handleBadFeedbackClick() }} variant="outline-danger" size="sm">Bad</Button></span> : '(Feedback given)'}
-      {entry.rating_to_seller === null && role === 'buyer' ? <span><Button onClick={() => { handleGoodFeedbackClick() }} variant="outline-success" size="sm">Good</Button> <Button onClick={() => { handleBadFeedbackClick() }} variant="outline-danger" size="sm">Bad</Button></span> : null}
+      {entry.rating_to_buyer === null && role === 'seller' ? <div><Button onClick={() => { handleGoodFeedbackClick() }} variant="outline-success" size="sm">Good</Button> <Button onClick={() => { handleBadFeedbackClick() }} variant="outline-danger" size="sm">Bad</Button></div> : null}
+      {entry.rating_to_seller === null && role === 'buyer' ? <div><Button onClick={() => { handleGoodFeedbackClick() }} variant="outline-success" size="sm">Good</Button> <Button onClick={() => { handleBadFeedbackClick() }} variant="outline-danger" size="sm">Bad</Button></div> : null}
+      {entry.rating_to_seller !== null && role === 'buyer' ? <div>Feedback Given</div> : null}
+      {entry.rating_to_buyer !== null && role === 'seller' ? <div>Feedback Given</div> : null}
     </TransEntry>
   );
 }
