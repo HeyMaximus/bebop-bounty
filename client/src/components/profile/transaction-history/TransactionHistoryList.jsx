@@ -24,7 +24,7 @@ function TransactionHistoryList() {
     <div>
       <Stack gap={1}>
         {userTransactions.slice(0, slice).map((entry) => (
-          <TransactionHistoryEntry key={entry.id} userID={userData.id} entry={entry} />
+          <TransactionHistoryEntry key={entry.id} userID={userData.id} entry={entry} getUserTransactions={getUserTransactions} />
         ))}
       </Stack>
       {slice < userTransactions.length ? (
