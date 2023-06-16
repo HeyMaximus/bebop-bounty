@@ -128,7 +128,7 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
               />
             </div>
             <div>
-              Offer Amount:
+              Requested Amount:
               <input
                 style={{ width: '55%' }}
                 type="text"
@@ -140,7 +140,7 @@ export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty 
           </StyledListBountyContent>
         </StyledListBountyContentContainer>
         <StyledSubmitListBounty className="list-bounty-btn" onClick={submitOffer} type="button">
-          List Bounty
+          List Offer
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}
       </StyledListBountyBody>
