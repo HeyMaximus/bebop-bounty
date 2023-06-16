@@ -17,11 +17,10 @@ import {
 
 
 export default function ListBountyModal({ showListBountyModal }) {
-  let context = useContext(GlobalContext);
-  console.log('buyerID', context);
+  const { userData } = useContext(GlobalContext);
 
   const [initialValues, setInitialValues] = useState({
-    // buyer_id
+    buyerID: userData.id,
     name: '',
     description: '',
     condition: '',
@@ -36,9 +35,6 @@ export default function ListBountyModal({ showListBountyModal }) {
   });
   const [formValues, setFormValues] = useState(initialValues);
   const [previewImage, setPreviewImage] = useState();
-  const { userData } = useContext(GlobalContext);
-
-  console.log('BOUNTYMODAL USERDATA', userData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,8 +61,7 @@ export default function ListBountyModal({ showListBountyModal }) {
     }
   };
 
-  const submitBounty = async () => {
-    console.log('Form Values', formValues);
+  const submitBounty = () => {
     axios
       .post('http://54.176.108.13:8080/api/bounties', formValues)
       .then((results) => {
@@ -98,10 +93,10 @@ export default function ListBountyModal({ showListBountyModal }) {
             <StyledLBDropDowns>
               <select name="category" value={formValues.category} onChange={handleChange}>
                 <option>Category</option>
-                <option>Clothing</option>
-                <option>Decor</option>
-                <option>Furniture</option>
-                <option>Gadget</option>
+                <option>clothing</option>
+                <option>decor</option>
+                <option>furniture</option>
+                <option>gadgets</option>
               </select>
               <select name="condition" value={formValues.condition} onChange={handleChange}>
                 <option>Condition</option>

@@ -174,6 +174,7 @@ export const StyledRatingBox = styled.div`
   width: 100px;
   height: 15px;
   padding-bottom: 10%;
+  display: flex;
 `;
 
 export const StyledMakeOfferButton = styled.button`
