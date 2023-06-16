@@ -207,6 +207,12 @@ export const StyledListBountyBody = styled.div`
   }
 `;
 
+export const StyledImagePreview = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+`;
+
 export const StyledListBountyContentContainer = styled.div`
   border: solid 1px #3e4334;
   height: 490px;
