@@ -7,7 +7,7 @@ import ProfileMenu from './ProfileMenu.jsx';
 import ListBountyModal from './ListBountyModal.jsx';
 import { GlobalContext } from '../../GlobalContext.jsx';
 
-export default function NavBar({ toggleTheme, theme }) {
+export default function NavBar({ toggleTheme, theme, setAllBounties }) {
   const [profileMenu, setProfileMenu] = useState(false);
   const [listBountyModal, setListBountyModal] = useState(false);
   const exampleImgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
@@ -25,7 +25,7 @@ export default function NavBar({ toggleTheme, theme }) {
   return (
     <StyledNavBar>
       <StyledNavLogo onClick={handleLogoOnClick}>Bebop Bounty</StyledNavLogo>
-      <SearchBar />
+      <SearchBar setAllBounties={setAllBounties} />
       <StyledListBountyBtn onClick={() => showListBountyModal()}>List Bounty</StyledListBountyBtn>
       {listBountyModal && <ListBountyModal showListBountyModal={showListBountyModal} />}
       <StyledProfilePic onClick={() => showProfileMenu()}>
