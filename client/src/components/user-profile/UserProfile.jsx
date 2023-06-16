@@ -13,6 +13,7 @@ import {
   UserDetails,
   Rating,
   RightContainer,
+  StyledRatingWrapper,
 } from './ProfileStyles';
 
 function UserProfile() {
@@ -51,6 +52,7 @@ function UserProfile() {
           {user && <ProfileImage src={user.profile_image} alt="profile-image" />}
           <Rating>Rating: {user && <CoinRating user={user} />}</Rating>
         </UserInfoContainer>
+
         <RightContainer>
           {transactions && user && (
             <UserProfileDetails userId={userId} transactions={transactions} />
