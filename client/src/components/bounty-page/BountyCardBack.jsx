@@ -34,8 +34,8 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
     <StyledBountyCardBack onClick={flipCard}>
       <StyledTitle>{name}</StyledTitle>
       <StyledCategory>Category: {category}</StyledCategory>
-      <StyledDeadline>Deadline: {deadline}</StyledDeadline>
-      <StyledDescription>Description: {description}</StyledDescription>
+      <StyledCategory>Deadline: {deadline}</StyledCategory>
+      <StyledCategory>Description: {description}</StyledCategory>
       <StyledPreferredPayment>Preferred Payment:{preferred_payment}</StyledPreferredPayment>
       <OfferLayoutCenter>
         <Button onClick={showOfferModal} variant="success" size="sm">
