@@ -91,17 +91,13 @@ export default function BountyPage({ toggleTheme }) {
     axios
       .get('http://54.176.108.13:8080/api/bounties', {
         params: {
-          // city: city,
-          // state: state,
-          // category: category,
-          // sortBy: sortBy,
           page: 2,
         },
       })
       .then(({ data }) => {
         console.log('#####################', data);
 
-        setAllBounties((prevAllBounties) => [...prevAllBounties, ...data]);
+        setAllBounties([...allBounties, ...data]);
       })
       .catch((err) => console.error('There was a probelm retreiving city data', err));
   };
