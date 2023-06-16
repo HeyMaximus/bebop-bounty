@@ -5,6 +5,7 @@ import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 import { StyledBountyCardBack } from '../../theme';
 import { GlobalContext } from '../GlobalContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 import {
   StyledTitle,
@@ -19,10 +20,12 @@ import {
   OfferLayoutCenter,
   OfferLayout,
   StyledCardBackBottom,
+  StyledBuyerName,
 } from './StyledBountyBoard';
 
 export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
-  const { name, category, description, preferred_payment, offerCount, buyer_id } = Bounty;
+  const { name, category, description, preferred_payment, offerCount, buyer_id, buyer_name } =
+    Bounty;
   const [user, setUser] = useState(null);
 
   console.log(Bounty);
@@ -44,6 +47,12 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
       .catch((err) => console.log('Err in sendUserDataToServer: ', err));
   }, []);
 
+  const navigate = useNavigate();
+  const handleBuyerNameClick = (e) => {
+    e.preventDefault();
+    navigate(`/user-profile/${buyer_id}`);
+  };
+
   return (
     <StyledBountyCardBack onClick={flipCard}>
       <StyledTitle>{name}</StyledTitle>
@@ -62,7 +71,7 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
 
       <OfferLayout>
         <StyledRatingBox>Rating: {user && <CoinRating user={user} size="20px" />}</StyledRatingBox>
-
+        <StyledBuyerName onClick={handleBuyerNameClick}>{buyer_name}</StyledBuyerName>
         {/* <StyledCurrentOffers>Current Offers</StyledCurrentOffers> */}
         {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
       </OfferLayout>
