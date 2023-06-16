@@ -46,7 +46,7 @@ import EmptyCoinIcon from '../../../assets/coin-grey.png';
 // };
 
 function CoinRating({ user, size }) {
-  const diameter = size === 'small' ? `20px` : `30px`;
+  // const diameter = size === 'small' ? `20px` : `30px`;
 
   const Host = styled.div`
     display: flex;
@@ -69,8 +69,8 @@ function CoinRating({ user, size }) {
   `;
 
   const FilledCoin = styled.img`
-    height: ${diameter};
-    width: ${diameter};
+    height: ${size};
+    width: ${size};
   `;
 
   const EmptyCoinContainer = styled.div`
@@ -80,8 +80,8 @@ function CoinRating({ user, size }) {
   `;
 
   const EmptyCoin = styled.img`
-    height: ${diameter};
-    width: ${diameter};
+    height: ${size};
+    width: ${size};
   `;
   const rating = `${Math.round(
     (user.rating_thumbs_up / (user.rating_thumbs_up + user.rating_thumbs_down)) * 100

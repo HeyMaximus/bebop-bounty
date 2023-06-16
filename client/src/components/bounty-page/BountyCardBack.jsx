@@ -44,7 +44,7 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
       </OfferLayout>
       <OfferLayout>
         <StyledRatingBox>
-          <CoinRating user={buyer_id} size="small" />
+          <CoinRating user={buyer_id} size="20px" />
         </StyledRatingBox>
         <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
         {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
