@@ -42,12 +42,12 @@ export const StyledBountyCard = styled.div`
   /* background-color: #e7e5d5; */
 `;
 
-export const StyledBountyCardBack = styled(StyledBountyCard)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 6%;
-`;
+// export const StyledBountyCardBack = styled(StyledBountyCard)`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   padding: 6%;
+// `;
 
 export const FlipToFront = styled.div``;
 

@@ -89,3 +89,12 @@ export const StyledBountyCard = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.subBG};
 `;
+
+export const StyledBountyCardBack = styled(StyledBountyCard)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6%;
+  background-color: ${({ theme }) => theme.subBG};
+  color: ${({ theme }) => theme.border};
+`;

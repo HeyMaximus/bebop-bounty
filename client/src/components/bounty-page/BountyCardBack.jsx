@@ -1,11 +1,10 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
-
-import Button from 'react-bootstrap/Button';
+import { StyledBountyCardBack } from '../../theme';
 
 import {
-  StyledBountyCardBack,
   StyledTitle,
   StyledCategory,
   StyledDeadline,
