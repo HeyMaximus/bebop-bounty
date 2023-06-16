@@ -12,7 +12,8 @@ export const StyledBountyCollection = styled.div`
   display: flex;
   flex-wrap: wrap;
   /* background-color: lightgray; */
-  justify-content: space-between;
+  justify-content: left;
+  gap: 15px;
 `;
 
 export const StyledDropdown = styled.select`
@@ -203,4 +204,11 @@ export const StyledPreferredPayment = styled.div`
 
 export const OfferLayout = styled.div`
   /* */
+`;
+
+export const StyledFlexContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 10px;
 `;
