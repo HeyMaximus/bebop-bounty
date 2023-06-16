@@ -23,7 +23,6 @@ import {
 export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOfferModal }) {
   const { id, buyer_name, buyer_id, offer_count, name, price, image } = Bounty;
 
-  console.log(Bounty);
   const navigate = useNavigate();
   const handleBuyerNameClick = (e) => {
     e.preventDefault();

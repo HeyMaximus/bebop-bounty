@@ -17,6 +17,7 @@ export default function BountyPage({ toggleTheme }) {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [allBounties, setAllBounties] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   const searchIcon = (
     <svg xmlns="http://www.w3.org/2000/svg" height="13px" width="13px" viewBox="0 0 512 512">
       <path
@@ -83,7 +84,26 @@ export default function BountyPage({ toggleTheme }) {
       .catch((err) => console.error('There was a problem retreiving sort data', err));
   }, [sortBy]);
 
-  const seeMore = () => {};
+  const seeMore = () => {
+    //--get next 10 bounties
+    // setPageNumber(pageNumber + 1);
+
+    setPageNumber((prevNumber) => {
+      prevNumber + 1;
+    });
+    axios
+      .get('http://54.176.108.13:8080/api/bounties', {
+        params: {
+          page: pageNumber + 1,
+        },
+      })
+      .then(({ data }) => {
+        console.log('#####################', data);
+
+        setAllBounties([...allBounties, ...data]);
+      })
+      .catch((err) => console.error('There was a probelm retreiving city data', err));
+  };
 
   console.log('allBounties: ', allBounties);
   return (
@@ -125,7 +145,7 @@ export default function BountyPage({ toggleTheme }) {
         </StyledLocation>
       </StyledFilterBar>
       <BountyBoard allBounties={allBounties} />
-      <StyledSeeMore onClick={seeMore}>See More...</StyledSeeMore>
+      <StyledSeeMore onClick={() => seeMore()}>See More...</StyledSeeMore>
     </StyledBountyPageBorder>
   );
 }
