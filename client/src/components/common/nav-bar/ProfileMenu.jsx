@@ -21,7 +21,7 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
     e.preventDefault();
     signOut(auth)
       .then(() => {
-        console.log('Sign out successful.');
+        alert('Sign out successful.');
         setUserData({}); // clear current user data after sign out
         navigate('/login');
       })
