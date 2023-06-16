@@ -54,6 +54,7 @@ export default function BountyCardFront({ Bounty, flipCard, isFlipped, showOffer
       <StyledBottomCardContainer>
         <StyledCurrentOffers>Current Offers: {offer_count}</StyledCurrentOffers>
         <StyledDeadline>Deadline: {deadline}</StyledDeadline>
+
       </StyledBottomCardContainer>
     </StyledBountyCard>
   );

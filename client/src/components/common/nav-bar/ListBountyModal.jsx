@@ -14,9 +14,14 @@ import {
   StyledLBDropDowns,
   StyledImagePreview,
 } from './navbar.styled';
+import { GlobalContext } from '../../GlobalContext.jsx';
 
 export default function ListBountyModal({ showListBountyModal }) {
+  let context = useContext(GlobalContext);
+  console.log('buyerID', context);
+
   const [initialValues, setInitialValues] = useState({
+
     // buyer_id
     name: '',
     description: '',

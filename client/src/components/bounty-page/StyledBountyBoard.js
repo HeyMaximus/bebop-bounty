@@ -51,7 +51,7 @@ export const StyledBountyCard = styled.div`
 
 export const FlipToFront = styled.div``;
 
-export const OfferLayout = styled.div`
+export const StyledCardBackBottom = styled.div`
   /* border: solid; */
   width: 100%;
   /* display: flex;
@@ -165,15 +165,7 @@ export const StyledDeadline = styled.div`
   /* border: solid; */
 `;
 
-export const StyledCategory = styled.div`
-  /* border: solid; */
-`;
-
-export const StyledDescription = styled.div`
-  /* border: solid; */
-`;
-
-export const StyledPreferredPayment = styled.div`
+export const StyledCardBackText = styled.div`
   /* border: solid; */
 `;
 
@@ -192,9 +184,9 @@ export const StyledMakeOfferButton = styled.button`
 
 export const StyledCurrentOffers = styled.div`
   font-size: small;
-  /* border: solid;s */
+  /* border: solid; */
 `;
 
 export const ModalWrapper = styled.div`
-  border: solid;
+  /* border: solid; */
 `;
