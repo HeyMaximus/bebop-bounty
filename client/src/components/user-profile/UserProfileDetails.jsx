@@ -52,7 +52,7 @@ function UserProfileDetails({ userId, transactions }) {
             transactions.map((transaction) => (
               <TransactionEntry key={transaction.bounty_name + transaction.id}>
                 <TransactionTop>
-                  <div>Bouty: {transaction.bounty_name}</div>
+                  <div>Bounty: {transaction.bounty_name}</div>
                 </TransactionTop>
                 <TransactionBottom>
                   <div>
