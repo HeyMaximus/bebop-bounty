@@ -14,7 +14,6 @@ import {
   StyledLBDropDowns,
   StyledImagePreview,
 } from './navbar.styled';
-import { GlobalContext } from '../../GlobalContext.jsx';
 
 export default function ListBountyModal({ showListBountyModal }) {
   let context = useContext(GlobalContext);
