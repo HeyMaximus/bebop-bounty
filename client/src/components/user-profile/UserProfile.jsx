@@ -16,7 +16,7 @@ import {
   StyledRatingWrapper,
 } from './ProfileStyles';
 
-function UserProfile() {
+function UserProfile({ toggleTheme, theme }) {
   const [transactions, setTransactions] = useState(null);
   const [user, setUser] = useState(null);
   const userId = Number(useParams().buyer_id);
@@ -42,7 +42,7 @@ function UserProfile() {
 
   return (
     <Host>
-      <NavBar />
+      <NavBar theme={theme} toggleTheme={toggleTheme} />
       <UserProfileContainer>
         <UserInfoContainer>
           <UserDetails>

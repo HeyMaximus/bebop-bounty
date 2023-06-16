@@ -7,14 +7,14 @@ import {
   StyledSearchButton,
 } from '../common/nav-bar/navbar.styled';
 
-function SearchBar() {
+function SearchBar({ setAllBounties }) {
   const [searchEntry, setSearchEntry] = useState('');
 
-  console.log('searchentry', searchEntry)
+  console.log('searchentry', searchEntry);
   const handleSearch = (entry) => {
     axios
       .get('http://54.176.108.13:8080/api/bounties', { params: { searchQuery: entry } })
-      .then(({ data }) => console.log('SEARCHDATA: ', data))
+      .then(({ data }) => setAllBounties(data))
       .catch((err) => console.error('There was an error retreiving search data', err));
   };
 

@@ -91,7 +91,7 @@ export default function BountyPage({ toggleTheme, theme }) {
 
   return (
     <StyledBountyPageBorder>
-      <NavBar theme={theme} toggleTheme={toggleTheme} />
+      <NavBar theme={theme} toggleTheme={toggleTheme} setAllBounties={setAllBounties} />
       <StyledFilterBar>
         <div style={{ display: 'flex' }}>
           <div style={{ marginRight: 50 }}>

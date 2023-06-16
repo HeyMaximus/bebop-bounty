@@ -36,7 +36,7 @@ export const UserDetails = styled.div`
 
 export const ProfileImage = styled.img`
   width: 400px;
-  height: 400px;
+  height: 60%;
   object-fit: cover;
 `;
 

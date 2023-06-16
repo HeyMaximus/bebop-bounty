@@ -33,8 +33,14 @@ function App() {
               path="bounty-page"
               element={<BountyPage theme={theme} toggleTheme={toggleTheme} />}
             />
-            <Route path="profile/bounty-history" element={<BountyHistory />} />
-            <Route path="user-profile/:buyer_id" element={<UserProfile />} />
+            <Route
+              path="profile/bounty-history"
+              element={<BountyHistory theme={theme} toggleTheme={toggleTheme} />}
+            />
+            <Route
+              path="user-profile/:buyer_id"
+              element={<UserProfile theme={theme} toggleTheme={toggleTheme} />}
+            />
             <Route path="/*" element={<Navigate to="landing" />} />
           </Routes>
           <Footer />
