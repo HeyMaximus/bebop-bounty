@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import {
   StyledListBountyContainer,
@@ -13,10 +13,14 @@ import {
   StyledLBDropDowns,
   StyledImagePreview,
 } from './navbar.styled';
+import { GlobalContext } from '../../GlobalContext.jsx';
 
 export default function ListBountyModal({ showListBountyModal }) {
+  let context = useContext(GlobalContext);
+  console.log('buyerID', context);
+
   const [initialValues, setInitialValues] = useState({
-    buyer_id: 1,
+    buyer_id: 1, //to change when context is created
     name: '',
     description: '',
     condition: '',
