@@ -88,10 +88,13 @@ export default function BountyPage({ toggleTheme }) {
     //--get next 10 bounties
     // setPageNumber(pageNumber + 1);
 
+    setPageNumber((prevNumber) => {
+      prevNumber + 1;
+    });
     axios
       .get('http://54.176.108.13:8080/api/bounties', {
         params: {
-          page: 2,
+          page: pageNumber + 1,
         },
       })
       .then(({ data }) => {
