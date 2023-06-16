@@ -5,17 +5,19 @@ import {
   StyledSelect,
   StyledLocation,
   StyledLocationInputs,
+  StyledSeeMore,
 } from './styled-components/bountypage.styled';
 import { StyledBountyPageBorder } from '../../theme';
 import NavBar from '../common/nav-bar/NavBar.jsx';
 import BountyBoard from './BountyBoard.jsx';
 
-export default function BountyPage({ toggleTheme }) {
+export default function BountyPage({ toggleTheme, theme }) {
   const [sortBy, setSortBy] = useState('');
   const [category, setCategory] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [allBounties, setAllBounties] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   const searchIcon = (
     <svg xmlns="http://www.w3.org/2000/svg" height="13px" width="13px" viewBox="0 0 512 512">
       <path
@@ -30,11 +32,12 @@ export default function BountyPage({ toggleTheme }) {
       .then(({ data }) => setAllBounties(data))
       .catch((err) => console.error('There was a problem GETTING all bounties: ', err));
   };
+  };
 
   const submitCity = () => {
     if (city.length >= 2) {
       axios
-        .get('http://54.176.108.13:8080/api/bounties', { params: { city: city }})
+        .get('http://54.176.108.13:8080/api/bounties', { params: { city: city } })
         .then(({ data }) => {
           setAllBounties(data);
           setCity('');
@@ -45,7 +48,7 @@ export default function BountyPage({ toggleTheme }) {
   const submitState = () => {
     if (state.length >= 2) {
       axios
-        .get('http://54.176.108.13:8080/api/bounties', { params: { state: state }})
+        .get('http://54.176.108.13:8080/api/bounties', { params: { state: state } })
         .then(({ data }) => {
           setAllBounties(data);
           setState('');
@@ -60,7 +63,7 @@ export default function BountyPage({ toggleTheme }) {
 
   useEffect(() => {
     console.log('categorrrry state', category);
-    if (category || sortBy) {
+    if (category) {
       axios
         .get('http://54.176.108.13:8080/api/bounties', {
           params: {
@@ -77,10 +80,31 @@ export default function BountyPage({ toggleTheme }) {
     }
   }, [category, sortBy]);
 
+  const seeMore = () => {
+    //--get next 10 bounties
+    // setPageNumber(pageNumber + 1);
+
+    setPageNumber((prevNumber) => {
+      prevNumber + 1;
+    });
+    axios
+      .get('http://54.176.108.13:8080/api/bounties', {
+        params: {
+          page: pageNumber + 1,
+        },
+      })
+      .then(({ data }) => {
+        console.log('#####################', data);
+
+        setAllBounties([...allBounties, ...data]);
+      })
+      .catch((err) => console.error('There was a probelm retreiving city data', err));
+  };
+
   console.log('allBounties: ', allBounties);
   return (
     <StyledBountyPageBorder>
-      <NavBar toggleTheme={toggleTheme} />
+      <NavBar theme={theme} toggleTheme={toggleTheme} />
       <StyledFilterBar>
         <div style={{ display: 'flex' }}>
           <div style={{ marginRight: 50 }}>
@@ -118,6 +142,7 @@ export default function BountyPage({ toggleTheme }) {
         </StyledLocation>
       </StyledFilterBar>
       <BountyBoard allBounties={allBounties} />
+      <StyledSeeMore onClick={() => seeMore()}>See More...</StyledSeeMore>
     </StyledBountyPageBorder>
   );
 }

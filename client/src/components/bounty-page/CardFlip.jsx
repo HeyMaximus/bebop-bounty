@@ -6,7 +6,7 @@ import OfferModal from './OfferModal.jsx';
 
 export default function CardFlip({ Bounty }) {
   const [isFlipped, setIsFlipped] = useState(false);
-  console.log(Bounty);
+
   const flipCard = (e) => {
     console.log('flip it!');
     e.preventDefault();

@@ -23,6 +23,7 @@ export const StyledCardFlip = styled(CardFlip)`
   border: solid;
   background-color: yellow;
   z-index: 2;
+  cursor: pointer;
 `;
 
 export const StyledBountyCard = styled.div`
@@ -34,6 +35,7 @@ export const StyledBountyCard = styled.div`
   height: 275px;
   /* padding: 10px; */
   margin-bottom: 12px;
+  cursor: pointer;
   /* background-color: #e7e5d5; */
 `;
 
@@ -51,6 +53,13 @@ export const OfferLayout = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+`;
+
+export const OfferLayoutCenter = styled.div`
+  /* border: solid; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const StyledImageContainer = styled.div`
@@ -77,6 +86,7 @@ export const StyledPrice = styled.div`
   text-align: center;
   font-size: x-large;
   color: black;
+  margin-bottom: 4%;
   /* border: solid; */
 `;
 
@@ -108,6 +118,7 @@ export const StyledMidcardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 4%;
   /* align-items: center; */
   /* height: fit-content; */
 `;
@@ -153,6 +164,9 @@ export const StyledPreferredPayment = styled.div`
 
 export const StyledRatingBox = styled.div`
   /* border: solid; */
+  width: 100px;
+  height: 15px;
+  padding-bottom: 10%;
 `;
 
 export const StyledMakeOfferButton = styled.button`

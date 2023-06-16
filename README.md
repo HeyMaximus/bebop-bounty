@@ -1,7 +1,8 @@
 
 
 # Bebop Bounty
-![Bebop Bounty Image](https://www.sosyncd.com/wp-content/uploads/2022/08/10-5.png)
+<img src="https://www.sosyncd.com/wp-content/uploads/2022/08/10-5.png" width="500">
+
 
 
 Bebop Bounty is an e-commerce platform that allows users to post bounties requesting items matching their described criteria, and in turn, sellers can make offers on the bounty.
