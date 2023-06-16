@@ -27,7 +27,7 @@ export default function BountyPage({ toggleTheme, theme }) {
   );
   const getAllBounties = () => {
     axios
-      .get('http://54.176.108.13:8080/api/bounties', { params: { count: 12 } })
+      .get('http://54.176.108.13:8080/api/bounties', { params: { count: 10 } })
       .then(({ data }) => setAllBounties(data))
       .catch((err) => console.error('There was a problem GETTING all bounties: ', err));
   };
@@ -80,7 +80,7 @@ export default function BountyPage({ toggleTheme, theme }) {
     axios
       .get('http://54.176.108.13:8080/api/bounties', {
         params: {
-          count: length + 4,
+          count: length + 5,
         },
       })
       .then(({ data }) => {
