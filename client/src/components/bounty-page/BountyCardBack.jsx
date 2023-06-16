@@ -20,7 +20,6 @@ import {
 
 export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
   const { name, category, description, preferred_payment, buyer_id } = Bounty;
-  console.log(Bounty);
   let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
   deadline = deadline.substring(5, 10);
