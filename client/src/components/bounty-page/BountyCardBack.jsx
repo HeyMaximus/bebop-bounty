@@ -11,7 +11,6 @@ import {
   StyledMakeOfferButton,
   StyledCurrentOffers,
   FlipToFront,
-  OfferLayout,
   StyledCardBackText,
   OfferLayoutCenter,
   StyledCardBackBottom,
