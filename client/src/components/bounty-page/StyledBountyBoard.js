@@ -209,7 +209,8 @@ export const StyledPreferredPayment = styled.div`
 `;
 
 export const OfferLayout = styled.div`
-  /* */
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const StyledFlexContainer = styled.div`
