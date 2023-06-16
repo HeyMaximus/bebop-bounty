@@ -15,20 +15,20 @@ function TransactionHistoryEntry({ userID, entry, getUserTransactions }) {
 
   const handleGoodFeedbackClick = () => {
     let feedBack = {}
-    if(role === 'seller') {feedBack.ratingToBuyer: 'good'}}
-    else {feedBack = {ratingToSeller: 'good'}}
+    if (role === 'seller') { feedBack.ratingToBuyer = 'good' }
+    else { feedBack.ratingToSeller = 'good' }
     axios.patch(`http://54.176.108.13:8080/api/transactions/${entry.id}`, feedback)
-    .then((r) => getUserTransactions())
-    .catch((err) => console.log(err))
+      .then((r) => getUserTransactions())
+      .catch((err) => console.log(err))
   };
 
   const handleBadFeedbackClick = () => {
     let feedBack = {}
-    if(role === 'seller') {feedBack = {ratingToBuyer: 'bad'}}
-    else {feedBack = {ratingToSeller: 'bad'}}
+    if (role === 'seller') { feedBack.ratingToBuyer = 'bad' }
+    else { feedBack.ratingToSeller = 'bad' }
     axios.patch(`http://54.176.108.13:8080/api/transactions/${entry.id}`, feedback)
-    .then((r) => getUserTransactions())
-    .catch((err) => console.log(err))
+      .then((r) => getUserTransactions())
+      .catch((err) => console.log(err))
   };
 
   useEffect(() => {
@@ -38,10 +38,10 @@ function TransactionHistoryEntry({ userID, entry, getUserTransactions }) {
 
   return (
     <TransEntry>
-      {entry.seller_id === userID ? 'Earned' : 'Paid'} {entry.sale_amount} for{' '}
-      {entry.bounty_name || 'a bounty'} on {date}{' '}
-      {entry.rating_to_buyer === null && role === 'seller' ? <Button onClick={()=> {handleGoodFeedbackClick()}} variant="outline-success" size="sm">Good</Button> <Button onClick={()=> {handleBadFeedbackClick()}} variant="outline-danger" size="sm">Bad</Button>: '(Feedback given)'}
-      {entry.rating_to_seller === null && role === 'buyer' ? <Button onClick={()=> {handleGoodFeedbackClick()}} variant="outline-success" size="sm">Good</Button> <Button onClick={()=> {handleBadFeedbackClick()}} variant="outline-danger" size="sm">Bad</Button>: null}
+      {entry.seller_id === userID ? 'Earned' : 'Paid'} {entry.sale_amount} for {' '}
+      {entry.bounty_name || 'a bounty'} on {date} {' '}
+      {entry.rating_to_buyer === null && role === 'seller' ? <span><Button onClick={() => { handleGoodFeedbackClick() }} variant="outline-success" size="sm">Good</Button> <Button onClick={() => { handleBadFeedbackClick() }} variant="outline-danger" size="sm">Bad</Button></span> : '(Feedback given)'}
+      {entry.rating_to_seller === null && role === 'buyer' ? <span><Button onClick={() => { handleGoodFeedbackClick() }} variant="outline-success" size="sm">Good</Button> <Button onClick={() => { handleBadFeedbackClick() }} variant="outline-danger" size="sm">Bad</Button></span> : null}
     </TransEntry>
   );
 }
