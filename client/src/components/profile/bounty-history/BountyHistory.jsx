@@ -9,7 +9,7 @@ import BountyCardFront from '../../bounty-page/BountyCard.jsx';
 import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
 import { StyledBountyBoardWrapper } from '../../bounty-page/StyledBountyBoard';
-import { BountyPageBorder } from '../../bounty-page/styled-components/bountypage.styled';
+import { StyledBountyPageBorder } from '../../../theme';
 import NavBar from '../../common/nav-bar/NavBar.jsx';
 
 function BountyHistory() {
@@ -45,7 +45,7 @@ function BountyHistory() {
     }
     `}
       </style>
-      <BountyPageBorder>
+      <StyledBountyPageBorder>
         <NavBar />
         <StyledBountyBoardWrapper>
           <Container fluid>
@@ -69,11 +69,11 @@ function BountyHistory() {
               <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <OfferHistoryList bountyID={bountyID}/>
+              <OfferHistoryList bountyID={bountyID} />
             </Offcanvas.Body>
           </Offcanvas>
         </StyledBountyBoardWrapper>
-      </BountyPageBorder>
+      </StyledBountyPageBorder>
     </div>
   );
 }

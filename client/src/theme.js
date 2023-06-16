@@ -1,11 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import lightLogo from '../dist/assets/CbShip_Black_.png';
 import darkLogo from '../dist/assets/CbShip_White.png';
+import overlay from '../dist/assets/noisy-background.jpeg';
 
 export const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Coromorant Garamond', serif;
     background: ${({ theme }) => theme.body};
+    /* background-image: url(overlay); */
     color: ${({ theme }) => theme.text};
     transition: background 0.2s ease-in, color 0.2s ease-in;
   }
@@ -39,12 +41,14 @@ export const lightTheme = {
   text: 'white',
   logo: `url(${lightLogo})`,
   border: '#3e4334',
+  subBG: '#e7e5d5',
 };
 export const darkTheme = {
   body: 'black',
   text: 'white',
   logo: `url(${darkLogo})`,
   border: 'white',
+  subBG: 'black',
 };
 
 export const StyledNavLogo = styled.div`
@@ -70,4 +74,27 @@ export const StyledBountyPageBorder = styled.div`
   height: 90%;
   width: 92%;
   min-height: 900px;
+`;
+
+// BountyCard
+export const StyledBountyCard = styled.div`
+  display: inline-block;
+  border: 1.3px solid white;
+  box-shadow: 3px 3px 3px rgb(62, 67, 52);
+  width: 280px;
+  height: 340px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.border};
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.subBG};
+`;
+
+export const StyledBountyCardBack = styled(StyledBountyCard)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6%;
+  background-color: ${({ theme }) => theme.subBG};
+  color: ${({ theme }) => theme.border};
 `;

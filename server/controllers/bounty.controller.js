@@ -18,6 +18,7 @@ module.exports.getBounties = async (req, res) => {
 
 module.exports.createBounty = async (req, res) => {
   const bounty = req.body;
+  console.log('req.body', bounty)
   try {
     await bountyModel.createBounty(bounty);
     res.status(201).send('Bounty created');

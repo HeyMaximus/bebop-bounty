@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
+import Button from 'react-bootstrap/Button';
 import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
-import axios from 'axios';
-
-import Button from 'react-bootstrap/Button';
+import { StyledBountyCardBack } from '../../theme';
 
 import {
-  StyledBountyCardBack,
   StyledTitle,
   StyledRatingBox,
   StyledMakeOfferButton,
@@ -43,20 +42,24 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
     <StyledBountyCardBack onClick={flipCard}>
       <StyledTitle>{name}</StyledTitle>
 
-      <StyledCardBackText>Category: {category}</StyledCardBackText>
-      <StyledCardBackText>Deadline: {deadline}</StyledCardBackText>
-      <StyledCardBackText>Description: {description}</StyledCardBackText>
-      <StyledCardBackText>Preferred Payment:{preferred_payment}</StyledCardBackText>
+      <StyledCategory>Category: {category}</StyledCategory>
+      <StyledDescription>Description: {description}</StyledDescription>
+      <StyledPreferredPayment>Preferred Payment: {preferred_payment}</StyledPreferredPayment>
 
       <OfferLayoutCenter>
         <Button onClick={showOfferModal} variant="success" size="sm">
           Make An Offer!
         </Button>
       </OfferLayoutCenter>
-      <StyledCardBackBottom>
-        <StyledRatingBox>{user && <CoinRating size="20px" user={user} />}</StyledRatingBox>
-        <StyledCurrentOffers>Current Offers</StyledCurrentOffers>
-      </StyledCardBackBottom>
+
+      <OfferLayout>
+
+        <StyledRatingBox>
+          {/* <CoinRating user={buyer_id} size="20px" /> */}
+        </StyledRatingBox>
+        {/* <StyledCurrentOffers>Current Offers</StyledCurrentOffers> */}
+        {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
+      </OfferLayout>
 
     </StyledBountyCardBack>
   );

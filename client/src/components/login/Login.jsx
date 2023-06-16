@@ -18,6 +18,7 @@ function Login() {
     axios
       .get(`http://54.176.108.13:8080/api/users/${user.uid}?auth=true`)
       .then((response) => {
+        console.log('RESPONSEE DATA', response)
         setUserData(response.data[0]);
         navigate('/bounty-page');
       })
@@ -58,6 +59,7 @@ function Login() {
             <label>
               E-mail:
               <input
+                style={{ width: 325, marginBottom: 15 }}
                 required
                 type="email"
                 name="email"
@@ -71,6 +73,7 @@ function Login() {
             <label>
               Password:
               <input
+                style={{ width: 309 }}
                 required
                 type="password"
                 name="password"
@@ -80,9 +83,11 @@ function Login() {
             </label>
           </div>
           {error ? <small className="login-error">{error}</small> : null}
-          <button type="submit" className="auth-form-submit-btn">
-            Login
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button type="submit" className="auth-form-submit-btn">
+              Login
+            </button>
+          </div>
         </form>
       </div>
     </div>
