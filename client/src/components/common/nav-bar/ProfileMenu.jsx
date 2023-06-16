@@ -37,7 +37,11 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
 
   const handleProfileClick = (e) => {
     e.preventDefault();
-    navigate(`/user-profile/${userData.id}`);
+    if (userData.id) {
+      navigate(`/user-profile/${userData.id}`);
+    } else {
+      alert("You haven't logged into your account yet.");
+    }
   };
 
   return (
