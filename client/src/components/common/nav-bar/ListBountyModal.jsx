@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { GlobalContext } from '../../GlobalContext.jsx';
 import {
   StyledListBountyContainer,
   StyledListBountyOverlay,
@@ -13,24 +14,32 @@ import {
   StyledLBDropDowns,
   StyledImagePreview,
 } from './navbar.styled';
+import { GlobalContext } from '../../GlobalContext.jsx';
 
 export default function ListBountyModal({ showListBountyModal }) {
+  let context = useContext(GlobalContext);
+  console.log('buyerID', context);
+
   const [initialValues, setInitialValues] = useState({
-    buyer_id: 1,
+
+    // buyer_id
     name: '',
     description: '',
     condition: '',
     category: '',
     city: '',
     state: '',
-    completed: false,
     price: '',
     deadline: '',
     preferred_payment: '',
     image: '',
+    completed: false,
   });
   const [formValues, setFormValues] = useState(initialValues);
   const [previewImage, setPreviewImage] = useState();
+  const { userData } = useContext(GlobalContext);
+
+  console.log('BOUNTYMODAL USERDATA', userData)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,15 +67,14 @@ export default function ListBountyModal({ showListBountyModal }) {
   };
 
   const submitBounty = async () => {
-    showListBountyModal();
-
     console.log('Form Values', formValues);
-    try {
-      const response = await axios.post('api/bounties', formValues);
-      console.log('Bounty submitted successfully:', response.data);
-    } catch (error) {
-      console.error('Error submitting offer:', error);
-    }
+    axios
+      .post('http://54.176.108.13:8080/api/bounties', formValues)
+      .then((results) => {
+        console.log(results);
+        showListBountyModal();
+      })
+      .catch((err) => console.error('There was a problem POSTING the bounty! ', err));
   };
 
   return (
@@ -99,7 +107,7 @@ export default function ListBountyModal({ showListBountyModal }) {
               <select name="condition" value={formValues.condition} onChange={handleChange}>
                 <option>Condition</option>
                 <option>new</option>
-                <option>like-new</option>
+                <option>like new</option>
                 <option>good</option>
                 <option>fair</option>
                 <option>poor</option>
@@ -182,7 +190,11 @@ export default function ListBountyModal({ showListBountyModal }) {
             </div>
           </StyledListBountyContent>
         </StyledListBountyContentContainer>
-        <StyledSubmitListBounty className="list-bounty-btn" onClick={submitBounty} type="button">
+        <StyledSubmitListBounty
+          className="list-bounty-btn"
+          onClick={() => submitBounty()}
+          type="button"
+        >
           List Bounty
         </StyledSubmitListBounty>
         {/* ====== INSERT UNIQUE CONTENT ABOVE HERE ====== */}

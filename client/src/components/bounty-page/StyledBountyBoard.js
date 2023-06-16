@@ -29,30 +29,36 @@ export const StyledCardFlip = styled(CardFlip)`
 export const StyledBountyCard = styled.div`
   display: inline-block;
   /* box-shadow: 0 0 3px black; */
-  border: 1px solid rgb(62, 67, 52);
+  border: 1.3px solid white;
   box-shadow: 3px 3px 3px rgb(62, 67, 52);
-  width: 225px;
-  height: 275px;
+  width: 280px;
+  height: 340px;
   /* padding: 10px; */
   margin-bottom: 12px;
   cursor: pointer;
+  color: rgb(62, 67, 52);
+  border-radius: 10px;
+  background-color: #e7e5d5;
   /* background-color: #e7e5d5; */
 `;
 
-export const StyledBountyCardBack = styled(StyledBountyCard)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 3%;
-`;
+// export const StyledBountyCardBack = styled(StyledBountyCard)`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   padding: 6%;
+// `;
 
 export const FlipToFront = styled.div``;
 
-export const OfferLayout = styled.div`
+export const StyledCardBackBottom = styled.div`
   /* border: solid; */
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+  position: absolute;
+  left: 30%;
+  bottom: 8%;
 `;
 
 export const OfferLayoutCenter = styled.div`
@@ -74,6 +80,9 @@ export const StyledImage = styled.img`
   position: absolute;
   height: 100%;
   width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   /* background-color: white; */
 `;
 
@@ -82,24 +91,29 @@ export const StyledPrice = styled.div`
   top: 0;
   left: 0;
   right: 0; */
-  height: 80%;
-  text-align: center;
+  /* height: 80%;
+  text-align: center; */
   font-size: x-large;
-  color: black;
-  margin-bottom: 4%;
+  position: absolute;
+  left: 38%;
+  bottom: 0%;
+  color: white;
+  /* color: white;
+  margin-bottom: 4%; */
   /* border: solid; */
 `;
 
 export const StyledTitleAndName = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 export const StyledWanted = styled.div`
   position: absolute;
-  background-color: grey;
-  opacity: 0.75;
-  color: black;
+  /* background-color: grey; */
+  /* opacity: 0.75; */
+  color: white;
   top: 0;
   left: 0;
   right: 0;
@@ -119,6 +133,7 @@ export const StyledMidcardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 4%;
+  margin-top: 10px;
   /* align-items: center; */
   /* height: fit-content; */
 `;
@@ -150,15 +165,7 @@ export const StyledDeadline = styled.div`
   /* border: solid; */
 `;
 
-export const StyledCategory = styled.div`
-  /* border: solid; */
-`;
-
-export const StyledDescription = styled.div`
-  /* border: solid; */
-`;
-
-export const StyledPreferredPayment = styled.div`
+export const StyledCardBackText = styled.div`
   /* border: solid; */
 `;
 
@@ -177,9 +184,9 @@ export const StyledMakeOfferButton = styled.button`
 
 export const StyledCurrentOffers = styled.div`
   font-size: small;
-  /* border: solid;s */
+  /* border: solid; */
 `;
 
 export const ModalWrapper = styled.div`
-  border: solid;
+  /* border: solid; */
 `;

@@ -6,7 +6,7 @@ body {
   position: relative;
   display: flex;
   justify-content: center;
-  min-height: 900px;
+  min-height: 645px;
   width: 100%;
   background-color: #4D4E67;
   margin: 0;
@@ -27,14 +27,18 @@ body {
 
 .auth-nav a {
   color: #FFF;
-  font-size: 1.7em;
+  font-size: 18px;
   text-decoration: none;
+}
+
+.auth-nav a:hover {
+  transform: scale(1.2) perspective(1px);
+  transition-duration: 0.3s;
 }
 
 .auth-form-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
   justify-content: center;
 }
@@ -43,47 +47,62 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 300;
+  background-image: url('/Users/benpak/HackReactor/bebop-bounty/client/dist/assets/CbShip_Black_.png');
+  background-size: cover;
+  background-position: center 32%;
+  padding-left: 40px;
+  margin-right: 25px;
+  margin-bottom: 40px;
+}
+.auth-sign-up-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 3em;
+  font-weight: 300;
+  background-image: url('/Users/benpak/HackReactor/bebop-bounty/client/dist/assets/CbShip_Black_.png');
+  background-size: cover;
+  background-position: center 32%;
+  padding-left: 40px;
+  margin-right: 25px;
+  margin-bottom: 40px;
 }
 
 .auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   width: 100%;
 }
 
 .auth-form-input {
   display: flex;
   font-weight: lighter;
-  font-size: 1.3em;
+  font-size: 1em;
   color: #dadada;
   margin-bottom: 30px;
 }
 
 .auth-form-input input {
-  width: 300px;
   font-family: 'Cormorant Garamond Medium';
   font-size: 1em;
   margin-left: 5px;
   border: none;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
   color: #ffffff;
   background-color: transparent;
   transition: border-color 0.3s ease-in-out;
 }
 
 .auth-form-input input[type="email"] {
-  width: 323px;
+  width: 343px;
 }
 
 .auth-form-input input[name="username"] {
-  width: 297px;
+  width: 322px;
 }
 
 .auth-form-input input[type="confirmPassword"] {
-  width: 230px;
+  width: 271px;
 }
 
 .auth-form-input input:focus {
@@ -103,12 +122,16 @@ input:-webkit-autofill:focus {
 
 .auth-form-submit-btn {
   background-color: transparent;
-  border: none;
   color: rgb(225, 225, 225);
   font-family: 'Cormorant Garamond';
-  padding: 10px;
-  font-size: 1.5em;
+  font-size: 1.1em;
   align-self: end;
   width: fit-content;
   cursor: pointer;
+  position: relative;
+  margin-top: 10px;
+}
+
+.auth-form-submit-btn::after {
+  background: white;
 }
