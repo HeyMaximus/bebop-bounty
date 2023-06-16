@@ -11,19 +11,18 @@ module.exports.getOffers = async (req, res) => {
     }
     res.status(200).json(data);
   } catch (err) {
-    console.error(err.message);
+    console.error('Query failed: get offers', err.message);
     res.sendStatus(400);
   }
 };
 
 module.exports.createOffer = async (req, res) => {
   const offer = req.body;
-  // console.log('IN CONTROLLER', offer);
   try {
     await offerModel.createOffer(offer);
     res.status(200).send('Offer created');
   } catch (err) {
-    console.error('CONTROLLER ERROR', err.message);
+    console.error('Query failed: create offer', err.message);
     res.sendStatus(400);
   }
 };
