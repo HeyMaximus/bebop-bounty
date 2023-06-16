@@ -45,8 +45,3 @@ module.exports.completeOffer = (offerID) => {
   const queryStr = 'UPDATE offer SET completed=true WHERE id=$1';
   return pool.query(queryStr, [offerID]);
 };
-
-module.exports.getUserOffers = (userID) => {
-  const queryStr = 'SELECT * FROM offer WHERE seller_id=$1';
-  return pool.query(queryStr, [userID]).then((queryRes) => queryRes.rows);
-};
