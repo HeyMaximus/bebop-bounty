@@ -8,7 +8,7 @@ import { GlobalContext } from '../../GlobalContext.jsx';
 import BountyCardFront from '../../bounty-page/BountyCard.jsx';
 import OfferHistoryList from '../offer-history/OfferHistoryList.jsx';
 import TransactionHistoryList from '../transaction-history/TransactionHistoryList.jsx';
-import { StyledBountyBoardWrapper } from '../../bounty-page/StyledBountyBoard';
+import { StyledBountyBoardWrapper, StyledFlexContainer } from '../../bounty-page/StyledBountyBoard';
 import { StyledBountyPageBorder } from '../../../theme';
 import NavBar from '../../common/nav-bar/NavBar.jsx';
 
@@ -51,11 +51,13 @@ function BountyHistory() {
             <Row>
               <Col lg="9">
                 <h2>Your Open Bounties</h2>
-                {userBounties.map((entry) => (
-                  <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
-                    <BountyCardFront Bounty={entry} />
-                  </span>
-                ))}
+                <StyledFlexContainer>
+                  {userBounties.map((entry) => (
+                    <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
+                      <BountyCardFront Bounty={entry} />
+                    </span>
+                  ))}
+                </StyledFlexContainer>
               </Col>
               <Col lg="3">
                 <h2>Transaction History</h2>

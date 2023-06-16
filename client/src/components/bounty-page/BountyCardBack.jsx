@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 import { StyledBountyCardBack } from '../../theme';
-import axios from 'axios';
+import { GlobalContext } from '../GlobalContext.jsx';
 
 import {
   StyledTitle,
@@ -21,8 +22,10 @@ import {
 } from './StyledBountyBoard';
 
 export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
-  const { name, category, description, preferred_payment, offer_count, buyer_id } = Bounty;
+  const { name, category, description, preferred_payment, offerCount, buyer_id } = Bounty;
   const [user, setUser] = useState(null);
+
+  console.log(Bounty);
 
   let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
@@ -47,7 +50,9 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
 
       <StyledCategory>Category: {category}</StyledCategory>
       <StyledDescription>Description: {description}</StyledDescription>
-      <StyledPreferredPayment>Preferred Payment: {preferred_payment}</StyledPreferredPayment>
+      {preferred_payment && (
+        <StyledPreferredPayment>Preferred Payment: {preferred_payment}</StyledPreferredPayment>
+      )}
 
       <OfferLayoutCenter>
         <Button onClick={showOfferModal} variant="success" size="sm">
@@ -56,9 +61,8 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
       </OfferLayoutCenter>
 
       <OfferLayout>
-        <StyledRatingBox>
-          <CoinRating user={buyer_id} size="20px" />
-        </StyledRatingBox>
+        <StyledRatingBox>{user && <CoinRating user={user} size="20px" />}</StyledRatingBox>
+
         {/* <StyledCurrentOffers>Current Offers</StyledCurrentOffers> */}
         {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
       </OfferLayout>
