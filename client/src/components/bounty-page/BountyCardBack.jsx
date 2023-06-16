@@ -28,8 +28,6 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
     Bounty;
   const [user, setUser] = useState(null);
 
-  console.log(Bounty);
-
   let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
   deadline = deadline.substring(5, 10);
