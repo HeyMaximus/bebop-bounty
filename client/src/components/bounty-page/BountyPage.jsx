@@ -17,7 +17,6 @@ export default function BountyPage({ toggleTheme, theme }) {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [allBounties, setAllBounties] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
   const searchIcon = (
     <svg xmlns="http://www.w3.org/2000/svg" height="13px" width="13px" viewBox="0 0 512 512">
       <path
@@ -28,10 +27,9 @@ export default function BountyPage({ toggleTheme, theme }) {
   );
   const getAllBounties = () => {
     axios
-      .get('http://54.176.108.13:8080/api/bounties')
+      .get('http://54.176.108.13:8080/api/bounties', { params: { count: 12 } })
       .then(({ data }) => setAllBounties(data))
       .catch((err) => console.error('There was a problem GETTING all bounties: ', err));
-  };
   };
 
   const submitCity = () => {
@@ -62,8 +60,7 @@ export default function BountyPage({ toggleTheme, theme }) {
   }, []);
 
   useEffect(() => {
-    console.log('categorrrry state', category);
-    if (category) {
+    if (category || sortBy) {
       axios
         .get('http://54.176.108.13:8080/api/bounties', {
           params: {
@@ -74,34 +71,24 @@ export default function BountyPage({ toggleTheme, theme }) {
         .then(({ data }) => {
           console.log('category data', data);
           setAllBounties(data);
-          // setCategory('');
         })
         .catch((err) => console.error('There was a problem retreiving category data', err));
     }
   }, [category, sortBy]);
 
-  const seeMore = () => {
-    //--get next 10 bounties
-    // setPageNumber(pageNumber + 1);
-
-    setPageNumber((prevNumber) => {
-      prevNumber + 1;
-    });
+  const seeMore = (length) => {
     axios
       .get('http://54.176.108.13:8080/api/bounties', {
         params: {
-          page: pageNumber + 1,
+          count: length + 4,
         },
       })
       .then(({ data }) => {
-        console.log('#####################', data);
-
-        setAllBounties([...allBounties, ...data]);
+        setAllBounties([...allBounties, ...data.slice(length)]);
       })
       .catch((err) => console.error('There was a probelm retreiving city data', err));
   };
 
-  console.log('allBounties: ', allBounties);
   return (
     <StyledBountyPageBorder>
       <NavBar theme={theme} toggleTheme={toggleTheme} />
@@ -121,7 +108,7 @@ export default function BountyPage({ toggleTheme, theme }) {
               <option>All</option>
               <option>clothing</option>
               <option>decor</option>
-              <option>gadget</option>
+              <option>gadgets</option>
               <option>furniture</option>
             </StyledSelect>
           </div>
@@ -142,7 +129,7 @@ export default function BountyPage({ toggleTheme, theme }) {
         </StyledLocation>
       </StyledFilterBar>
       <BountyBoard allBounties={allBounties} />
-      <StyledSeeMore onClick={() => seeMore()}>See More...</StyledSeeMore>
+      <StyledSeeMore onClick={() => seeMore(allBounties.length)}>See More</StyledSeeMore>
     </StyledBountyPageBorder>
   );
 }

@@ -62,7 +62,7 @@ function SignUp() {
         <Link to="/signUp">Sign Up</Link>
       </span>
       <div className="auth-form-container">
-        <p className="auth-form-title">Bebop Bounty</p>
+        <p className="auth-sign-up-title">Bebop Bounty</p>
         <form className="auth-form" onSubmit={handleSignUp}>
           <div className="auth-form-input">
             <label>
@@ -93,6 +93,7 @@ function SignUp() {
             <label>
               Password:
               <input
+                style={{ width: 326 }}
                 required
                 type="password"
                 name="password"
@@ -105,6 +106,7 @@ function SignUp() {
             <label>
               Confirm Password:
               <input
+                style={{ width: 271 }}
                 required
                 type="password"
                 name="confirmPassword"
@@ -114,9 +116,11 @@ function SignUp() {
             </label>
           </div>
           {error ? <small className="login-error">{error}</small> : null}
-          <button type="submit" className="auth-form-submit-btn">
-            Sign up
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button type="submit" className="auth-form-submit-btn">
+              Sign up
+            </button>
+          </div>
         </form>
       </div>
     </div>
