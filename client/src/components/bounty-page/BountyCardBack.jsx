@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { OpenOfferModal } from './helpers.js';
 import CoinRating from '../common/coin-rating/CoinRating.jsx';
 import { StyledBountyCardBack } from '../../theme';
+import axios from 'axios';
 
 import {
   StyledTitle,
@@ -11,7 +12,11 @@ import {
   StyledCurrentOffers,
   FlipToFront,
   StyledCardBackText,
+  StyledPreferredPayment,
+  StyledCategory,
+  StyledDescription,
   OfferLayoutCenter,
+  OfferLayout,
   StyledCardBackBottom,
 } from './StyledBountyBoard';
 
@@ -51,14 +56,12 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
       </OfferLayoutCenter>
 
       <OfferLayout>
-
         <StyledRatingBox>
-          {/* <CoinRating user={buyer_id} size="20px" /> */}
+          <CoinRating user={buyer_id} size="20px" />
         </StyledRatingBox>
         {/* <StyledCurrentOffers>Current Offers</StyledCurrentOffers> */}
         {/* <FlipToFront onClick={flipCard}> Flip to Front</FlipToFront> */}
       </OfferLayout>
-
     </StyledBountyCardBack>
   );
 }
