@@ -29,7 +29,7 @@ export default function BountyPage({ toggleTheme }) {
       .get('http://54.176.108.13:8080/api/bounties')
       .then(({ data }) => setAllBounties(data))
       .catch((err) => console.error('There was a problem GETTING all bounties: ', err));
-  }
+  };
 
   const submitCity = () => {
     if (city.length >= 2) {
@@ -59,28 +59,23 @@ export default function BountyPage({ toggleTheme }) {
   }, []);
 
   useEffect(() => {
-    console.log('categorrrry state', category)
-    if (category) {
+    console.log('categorrrry state', category);
+    if (category || sortBy) {
       axios
-        .get('http://54.176.108.13:8080/api/bounties', { params: { category: category } })
+        .get('http://54.176.108.13:8080/api/bounties', {
+          params: {
+            category: category,
+            sortBy: sortBy,
+          },
+        })
         .then(({ data }) => {
-          console.log('category data', data)
+          console.log('category data', data);
           setAllBounties(data);
-          setCategory('');
+          // setCategory('');
         })
         .catch((err) => console.error('There was a problem retreiving category data', err));
     }
-  }, [category]);
-
-  useEffect(() => {
-    axios
-      .get('http://54.176.108.13:8080/api/bounties', { params: { sortBy: sortBy } })
-      .then(({ data }) => {
-        setAllBounties(data);
-        setSortBy('');
-      })
-      .catch((err) => console.error('There was a problem retreiving sort data', err));
-  }, [sortBy]);
+  }, [category, sortBy]);
 
   console.log('allBounties: ', allBounties);
   return (
@@ -99,6 +94,7 @@ export default function BountyPage({ toggleTheme }) {
           <div>
             Category:{' '}
             <StyledSelect defaultValue="" onChange={(e) => setCategory(e.target.value)}>
+              <option>All</option>
               <option>clothing</option>
               <option>decor</option>
               <option>gadget</option>
