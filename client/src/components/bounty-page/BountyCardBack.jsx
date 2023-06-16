@@ -20,7 +20,10 @@ import {
 } from './StyledBountyBoard';
 
 export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
-  const { name, category, buyer_id, description, preferred_payment, offer_count } = Bounty;
+
+
+  const { name, category, description, preferred_payment, offer_count } = Bounty;
+
 
   let { deadline } = Bounty;
   [deadline] = deadline.split(' ');
@@ -44,6 +47,7 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
         {/* <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton> */}
       </OfferLayoutCenter>
       <OfferLayout>
+
         <StyledRatingBox>
           <CoinRating user={buyer_id} size="20px" />
         </StyledRatingBox>
