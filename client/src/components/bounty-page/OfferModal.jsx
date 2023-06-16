@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import {
   StyledListBountyContainer,
@@ -14,12 +14,15 @@ import {
 import { GlobalContext } from '../GlobalContext.jsx';
 
 export default function ListBountyModal({ showOfferModal, setOfferModal, Bounty }) {
-  const Context = useContext(GlobalContext);
+  const { userData } = useContext(GlobalContext);
+  const [id, setID] = useState(userData.id);
+
+  // const { id } = Context;
+  console.log({ id }, 'IDIDIDI');
 
   const initialValues = {
     bountyID: Bounty.id,
-    // buyer_id: Bounty.buyer_id,
-    sellerID: 2, //update when we have context
+    sellerID: id,
     description: '',
     city: '',
     state: '',
