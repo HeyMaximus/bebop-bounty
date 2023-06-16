@@ -16,6 +16,7 @@ import {
   StyledCurrentOffers,
   FlipToFront,
   OfferLayout,
+  OfferLayoutCenter,
 } from './StyledBountyBoard';
 
 export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
@@ -35,12 +36,12 @@ export default function BountyCardBack({ Bounty, flipCard, showOfferModal }) {
       <StyledDeadline>Deadline: {deadline}</StyledDeadline>
       <StyledDescription>Description: {description}</StyledDescription>
       <StyledPreferredPayment>Preferred Payment:{preferred_payment}</StyledPreferredPayment>
-      <OfferLayout>
+      <OfferLayoutCenter>
         <Button onClick={showOfferModal} variant="success" size="sm">
           Make An Offer!
         </Button>
         {/* <StyledMakeOfferButton onClick={showOfferModal}>Make an Offer</StyledMakeOfferButton> */}
-      </OfferLayout>
+      </OfferLayoutCenter>
       <OfferLayout>
         {/* <StyledRatingBox>
           <CoinRating />

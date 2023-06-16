@@ -55,6 +55,13 @@ export const OfferLayout = styled.div`
   justify-content: space-between;
 `;
 
+export const OfferLayoutCenter = styled.div`
+  /* border: solid; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const StyledImageContainer = styled.div`
   position: relative;
   height: 65%;
