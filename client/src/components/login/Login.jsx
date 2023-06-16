@@ -18,7 +18,7 @@ function Login() {
     axios
       .get(`http://54.176.108.13:8080/api/users/${user.uid}?auth=true`)
       .then((response) => {
-        console.log('RESPONSEE DATA', response)
+        console.log('RESPONSEE DATA', response.data[0]);
         setUserData(response.data[0]);
         navigate('/bounty-page');
       })

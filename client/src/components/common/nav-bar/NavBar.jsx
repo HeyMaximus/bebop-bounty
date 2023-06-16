@@ -5,12 +5,14 @@ import { StyledNavLogo } from '../../../theme';
 import SearchBar from '../../bounty-page/SearchBar.jsx';
 import ProfileMenu from './ProfileMenu.jsx';
 import ListBountyModal from './ListBountyModal.jsx';
+import { GlobalContext } from '../../GlobalContext.jsx';
 
 export default function NavBar({ toggleTheme, theme }) {
   const [profileMenu, setProfileMenu] = useState(false);
   const [listBountyModal, setListBountyModal] = useState(false);
   const exampleImgURL = 'https://i.pinimg.com/736x/5b/91/44/5b914448091084b6aa3dc005fad52eba.jpg';
   const navigate = useNavigate();
+  const { userData } = useContext(GlobalContext);
 
   const showProfileMenu = () => setProfileMenu(!profileMenu);
   const showListBountyModal = () => setListBountyModal(!listBountyModal);
@@ -27,7 +29,7 @@ export default function NavBar({ toggleTheme, theme }) {
       <StyledListBountyBtn onClick={() => showListBountyModal()}>List Bounty</StyledListBountyBtn>
       {listBountyModal && <ListBountyModal showListBountyModal={showListBountyModal} />}
       <StyledProfilePic onClick={() => showProfileMenu()}>
-        <img src={exampleImgURL} alt="profile pic" />
+        <img src={userData.profile_image || exampleImgURL} alt="profile pic" />
       </StyledProfilePic>
       {profileMenu && (
         <ProfileMenu showProfileMenu={showProfileMenu} theme={theme} toggleTheme={toggleTheme} />
