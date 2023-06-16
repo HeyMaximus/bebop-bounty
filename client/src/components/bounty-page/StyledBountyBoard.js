@@ -164,6 +164,9 @@ export const StyledPreferredPayment = styled.div`
 
 export const StyledRatingBox = styled.div`
   /* border: solid; */
+  width: 100px;
+  height: 15px;
+  padding-bottom: 10%;
 `;
 
 export const StyledMakeOfferButton = styled.button`
