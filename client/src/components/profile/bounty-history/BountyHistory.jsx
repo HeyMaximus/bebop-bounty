@@ -12,7 +12,7 @@ import { StyledBountyBoardWrapper, StyledFlexContainer } from '../../bounty-page
 import { StyledBountyPageBorder } from '../../../theme';
 import NavBar from '../../common/nav-bar/NavBar.jsx';
 
-function BountyHistory() {
+function BountyHistory({ toggleTheme, theme }) {
   const { userBounties, setUserBounties, userData } = useContext(GlobalContext);
   const [bountyID, setBountyID] = useState('');
   const [show, setShow] = useState(false);
@@ -45,7 +45,7 @@ function BountyHistory() {
     `}
       </style>
       <StyledBountyPageBorder>
-        <NavBar />
+        <NavBar theme={theme} toggleTheme={toggleTheme} />
         <StyledBountyBoardWrapper>
           <Container fluid>
             <Row>
