@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CardFlip from './CardFlip.jsx';
 
 export const StyledBountyBoardWrapper = styled.div`
-  border: 1px solid;
+  /* border: 1px solid; */
   width: 93%;
   margin: 10px auto;
   display: flex;
@@ -22,7 +22,7 @@ export const StyledBountyCollection = styled.div`
 `;
 
 export const StyledDropdown = styled.select`
-  border: solid;
+  /* border: solid; */
 `;
 
 export const StyledCardFlip = styled(CardFlip)`
