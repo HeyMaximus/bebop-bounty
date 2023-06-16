@@ -17,7 +17,6 @@ import {
 
 export default function ListBountyModal({ showListBountyModal }) {
   const { userData } = useContext(GlobalContext);
-  console.log('BOUNTYMODAL USERDATA', userData);
 
   const [initialValues, setInitialValues] = useState({
     buyerID: userData.id,

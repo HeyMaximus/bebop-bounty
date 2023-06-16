@@ -35,6 +35,15 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
     navigate('/profile/bounty-history');
   };
 
+  const handleProfileClick = (e) => {
+    e.preventDefault();
+    if (userData.id) {
+      navigate(`/user-profile/${userData.id}`);
+    } else {
+      alert("You haven't logged into your account yet.");
+    }
+  };
+
   return (
     <>
       <StyledClearCurtain onClick={showProfileMenu} />
@@ -48,7 +57,9 @@ export default function ProfileMenu({ toggleTheme, showProfileMenu, theme }) {
           </div>
         </StyledProfileMenuHeader>
         <StyledProfileMenuProperties>
-          <button type="button">Profile</button>
+          <button type="button" onClick={handleProfileClick}>
+            Profile
+          </button>
           <button type="button">Notifications</button>
           <button type="button" onClick={(e) => routeToMyBounties(e)}>
             Your Bounties
