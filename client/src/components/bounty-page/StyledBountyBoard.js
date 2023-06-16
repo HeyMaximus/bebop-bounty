@@ -2,18 +2,23 @@ import styled from 'styled-components';
 import CardFlip from './CardFlip.jsx';
 
 export const StyledBountyBoardWrapper = styled.div`
-  /* border: 1px solid; */
+  border: 1px solid;
   width: 93%;
   margin: 10px auto;
-  /* background-color: lightgray; */
+  display: flex;
+  justify-content: center;
+  padding-left: 30px;
+  /* padding-right: 30px; */
+  padding-top: 30px;
 `;
 export const StyledBountyCollection = styled.div`
   /* border: solid; */
+  width: fit-content;
   display: flex;
   flex-wrap: wrap;
   /* background-color: lightgray; */
   justify-content: left;
-  gap: 15px;
+  gap: 30px;
 `;
 
 export const StyledDropdown = styled.select`
@@ -211,5 +216,5 @@ export const StyledFlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  gap: 10px;
+  gap: 15px;
 `;
