@@ -45,33 +45,33 @@ function BountyHistory() {
     `}
       </style>
       <StyledBountyPageBorder>
-      <NavBar />
-      <StyledBountyBoardWrapper>
-        <Container fluid>
-          <Row>
-            <Col lg="9">
-              <h2>Your Open Bounties</h2>
-              {userBounties.map((entry) => (
-                <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
-                  <BountyCardFront Bounty={entry} />
-                </span>
-              ))}
-            </Col>
-            <Col lg="3">
-              <h2>Transaction History</h2>
-              <TransactionHistoryList />
-            </Col>
-          </Row>
-        </Container>
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header>
-            <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <OfferHistoryList bountyID={bountyID} />
-          </Offcanvas.Body>
-        </Offcanvas>
-      </StyledBountyBoardWrapper>
+        <NavBar />
+        <StyledBountyBoardWrapper>
+          <Container fluid>
+            <Row>
+              <Col lg="9">
+                <h2>Your Open Bounties</h2>
+                {userBounties.map((entry) => (
+                  <span key={entry.id} onClick={(e) => handleShow(entry.id)}>
+                    <BountyCardFront Bounty={entry} />
+                  </span>
+                ))}
+              </Col>
+              <Col lg="3">
+                <h2>Transaction History</h2>
+                <TransactionHistoryList />
+              </Col>
+            </Row>
+          </Container>
+          <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas.Header>
+              <Offcanvas.Title>Bounty Offers</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <OfferHistoryList bountyID={bountyID} />
+            </Offcanvas.Body>
+          </Offcanvas>
+        </StyledBountyBoardWrapper>
       </StyledBountyPageBorder>
     </div>
   );
