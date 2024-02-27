@@ -56,12 +56,11 @@ all the necessary environment variables.
 
 The authors and contributors of the project are:
 
-- [Bebop-Bounty](https://github.com/Bebop-Bounty)
+- [Maximus Chen](https://github.com/HeyMaximus)
 - [Xintong Mi](https://github.com/XintongTheCoder)
 - [Sara Li](https://github.com/sora62)
 - [Sean Winnik](https://github.com/swinnik)
 - [Benjamin Pak](https://github.com/beanjermin)
-- [Maximus Chen](https://github.com/HeyMaximus)
 - [Dylan Williams](https://github.com/dylanmwilliams)
 
 ## Wins and Improvements
